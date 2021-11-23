@@ -20,15 +20,19 @@ This is a solution to the [Library App](https://www.theodinproject.com/paths/ful
 
 ### The challenge
 
+Create a To do List Application
+
 Users should be able to:
 
-- View/Add books into the library to be displayed on cards
-- Updated as of 9/13/21 with Modular JS
-- Updated using Class instead of a factory function for adding books to library
+- View/Add Projects
+- Add to do to projects
+- Set properties of to do's and projects
+- Properties should be title, description, due date, priority, notes, checklist
+
 
 ### Links
 
-- Solution URL: https://jehutymsms.github.io/Library-Odin-project/
+- Solution URL: NA
 
 ## My process
 
@@ -36,31 +40,26 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- Figma
-- Modular JS
+- Webpack
 
 ### What I learned
 
-I learned more about modular JS and about making functions do only 1 thing thus making it easier to find issues that occur.
+During the initial set-up I have learned more about webpack and how it can make projects simple with loading assets and dependencies needed.
 
 
 ### Continued development
 
-In the future I want to learn to use React in order to broaden my skills.
+I will continue to learn more modular js structure to my projects.
 
 ### Useful resources
 
-- [Flexbox Resource](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#background) - This helped me for Flexbox and has amazing visuals.
-- [Grid Resource](https://css-tricks.com/snippets/css/complete-guide-grid/) - This helped me for Grid and has amazing visuals.
+- N/A
 
 ## Author
 
-- Portfolio - [Andrew Humphries](https://jehutymsms.github.io/)
+- Portfolio - [Andrew Humphries](https://jehutymsms.github.io/portfolio/)
 
 
 ## Acknowledgments
 
-I would like to thank Odin Project for setting me on this path and giving me the confidence to try this project. 
+I would like to thank Odin Project for setting me on this path and giving me the knowledge to create this. 
