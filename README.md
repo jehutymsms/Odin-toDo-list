@@ -33,10 +33,6 @@ Users should be able to:
 ### Links
 
 - Solution URL: NA
-<<<<<<< HEAD
-Image from VectorStock
-=======
->>>>>>> 8dcec45ceeca5e8757cafe94cb84196194bbf83c
 
 ## My process
 
@@ -45,10 +41,7 @@ Image from VectorStock
 - Semantic HTML5 markup
 - CSS custom properties
 - Webpack
-<<<<<<< HEAD
 - Figma (For Design)
-=======
->>>>>>> 8dcec45ceeca5e8757cafe94cb84196194bbf83c
 
 ### What I learned
 
