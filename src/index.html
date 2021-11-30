@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>Odin-To-Do</title>
+</head>
 
-  </body>
+<body>
+  <div id='signIn-Container'>
+    <h2 id='appTitle'>Welcome to Checkist</h2>
+    <div id='signIn-Form-Container'>
+      <form>
+        <label for="userName">Username</label><br>
+        <input type="text" id="userName" name="userName"><br>
+        <label for="password">Password</label><br>
+        <input type="text" id="password" name="password">
+        <input type="button" value='Sign In'>
+        <input type="button" value='Sign Up'>
+        <input type="button" value='Demo'>
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>

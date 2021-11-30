@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Development</title>
-  <script defer src="main.js"></script></head>
 
-  <body>
-    <h1> The Do To List </h1>
-    <h3>So now everything loads as I type it</h3>
-    <h2>oh dear</h2>
-    <my-app></my-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Odin-To-Do</title>
+<script defer src="main.js"></script></head>
 
-  </body>
+<body>
+  <div id='signIn-Container'>
+    <h2 id='appTitle'>Welcome to Checkist</h2>
+    <div id='signIn-Form-Container'>
+      <form>
+        <label for="userName">Username</label><br>
+        <input type="text" id="userName" name="userName"><br>
+        <label for="password">Password</label><br>
+        <input type="text" id="password" name="password">
+        <input type="button" value='Sign In'>
+        <input type="button" value='Sign Up'>
+        <input type="button" value='Demo'>
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>

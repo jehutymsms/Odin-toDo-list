@@ -1,15 +1,8 @@
 // This is just a place Holder
-import _ from 'lodash';
 import './style.css';
 
-//  function component() {
-//    const element = document.createElement('div');
 
-//    // Lodash, now imported by this script
-//    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-//   element.classList.add('hello');
+function baby(){
+    console.log('I wonder if this will find the html I am looking for since I am using webpack')
+}
 
-//    return element;
-//  }
-
-//  document.body.appendChild(component());
