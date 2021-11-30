@@ -2,6 +2,8 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+ 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -30,11 +32,13 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-  min-height: 100vh;
-  background-color: pink;
-  background-image: url('./images/ToDoAppBackground-cropped-mobile.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%; 
+	min-height: 100vh;
+	color: rgb(255,255,255);
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	background-image: url('./images/ToDoAppBackground-cropped-mobile.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%; 
 }
 ol, ul {
 	list-style: none;
@@ -51,3 +55,79 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+#signIn-Container-Inner, #signIn-Container-Outer{
+	display: flex;
+}
+
+#signIn-Container-Outer{
+	height: 100vh;
+	justify-content: flex-end;
+}
+
+
+#signIn-Container-Inner{
+	flex-direction: column;
+	align-items: center;
+	margin: 8.5em 3em;
+	background-color: rgb(255,255,255, 0.4);
+	border-radius: 23px;
+}
+
+#appTitle{
+	font-size: 2em;
+	margin: 0.5em;
+	color: #000;
+}
+
+#signIn-Form-Container{
+	margin:0 1em;
+	padding: 1.5em 0;
+	background-color: rgba(14, 9, 9, 0.4);
+}
+
+label{
+	font-size: 1.5em;
+	color:rgb(255,255,255);
+}
+
+input[type=text]{
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	border: none;
+	text-decoration: none;
+	background: rgba(14, 9, 9, 0.5);;
+	border-radius: 1em;
+}
+
+input[type=button], #demoButton{
+	margin: 0.3em;
+	border: none;
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 0.3em 3em;
+	border-radius: 1em;
+	text-decoration: none;
+	color: rgb(255,255,255);
+	background-color: #AE1F42;
+}
+
+#demoButton{
+	margin-top: 1em;
+	padding: 0.3em 2em;
+}
+
+@media only screen and (min-width: 700px) {
+	body {
+		background-image: url('./images/ToDoAppBackground-cropped.jpg');
+	}
+
+	#signIn-Container-Inner{
+		flex-direction: column;
+		align-items: center;
+		padding: 10em;
+		margin: 8.5em 15em 8.5em 0em;
+		background-color: rgb(255,255,255, 0.4);
+		border-radius: 23px;
+	}
+  }
