@@ -136,4 +136,20 @@ input[type=button], #demoButton{
 	body {
 		background-image: url('./images/ToDoAppBackground-cropped.jpg');
 	}
-  }
+}
+
+#navSection{
+	display: flex;
+	justify-content: flex-start;
+	padding: 1em 0em ;
+	color: black;
+	background-color: rgb(255,255,255, 0.8);
+}
+
+#navSection >h1{
+
+}
+
+#navSection >h2{
+	flex-grow: 1;
+}
