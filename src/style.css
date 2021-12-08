@@ -30,6 +30,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 	min-height: 100vh;
@@ -149,6 +150,16 @@ input[type=button], #demoButton{
 	background-color: rgb(255,255,255, 0.6);
 }
 
+/* #footerSection{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: black;
+	color: white;
+	text-align: center;
+} */
+
 #navSection >h1{
 	margin-left: 0.2em;
 	font-size: 2em;
@@ -161,25 +172,25 @@ input[type=button], #demoButton{
 	transform: translate(-50%, -50%);
 }
 
+
 #mainSection, .items, .tasks{
 	display: grid;
 }
 
 #mainSection{
-	grid-column: 1;
-	margin-top: 5em;
+	margin-top: 3em;
 	gap: 0.5em 0em;
 	font-size: 1.5em;
 	color: black;
 	background-color: rgb(255,255,255, 0.9);
 }
-#mainSection >h2{
+#mainSection > h2{
 	font-size: 1.5em;
 	padding: 0.5em;
 }
 
 .items{
-	min-width: 90%;
+	width: 20em;
 	color: black;
 	place-self: center;
 	gap: 0.5em 0em;
