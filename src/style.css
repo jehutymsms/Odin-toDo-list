@@ -133,12 +133,6 @@ input[type=button], #demoButton{
 	padding: 0.3em 2em;
 }
 
-@media only screen and (min-width: 700px) {
-	body {
-		background-image: url('./images/ToDoAppBackground-cropped.jpg');
-	}
-}
-
 #navSection{
 	display: flex;
 	justify-content: flex-start;
@@ -149,16 +143,6 @@ input[type=button], #demoButton{
 	color: black;
 	background-color: rgb(255,255,255, 0.6);
 }
-
-/* #footerSection{
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: black;
-	color: white;
-	text-align: center;
-} */
 
 #navSection >h1{
 	margin-left: 0.2em;
@@ -172,25 +156,31 @@ input[type=button], #demoButton{
 	transform: translate(-50%, -50%);
 }
 
-
 #mainSection, .items, .tasks{
 	display: grid;
 }
 
 #mainSection{
+	display: flex;
+	flex-direction: column;
 	margin-top: 3em;
+	padding-bottom: 3em;
 	gap: 0.5em 0em;
 	font-size: 1.5em;
 	color: black;
 	background-color: rgb(255,255,255, 0.9);
 }
+
 #mainSection > h2{
 	font-size: 1.5em;
 	padding: 0.5em;
 }
 
+#mainSection>*{
+	min-width: 80%;
+}
+
 .items{
-	width: 20em;
 	color: black;
 	place-self: center;
 	gap: 0.5em 0em;
@@ -231,4 +221,28 @@ input[type=button], #demoButton{
 .tasks>label{
 	color: black;
 	font-size: 0.8em;
+}
+
+/* #footerSection{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: black;
+	color: white;
+	text-align: center;
+} */
+
+@media only screen and (min-width: 700px) {
+	body {
+		background-image: url('./images/ToDoAppBackground-cropped.jpg');
+	}
+
+	#mainSection{
+		margin: 3em 3em 0em;
+	}
+
+	#mainSection>*{
+		min-width: 70%;
+	}
 }
