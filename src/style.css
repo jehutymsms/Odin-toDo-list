@@ -223,6 +223,19 @@ input[type=button], #demoButton{
 	font-size: 0.8em;
 }
 
+#navMenuSection{
+	position: fixed;
+	top: 2em;
+	height: 100vh;
+	font-size: 2em;  
+	max-width: 50%;
+	background-color: black;
+}
+
+#defaultSelector{
+	font-size: em;
+}
+
 /* #footerSection{
 	position: fixed;
 	left: 0;
