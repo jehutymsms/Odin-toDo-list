@@ -144,7 +144,7 @@ input[type=button], #demoButton{
 #navSection >h1{
 	margin-left: 0.2em;
 	font-size: 2em;
-	transition: 1s;
+	transition: 0.5s;
 	cursor: pointer;
 }
 
@@ -223,7 +223,7 @@ input[type=button], #demoButton{
 }
 
 #navMenuSection{
-	display: none;
+	/* display: none; */
 	position: fixed;
 	top: 2em;
 	height: 100vh;
@@ -231,6 +231,7 @@ input[type=button], #demoButton{
 	width: 50%;
 	color: black;
 	background-color: white;
+	transition: width 1s;
 }
 
 #defaultSelector > h2{
@@ -243,8 +244,14 @@ input[type=button], #demoButton{
 	margin: 1em;
 }
 
+#dateSelector > p{
+	font-size: 0.75em;  
+}
+
 #dateSelector>input{
+	display: block;
 	margin: 1em;
+	text-align: center;
 }
 #projectSelector{
 	font-size: 0.5em;
@@ -292,11 +299,12 @@ input[type=button], #demoButton{
 	}
 
 	#navSection>h1{
-		transform: rotate(45deg);
+		transform: rotate(135deg);
 	}
 
 	#navMenuSection{
 		display: block;
+		width: 30%;
 	}
 
 }
