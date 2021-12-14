@@ -1,9 +1,49 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+/* Table of Contents
+	1. Imports
+	2. Global Styles
+	3. Sign-in Styles
+		3.1. Sign-in Global Styles
+		3.2. Sign-in Target Element Styles
+	4. Navigation Section Styles
+		4.1. Navigation Section Global Styles
+		4.2. Navigation Section Target Element Styles
+	5. Navigation Menu Section Styles
+		5.1. Navigation Menu Global Styles
+		5.2. Navigation Menu Target Element Styles
+	6. Main Section Styes
+		6.1. Main Section Global Styles
+		6.1. Main Section Target Element Styles
+	*. Footer Style Section
+	*. Media Query Section
+		*.1. Global Media Queries
+		*.2. Navigation Section Media Queries
+		*.3. Navigation Menu Section Media Queries
+
 */
- 
+
+
+
+/*	==========
+	1. Imports
+	========== */
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+
+/*	================
+	2. Global Styles
+	================ */
+
+
+/* 
+	CSS Styling Reset from
+	http://meyerweb.com/eric/tools/css/reset/ 
+   	v2.0 | 20110126
+   	License: none (public domain)
+*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -54,6 +94,37 @@ table {
 	border-spacing: 0;
 }
 
+#gridContainer{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr) ;
+  	grid-template-rows: auto;
+  	grid-template-areas: 
+    "header header header header"
+    "sidebar main main main"
+    "footer footer footer footer";
+}
+
+#navSection{grid-area: header;}
+#navMenuSection{grid-area: sidebar;}
+#mainSection{grid-area: main;}
+#footerSection{grid-area: footer;}
+
+
+/*	=================
+	3. Sign-in Styles
+	================= */
+
+
+	/*	 =====================
+	3.1. Sign-in Global Styles
+		 ===================== */
+
+form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 #signIn-Container-Inner, #signIn-Container-Outer{
 	display: flex;
 }
@@ -74,12 +145,6 @@ table {
 	border-radius: 23px;
 }
 
-#appTitle{
-	font-size: 2em;
-	margin: 0.5em;
-	color: #000;
-}
-
 #signIn-Form-Container{
 	margin:0 1em;
 	padding: 1.5em 0;
@@ -88,10 +153,14 @@ table {
 	background-color: rgba(14, 9, 9, 0.4);
 }
 
-form{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	/*	 =============================
+	3.2. Sign-in Target Element Styles
+		 ============================= */
+
+#appTitle{
+	font-size: 2em;
+	margin: 0.5em;
+	color: #000;
 }
 
 form > input, form > label{
@@ -103,15 +172,6 @@ form > input, form > label{
 form >label{
 	font-size: 1.5em;
 	color:rgb(255,255,255);
-}
-
-input[type=text]{
-	margin: 0.5em;
-	padding: 0.5em 1em;
-	border: none;
-	text-decoration: none;
-	background: rgba(14, 9, 9, 0.5);;
-	border-radius: 1em;
 }
 
 input[type=button], #demoButton{
@@ -126,9 +186,27 @@ input[type=button], #demoButton{
 	background-color: #AE1F42;
 }
 
+input[type=text]{
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	border: none;
+	text-decoration: none;
+	background: rgba(14, 9, 9, 0.5);;
+	border-radius: 1em;
+}
+
 #demoButton{
 	padding: 0.3em 2em;
 }
+
+
+/*	============================
+	4. Navigation Section Styles
+	============================ */
+	
+	/*	 ================================
+	4.1. Navigation Section Global Styles
+		 ================================ */
 
 #navSection{
 	display: flex;
@@ -140,6 +218,10 @@ input[type=button], #demoButton{
 	color: black;
 	background-color: rgb(255,255,255, 0.6);
 }
+
+	/*	 ========================================
+	4.2. Navigation Section Target Element Styles
+		 ======================================== */
 
 #navSection >h1{
 	margin-left: 0.2em;
@@ -153,6 +235,85 @@ input[type=button], #demoButton{
 	top:50%;
 	left:50%;
 	transform: translate(-50%, -50%);
+}
+
+
+/*	=================================
+	5. Navigation Menu Section Styles
+	================================= */
+
+	/*	 =============================
+	5.1. Navigation Menu Global Styles
+		 ============================= */
+
+#navMenuSection{
+	/* display: none; */
+	position: fixed;
+	top: 2em;
+	height: 100vh;
+	font-size: 2em;  
+	width: 50%;
+	color: black;
+	background-color: white;
+	transition: width 1s;
+}
+
+#dateSelector{
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+}
+
+#projectSelector{
+	font-size: 0.5em;
+	text-align: left;
+	margin: auto 2em;
+	/* background-color: black; */
+}
+
+#projectSelector>ul{
+	margin-left: 1em;
+	text-align:left;
+	list-style-type: disc;
+}
+
+	/*	 =====================================
+	5.2. Navigation Menu Target Element Styles
+		 ===================================== */
+
+#defaultSelector > h2{
+	margin: 0.5em;
+}
+
+#dateSelector > p{
+	font-size: 0.75em;  
+}
+
+#dateSelector>input{
+	display: block;
+	margin: 1em;
+	text-align: center;
+}
+
+#projectSelector>h2{
+	font-size: 1.75em;
+}
+
+#projectSelector>ul>li{
+	margin: 0.5em;
+
+}
+
+/*	=====================
+	6. Main Section Styes
+	===================== */
+
+	/*	 ==========================
+	6.1. Main Section Global Styles
+		 ========================== */
+
+#mainSection>*{
+	min-width: 80%;
 }
 
 #mainSection, .items, .tasks{
@@ -170,13 +331,12 @@ input[type=button], #demoButton{
 	background-color: rgb(255,255,255, 0.9);
 }
 
-#mainSection > h2{
-	font-size: 1.5em;
-	padding: 0.5em;
+.items, .tasks{
+	grid-template-columns: repeat(3, 1fr);
 }
 
-#mainSection>*{
-	min-width: 80%;
+.items > *{
+	grid-column: 1 / span 3;
 }
 
 .items{
@@ -187,12 +347,24 @@ input[type=button], #demoButton{
 	background: rgba(14, 9, 9, 0.28);
 }
 
-.items{
-	grid-template-columns: repeat(3, 1fr);
+
+.tasks>*{
+	place-self: center;
+	padding: 0.2em;
 }
 
-.items > *{
-	grid-column: 1 / span 3;
+	/*	 ==================================
+	6.2. Main Section Target Element Styles
+		 ================================== */
+
+#mainSection > h2{
+	font-size: 1.5em;
+	padding: 0.5em;
+}
+
+.tasks>label{
+	color: black;
+	font-size: 0.8em;
 }
 
 .addTask{
@@ -208,74 +380,11 @@ input[type=button], #demoButton{
 	background-color: #AE1F42;
 }
 
-.tasks{
-	grid-template-columns: repeat(3, 1fr);
-}
+/*	=======================
+	*. Footer Style Section
+	======================= */
 
-.tasks>*{
-	place-self: center;
-	padding: 0.2em;
-}
-
-.tasks>label{
-	color: black;
-	font-size: 0.8em;
-}
-
-#navMenuSection{
-	/* display: none; */
-	position: fixed;
-	top: 2em;
-	height: 100vh;
-	font-size: 2em;  
-	width: 50%;
-	color: black;
-	background-color: white;
-	transition: width 1s;
-}
-
-#defaultSelector > h2{
-	margin: 0.5em;
-}
-
-#dateSelector{
-	display: flex;
-	flex-direction: column;
-	margin: 1em;
-}
-
-#dateSelector > p{
-	font-size: 0.75em;  
-}
-
-#dateSelector>input{
-	display: block;
-	margin: 1em;
-	text-align: center;
-}
-#projectSelector{
-	font-size: 0.5em;
-	text-align: left;
-	margin: auto 2em;
-	/* background-color: black; */
-}
-
-#projectSelector>h2{
-	font-size: 1.75em;
-}
-
-#projectSelector>ul{
-	margin-left: 1em;
-	text-align:left;
-	list-style-type: disc;
-}
-
-#projectSelector>ul>li{
-	margin: 0.5em;
-
-}
-
-/* #footerSection{
+#footerSection{
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -283,12 +392,25 @@ input[type=button], #demoButton{
 	background-color: black;
 	color: white;
 	text-align: center;
-} */
+}
+
+/*	======================
+	*. Media Query Section
+	====================== */
 
 @media only screen and (min-width: 700px) {
+
+	/*	 ====================
+	*.1. Global Media Queries
+		 ==================== */
+
 	body {
 		background-image: url('./images/ToDoAppBackground-cropped.jpg');
 	}
+
+	/*	 ================================
+	*.2. Navigation Section Media Queries
+		 ================================ */
 
 	#mainSection{
 		margin: 3em 3em 0em;
@@ -301,6 +423,10 @@ input[type=button], #demoButton{
 	#navSection>h1{
 		transform: rotate(135deg);
 	}
+
+	/*	 =====================================
+	*.3. Navigation Menu Section Media Queries
+		 ===================================== */
 
 	#navMenuSection{
 		display: block;
