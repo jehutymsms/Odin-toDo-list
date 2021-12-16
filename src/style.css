@@ -1,23 +1,27 @@
 /* Table of Contents
 	1. Imports
 	2. Global Styles
-	3. Sign-in Styles
-		3.1. Sign-in Global Styles
-		3.2. Sign-in Target Element Styles
-	4. Navigation Section Styles
-		4.1. Navigation Section Global Styles
-		4.2. Navigation Section Target Element Styles
-	5. Navigation Menu Section Styles
-		5.1. Navigation Menu Global Styles
-		5.2. Navigation Menu Target Element Styles
-	6. Main Section Styes
-		6.1. Main Section Global Styles
-		6.1. Main Section Target Element Styles
+	3. pageGridContainer Styles
+		3.1. pageGridContainer Global Styles
+		3.2. pageGridContainer Target Element Styles
+	4. Sign-in Styles
+		4.1. Sign-in Global Styles
+		4.2. Sign-in Target Element Styles
+	5. Navigation Section Styles
+		5.1. Navigation Section Global Styles
+		5.2. Navigation Section Target Element Styles
+	6. Navigation Menu Section Styles
+		6.1. Navigation Menu Global Styles
+		6.2. Navigation Menu Target Element Styles
+	7. Main Section Styes
+		7.1. Main Section Global Styles
+		7.1. Main Section Target Element Styles
 	*. Footer Style Section
 	*. Media Query Section
 		*.1. Global Media Queries
-		*.2. Navigation Section Media Queries
-		*.3. Navigation Menu Section Media Queries
+		*.2. pageGridContainer Media Queries
+		*.3. Navigation Section Media Queries
+		*.4. Navigation Menu Section Media Queries
 
 */
 
@@ -94,15 +98,27 @@ table {
 	border-spacing: 0;
 }
 
-#gridContainer{
+/*	===========================
+	3. pageGridContainer Styles
+	=========================== */
+
+	/*	 =====================
+	3.1. pageGridContainer Global Styles
+		 ===================== */
+
+#pageGridContainer{
 	display: grid;
 	grid-template-columns: repeat(4, 1fr) ;
   	grid-template-rows: auto;
   	grid-template-areas: 
     "header header header header"
-    "sidebar main main main"
+    "main main main main"
     "footer footer footer footer";
 }
+
+	/*	 =======================================
+	3.2. pageGridContainer Target Element Styles
+		 ======================================= */
 
 #navSection{grid-area: header;}
 #navMenuSection{grid-area: sidebar;}
@@ -111,12 +127,12 @@ table {
 
 
 /*	=================
-	3. Sign-in Styles
+	4. Sign-in Styles
 	================= */
 
 
 	/*	 =====================
-	3.1. Sign-in Global Styles
+	4.1. Sign-in Global Styles
 		 ===================== */
 
 form{
@@ -154,7 +170,7 @@ form{
 }
 
 	/*	 =============================
-	3.2. Sign-in Target Element Styles
+	4.2. Sign-in Target Element Styles
 		 ============================= */
 
 #appTitle{
@@ -201,11 +217,11 @@ input[type=text]{
 
 
 /*	============================
-	4. Navigation Section Styles
+	5. Navigation Section Styles
 	============================ */
 	
 	/*	 ================================
-	4.1. Navigation Section Global Styles
+	5.1. Navigation Section Global Styles
 		 ================================ */
 
 #navSection{
@@ -220,7 +236,7 @@ input[type=text]{
 }
 
 	/*	 ========================================
-	4.2. Navigation Section Target Element Styles
+	5.2. Navigation Section Target Element Styles
 		 ======================================== */
 
 #navSection >h1{
@@ -229,6 +245,7 @@ input[type=text]{
 	transition: 0.5s;
 	cursor: pointer;
 }
+
 
 #navSection >h2{
 	position: absolute;
@@ -239,46 +256,44 @@ input[type=text]{
 
 
 /*	=================================
-	5. Navigation Menu Section Styles
+	6. Navigation Menu Section Styles
 	================================= */
 
 	/*	 =============================
-	5.1. Navigation Menu Global Styles
+	6.1. Navigation Menu Global Styles
 		 ============================= */
+#navMenuSection>*{
+	margin-top: 1em;
+}
 
 #navMenuSection{
-	/* display: none; */
 	position: fixed;
 	top: 2em;
 	height: 100vh;
 	font-size: 2em;  
-	width: 50%;
+	width: 25%;
 	color: black;
 	background-color: white;
-	transition: width 1s;
+	transform: translate(-100%, 0);
+	transition: 0.5s;
 }
 
 #dateSelector{
 	display: flex;
 	flex-direction: column;
-	margin: 1em;
 }
 
 #projectSelector{
 	font-size: 0.5em;
-	text-align: left;
-	margin: auto 2em;
-	/* background-color: black; */
 }
 
 #projectSelector>ul{
 	margin-left: 1em;
-	text-align:left;
 	list-style-type: disc;
 }
 
 	/*	 =====================================
-	5.2. Navigation Menu Target Element Styles
+	6.2. Navigation Menu Target Element Styles
 		 ===================================== */
 
 #defaultSelector > h2{
@@ -305,11 +320,11 @@ input[type=text]{
 }
 
 /*	=====================
-	6. Main Section Styes
+	7. Main Section Styes
 	===================== */
 
 	/*	 ==========================
-	6.1. Main Section Global Styles
+	7.1. Main Section Global Styles
 		 ========================== */
 
 #mainSection>*{
@@ -324,7 +339,7 @@ input[type=text]{
 	display: flex;
 	flex-direction: column;
 	margin-top: 3em;
-	padding-bottom: 3em;
+	padding-bottom: 2em;
 	gap: 0.5em 0em;
 	font-size: 1.5em;
 	color: black;
@@ -347,14 +362,13 @@ input[type=text]{
 	background: rgba(14, 9, 9, 0.28);
 }
 
-
 .tasks>*{
 	place-self: center;
 	padding: 0.2em;
 }
 
 	/*	 ==================================
-	6.2. Main Section Target Element Styles
+	7.2. Main Section Target Element Styles
 		 ================================== */
 
 #mainSection > h2{
@@ -378,6 +392,11 @@ input[type=text]{
 	border-radius: 0.5em;
 	color: white;
 	background-color: #AE1F42;
+	transition: 0.5s;
+}
+
+.addTask:hover{
+	background-color: black;
 }
 
 /*	=======================
@@ -408,16 +427,28 @@ input[type=text]{
 		background-image: url('./images/ToDoAppBackground-cropped.jpg');
 	}
 
+	/*	 ===============================
+	*.2. pageGridContainer Media Queries
+		 =============================== */
+
+		 #pageGridContainer{
+			grid-template-areas: 
+			"header header header header"
+			"sidebar main main main"
+			"footer footer footer footer";
+		 }
+
+
 	/*	 ================================
-	*.2. Navigation Section Media Queries
+	*.3. Navigation Section Media Queries
 		 ================================ */
 
 	#mainSection{
-		margin: 3em 3em 0em;
+		margin: 3em 1em 0em;
 	}
 
 	#mainSection>*{
-		min-width: 70%;
+		min-width: 75%;
 	}
 
 	#navSection>h1{
@@ -425,12 +456,11 @@ input[type=text]{
 	}
 
 	/*	 =====================================
-	*.3. Navigation Menu Section Media Queries
+	*.4. Navigation Menu Section Media Queries
 		 ===================================== */
 
 	#navMenuSection{
-		display: block;
-		width: 30%;
+		transform: translate(0, 0);
 	}
 
 }
