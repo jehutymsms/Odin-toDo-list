@@ -120,10 +120,18 @@ table {
 	3.2. pageGridContainer Target Element Styles
 		 ======================================= */
 
-#navSection{grid-area: header;}
-#navMenuSection{grid-area: sidebar;}
-#mainSection{grid-area: main;}
-#footerSection{grid-area: footer;}
+#navSection{
+	grid-area: header;
+}
+#navMenuSection{
+	grid-area: sidebar;
+}
+#mainSection{
+	grid-area: main;
+}
+#footerSection{
+	grid-area: footer;
+}
 
 
 /*	=================
@@ -346,8 +354,12 @@ input[type=text]{
 	background-color: rgb(255,255,255, 0.9);
 }
 
-.items, .tasks{
+.items{
 	grid-template-columns: repeat(3, 1fr);
+}
+
+.tasks{
+	grid-template-columns: repeat(4, 1fr);
 }
 
 .items > *{
@@ -379,7 +391,20 @@ input[type=text]{
 .tasks>label{
 	color: black;
 	font-size: 0.8em;
+	width: 100%;
 }
+
+.tasks>input{
+	height: 100%;
+	width: 100%;
+}
+
+.tasks>section{
+	display: flex;
+	height: 100%;
+	width:100%;
+}
+
 
 .addTask{
 	padding: 0.6em;
@@ -396,7 +421,7 @@ input[type=text]{
 }
 
 .addTask:hover{
-	background-color: black;
+	background-color: #e03c65;
 }
 
 /*	=======================
