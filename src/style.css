@@ -239,6 +239,11 @@ input[type=button], #demoButton{
 	text-decoration: none;
 	color: var(--clr-primary);
 	background-color: var(--clr-accent);
+	transition: 0.5s;
+}
+
+input[type=button]:hover, #demoButton:hover{
+	background-color: var(--clr-accent-light);
 }
 
 input[type=text]{
