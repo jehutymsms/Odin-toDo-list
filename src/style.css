@@ -411,6 +411,8 @@ input[type=text]{
 }
 
 .tasks>section>*{
+	height: 2em;
+	width: 2em;
 	flex-grow: 1;
 	transition: 0.5s;
 }
@@ -428,15 +430,21 @@ input[type=text]{
 	padding: 0.5em;
 }
 
+.items>h2{
+	font-size: 1.5em;
+	padding-top: 0.2em;
+}
+
 .tasks>label{
 	color: var(--clr-secondary);
-	font-size: 0.8em;
+	place-self: center;
+	font-size: 1em;
 	width: 100%;
 }
 
 .tasks>input{
-	height: 100%;
-	width: 100%;
+	height: 2em;
+	width: 2em;
 }
 
 .tasks>section{
@@ -507,12 +515,12 @@ input[type=text]{
 	*.2. pageGridContainer Media Queries
 		 =============================== */
 
-		 #pageGridContainer{
-			grid-template-areas: 
-			"header header header header"
-			"sidebar main main main"
-			"footer footer footer footer";
-		 }
+	#pageGridContainer{
+		grid-template-areas: 
+		"header header header header"
+		"sidebar main main main"
+		"footer footer footer footer";
+	}
 
 
 	/*	 ================================
