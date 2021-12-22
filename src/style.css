@@ -11,15 +11,18 @@
 	4. Sign-in Styles
 		4.1. Sign-in Global Styles
 		4.2. Sign-in Target Element Styles
-	5. Navigation Section Styles
-		5.1. Navigation Section Global Styles
-		5.2. Navigation Section Target Element Styles
-	6. Navigation Menu Section Styles
-		6.1. Navigation Menu Global Styles
-		6.2. Navigation Menu Target Element Styles
-	7. Main Section Styes
-		7.1. Main Section Global Styles
-		7.1. Main Section Target Element Styles
+	5. Sign-Up Styles
+		5.1. Sign-Up Global Styles
+		5.2. Sign-Up Target Element Styles
+	6. Navigation Section Styles
+		6.1. Navigation Section Global Styles
+		6.2. Navigation Section Target Element Styles
+	7. Navigation Menu Section Styles
+		7.1. Navigation Menu Global Styles
+		7.2. Navigation Menu Target Element Styles
+	8. Main Section Styes
+		8.1. Main Section Global Styles
+		8.2. Main Section Target Element Styles
 	*. Footer Style Section
 	*. Media Query Section
 		*.1. Global Media Queries
@@ -41,9 +44,9 @@
 	2. Global Styles
 	================ */
 
-	/*	 =======================
-	2.1. Global Styles Variables
-		 ======================= */
+	/*	============================
+		2.1. Global Styles Variables
+		============================ */
 
 :root{
 
@@ -71,9 +74,9 @@
 	--ff-primary:'Roboto', sans-serif;
 }
 
-	/*	 ====================
-	2.2. Global Styles Global
-		 ==================== */
+	/*	=========================
+		2.2. Global Styles Global
+		========================= */
 /* 
 	CSS Styling Reset from
 	http://meyerweb.com/eric/tools/css/reset/ 
@@ -129,13 +132,15 @@ table {
 	border-spacing: 0;
 }
 
+
+
 /*	===========================
 	3. pageGridContainer Styles
 	=========================== */
 
-	/*	 =====================
-	3.1. pageGridContainer Global Styles
-		 ===================== */
+	/*	====================================
+		3.1. pageGridContainer Global Styles
+		==================================== */
 
 #pageGridContainer{
 	display: grid;
@@ -147,9 +152,9 @@ table {
     "footer footer footer footer";
 }
 
-	/*	 =======================================
-	3.2. pageGridContainer Target Element Styles
-		 ======================================= */
+	/*	============================================
+		3.2. pageGridContainer Target Element Styles
+		============================================ */
 
 #navSection{
 	grid-area: header;
@@ -170,9 +175,9 @@ table {
 	================= */
 
 
-	/*	 =====================
-	4.1. Sign-in Global Styles
-		 ===================== */
+	/*	==========================
+		4.1. Sign-in Global Styles
+		========================== */
 
 form{
 	display: flex;
@@ -208,9 +213,9 @@ form{
 	background-color: var(--clr-secondary-opacity-mid);
 }
 
-	/*	 =============================
-	4.2. Sign-in Target Element Styles
-		 ============================= */
+	/*	==================================
+		4.2. Sign-in Target Element Styles
+		================================== */
 
 #appTitle{
 	font-size: 2em;
@@ -259,14 +264,109 @@ input[type=text]{
 	padding: 0.3em 2em;
 }
 
+/*	=================
+	5. Sign-Up Styles
+	================= */
+
+
+	/*	==========================
+		5.1. Sign-Up Global Styles
+		========================== */
+
+form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#signUp-Container-Inner, #signUp-Container-Outer{
+	display: flex;
+}
+
+#signUp-Container-Outer{
+	height: 100vh;
+	justify-content: center;
+}
+
+#signUp-Container-Inner{
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	min-width: 35%;
+	max-width: 80%;
+	margin: 8.5em 3em 13em;
+	background-color: var(--clr-primary-opacity-mid);
+	border-radius: 23px;
+}
+
+#signUp-Form-Container{
+	margin:0 1em;
+	padding: 1.5em 0;
+	min-width: 60%;
+	max-width: 80%;
+	background-color: var(--clr-secondary-opacity-mid);
+}
+		
+	/*	==================================
+		5.2. Sign-Up Target Element Styles
+		================================== */
+		
+#appTitle{
+	font-size: 2em;
+	color: var(--clr-secondary);
+	
+}
+
+form > input, form > label{
+	align-self: center;
+	min-width: 60%;
+	max-width: 80%;
+}
+
+form >label{
+	font-size: 1.5em;
+	color:var(--clr-primary);
+}
+
+input[type=button], #demoButton{
+	margin: 0.3em;
+	border: none;
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 0.3em 3em;
+	border-radius: 1em;
+	text-decoration: none;
+	color: var(--clr-primary);
+	background-color: var(--clr-accent);
+	transition: 0.5s;
+}
+
+input[type=button]:hover, #demoButton:hover{
+	background-color: var(--clr-accent-light);
+}
+
+input[type=text]{
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	border: none;
+	text-decoration: none;
+	background: var(--clr-secondary-opacity-dark);
+	border-radius: 1em;
+}
+
+#demoButton{
+	padding: 0.3em 2em;
+}
+
+
 
 /*	============================
-	5. Navigation Section Styles
+	6. Navigation Section Styles
 	============================ */
 	
-	/*	 ================================
-	5.1. Navigation Section Global Styles
-		 ================================ */
+	/*	=====================================
+		6.1. Navigation Section Global Styles
+		===================================== */
 
 #navSection{
 	display: flex;
@@ -279,9 +379,9 @@ input[type=text]{
 	background-color: var(--clr-primary-opacity-light);
 }
 
-	/*	 ========================================
-	5.2. Navigation Section Target Element Styles
-		 ======================================== */
+	/*	=============================================
+		6.2. Navigation Section Target Element Styles
+		============================================= */
 
 #navSection >h1{
 	margin-left: 0.2em;
@@ -300,12 +400,12 @@ input[type=text]{
 
 
 /*	=================================
-	6. Navigation Menu Section Styles
+	7. Navigation Menu Section Styles
 	================================= */
 
-	/*	 =============================
-	6.1. Navigation Menu Global Styles
-		 ============================= */
+	/*	==================================
+		7.1. Navigation Menu Global Styles
+		================================== */
 #navMenuSection>*{
 	margin-top: 1em;
 }
@@ -336,9 +436,9 @@ input[type=text]{
 	list-style-type: disc;
 }
 
-	/*	 =====================================
-	6.2. Navigation Menu Target Element Styles
-		 ===================================== */
+	/*	==========================================
+		7.2. Navigation Menu Target Element Styles
+		========================================== */
 
 #defaultSelector > h2{
 	margin: 0.5em;
@@ -364,12 +464,12 @@ input[type=text]{
 }
 
 /*	=====================
-	7. Main Section Styes
+	8. Main Section Styes
 	===================== */
 
-	/*	 ==========================
-	7.1. Main Section Global Styles
-		 ========================== */
+	/*	===============================
+		8.1. Main Section Global Styles
+		=============================== */
 
 #mainSection>*{
 	min-width: 80%;
@@ -426,9 +526,9 @@ input[type=text]{
 	background-color: var(--clr-secondary-opacity-light);
 }
 
-	/*	 ==================================
-	7.2. Main Section Target Element Styles
-		 ================================== */
+	/*	=======================================
+		8.2. Main Section Target Element Styles
+		======================================= */
 
 #mainSection > h2{
 	font-size: 1.5em;
@@ -508,17 +608,17 @@ input[type=text]{
 
 @media only screen and (min-width: 750px) {
 
-	/*	 ====================
-	*.1. Global Media Queries
-		 ==================== */
+	/*	=========================
+		*.1. Global Media Queries
+		========================= */
 
 	body {
 		background-image: url('./images/ToDoAppBackground-cropped.jpg');
 	}
 
-	/*	 ===============================
-	*.2. pageGridContainer Media Queries
-		 =============================== */
+	/*	====================================
+		*.2. pageGridContainer Media Queries
+		==================================== */
 
 	#pageGridContainer{
 		grid-template-areas: 
@@ -528,9 +628,9 @@ input[type=text]{
 	}
 
 
-	/*	 ================================
-	*.3. Navigation Section Media Queries
-		 ================================ */
+	/*	=====================================
+		*.3. Navigation Section Media Queries
+		===================================== */
 
 	#mainSection{
 		margin: 3em 1em 0em;
@@ -544,9 +644,9 @@ input[type=text]{
 		transform: rotate(135deg);
 	}
 
-	/*	 =====================================
-	*.4. Navigation Menu Section Media Queries
-		 ===================================== */
+	/*	==========================================
+		*.4. Navigation Menu Section Media Queries
+		========================================== */
 
 	#navMenuSection{
 		transform: translate(0, 0);
