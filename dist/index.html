@@ -93,14 +93,26 @@
           </section>
 
           <!-- Add a Edit Section that allows Notes to be added -->
-          <input type="checkbox" id="task1" name="task1">
-          <label for="task1">Check Email</label>
-          <p>11/26</p>
-          <section>
-            <div class='edit' id='edit'></div>
-            <div class='delete' id='delete'></div>
-          </section>
+          <div id="editTask">
+            <section class='editNoteSelect'>
+              <label for="dateSelection">Notes</label>
+              <input type="textarea" id="dateSelection" name="dateSelection">  
+            </section>
+            <section class='editTaskSelect'>
+              <label for="dateSelection">Task</label>
+              <input type="textarea" id="dateSelection" name="dateSelection">  
+            </section>
+            <section class='editDateSelect'>
+              <label for="dateSelection">Date</label>
+              <input type="date" id="dateSelection" name="dateSelection">  
+            </section>
+            <section class='done-cancelSection'>
+              <div class='done' id='done'></div>
+              <div class='cancel' id='cancel'></div>
+            </section>
+          </div>
 
+          <!-- =============================================== -->
 
           <input type="checkbox" id="task2" name="task2">
           <label for="task2">Team Meeting</label>

@@ -475,7 +475,7 @@ input[type=text]{
 	min-width: 80%;
 }
 
-#mainSection, .items, .tasks{
+#mainSection, .items, .tasks, #editTask{
 	display: grid;
 }
 
@@ -510,19 +510,31 @@ input[type=text]{
 	background: var(--clr-secondary-opacity-light);
 }
 
-.tasks>*{
+.tasks>*, #editTask>*{
 	place-self: center;
 	padding: 0.2em;
 }
 
-.tasks>section>*{
+#editTask>section>*{
+	align-self: center;
+	width: 100%;
+
+}
+
+.tasks>section>*, #editTask>section>*{
 	height: 2em;
 	width: 2em;
 	flex-grow: 1;
 	transition: 0.5s;
 }
 
-.tasks>section>*:hover{
+#editTask>section>*{
+	align-self: center;
+	width: 100%;
+
+}
+
+.tasks>section>*:hover,#editTask>section>*:hover{
 	background-color: var(--clr-secondary-opacity-light);
 }
 
@@ -540,22 +552,43 @@ input[type=text]{
 	padding-top: 0.2em;
 }
 
-.tasks>label{
+.tasks>label, #editTask>label{
 	color: var(--clr-secondary);
 	place-self: center;
 	font-size: 1em;
 	width: 100%;
 }
 
-.tasks>input{
+.tasks>input, #editTask>input{
 	height: 2em;
 	width: 2em;
 }
 
-.tasks>section{
+.tasks>section, #editTask>section{
 	display: flex;
 	height: 100%;
 	width:100%;
+}
+
+#editTask>section{
+	flex-direction: column;
+	align-self: center;
+	/* flex-grow: 0; */
+	/* height: auto;
+	width: auto; */
+}
+
+#editTask >.done-cancelSection{
+	flex-direction: row;
+	height: 100%;
+	width:100%;
+}
+
+#editTask{
+	width: 80%;
+	border: 0.2em inset var(--clr-accent);
+	grid-column: span 4;
+	grid-template-columns: repeat(4, 1fr);
 }
 
 .edit{
@@ -566,6 +599,18 @@ input[type=text]{
 
 .delete{
 	background-image: url('./images/icons8-trash-can.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.done{
+	background-image: url('./images/icons8-done.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.cancel{
+	background-image: url('./images/icons8-cancel.svg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
