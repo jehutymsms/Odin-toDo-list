@@ -93,23 +93,25 @@
           </section>
 
           <!-- Add a Edit Section that allows Notes to be added -->
-          <div id="editTask">
-            <section class='editNoteSelect'>
-              <label for="dateSelection">Notes</label>
-              <input type="textarea" id="dateSelection" name="dateSelection">  
-            </section>
-            <section class='editTaskSelect'>
-              <label for="dateSelection">Task</label>
-              <input type="textarea" id="dateSelection" name="dateSelection">  
-            </section>
-            <section class='editDateSelect'>
-              <label for="dateSelection">Date</label>
-              <input type="date" id="dateSelection" name="dateSelection">  
-            </section>
-            <section class='done-cancelSection'>
-              <div class='done' id='done'></div>
-              <div class='cancel' id='cancel'></div>
-            </section>
+          <div id="editTaskContainer">
+            <div id="editTask">
+              <section class='editNoteSelect'>
+                <label for="editNotes">Notes</label>
+                <input type="textarea" id="editNotes" name="editNotes">  
+              </section>
+              <section class='editTaskSelect'>
+                <label for="editTaskSelect">Task</label>
+                <input type="textarea" id="editTaskSelect" name="editTaskSelect">  
+              </section>
+              <section class='editDateSelect'>
+                <label for="editDateSelect">Date</label>
+                <input type="date" id="editDateSelect" name="editDateSelect">  
+              </section>
+              <section class='done-cancelSection'>
+                <div class='done' id='done'></div>
+                <div class='cancel' id='cancel'></div>
+              </section>
+            </div>
           </div>
 
           <!-- =============================================== -->

@@ -23,6 +23,8 @@
 	8. Main Section Styes
 		8.1. Main Section Global Styles
 		8.2. Main Section Target Element Styles
+		8.3. Main Edit Section Global Styles
+		8.4. Main Edit Section Target Element Styles
 	*. Footer Style Section
 	*. Media Query Section
 		*.1. Global Media Queries
@@ -103,6 +105,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -475,7 +478,7 @@ input[type=text]{
 	min-width: 80%;
 }
 
-#mainSection, .items, .tasks, #editTask{
+#mainSection, .items, .tasks{
 	display: grid;
 }
 
@@ -510,31 +513,19 @@ input[type=text]{
 	background: var(--clr-secondary-opacity-light);
 }
 
-.tasks>*, #editTask>*{
+.tasks>*{
 	place-self: center;
 	padding: 0.2em;
 }
 
-#editTask>section>*{
-	align-self: center;
-	width: 100%;
-
-}
-
-.tasks>section>*, #editTask>section>*{
+.tasks>section>*{
 	height: 2em;
 	width: 2em;
 	flex-grow: 1;
 	transition: 0.5s;
 }
 
-#editTask>section>*{
-	align-self: center;
-	width: 100%;
-
-}
-
-.tasks>section>*:hover,#editTask>section>*:hover{
+.tasks>section>*:hover{
 	background-color: var(--clr-secondary-opacity-light);
 }
 
@@ -552,55 +543,22 @@ input[type=text]{
 	padding-top: 0.2em;
 }
 
-.tasks>label, #editTask>label{
+.tasks>label{
 	color: var(--clr-secondary);
 	place-self: center;
 	font-size: 1em;
 	width: 100%;
 }
 
-.tasks>input, #editTask>input{
+.tasks>input{
 	height: 2em;
 	width: 2em;
 }
 
-.tasks>section, #editTask>section{
+.tasks>section{
 	display: flex;
 	height: 100%;
 	width:100%;
-}
-
-#editTask>section{
-	flex-direction: column;
-	align-self: center;
-	/* flex-grow: 0; */
-	/* height: auto;
-	width: auto; */
-}
-
-#editTask >.done-cancelSection{
-	flex-direction: row;
-	height: 100%;
-	width:100%;
-}
-
-#editTask{
-	width: 80%;
-	border: 0.2em inset var(--clr-accent);
-	grid-column: span 4;
-	grid-template-columns: repeat(4, 1fr);
-}
-
-.edit{
-	background-image: url('./images/icons8-edit.svg');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
-
-.delete{
-	background-image: url('./images/icons8-trash-can.svg');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
 }
 
 .done{
@@ -631,6 +589,67 @@ input[type=text]{
 
 .addTask:hover{
 	background-color: var(--clr-accent-light);
+}
+
+	/*	====================================
+		8.3. Main Edit Section Global Styles
+		==================================== */
+
+#editTask>*{
+	place-self: center;
+}
+
+#editTask>section>*{
+	height: auto;
+	width: 90%;
+	transition: 0.5s;
+}
+
+#editTask>.done-cancelSection>*:hover{
+	background-color: var(--clr-secondary-opacity-light);
+}
+
+	/*	============================================
+		8.4. Main Edit Section Target Element Styles
+		============================================ */
+
+#editTaskContainer{
+	width: 90%;
+	padding: 0;
+	grid-column: span 4;
+}
+
+#editTask>section{
+	display: flex;
+	flex-direction: column;
+}
+
+#editTask{
+	display: grid;
+	width: 100%;
+	padding: 0;
+	border: 0.2em inset var(--clr-accent);
+	grid-template-columns: repeat(4, 25%);
+	column-gap: 0.5em;
+}
+
+#editTask>label{
+	color: var(--clr-secondary);
+	place-self: center;
+	font-size: 1em;
+	width: 100%;
+}
+
+.edit{
+	background-image: url('./images/icons8-edit.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.delete{
+	background-image: url('./images/icons8-trash-can.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 /*	=======================
