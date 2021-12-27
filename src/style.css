@@ -105,7 +105,6 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -561,14 +560,14 @@ input[type=text]{
 	width:100%;
 }
 
-.done{
-	background-image: url('./images/icons8-done.svg');
+.edit{
+	background-image: url('./images/icons8-edit.svg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 
-.cancel{
-	background-image: url('./images/icons8-cancel.svg');
+.delete{
+	background-image: url('./images/icons8-trash-can.svg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
@@ -614,19 +613,23 @@ input[type=text]{
 		============================================ */
 
 #editTaskContainer{
-	width: 90%;
+	width: 100%;
 	padding: 0;
 	grid-column: span 4;
+	
 }
 
 #editTask>section{
 	display: flex;
 	flex-direction: column;
+	height: 100%;
+	width: 100%;
 }
 
 #editTask{
 	display: grid;
-	width: 100%;
+	width: 80%;
+	margin: auto;
 	padding: 0;
 	border: 0.2em inset var(--clr-accent);
 	grid-template-columns: repeat(4, 25%);
@@ -639,15 +642,24 @@ input[type=text]{
 	font-size: 1em;
 	width: 100%;
 }
+#editTask>.done-cancelSection{
+	flex-direction: row;
+}
 
-.edit{
-	background-image: url('./images/icons8-edit.svg');
+#editTask>.done-cancelSection>*{
+	width: auto;
+	height: auto;
+	flex-grow: 1;
+}
+
+.done{
+	background-image: url('./images/icons8-done.svg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 
-.delete{
-	background-image: url('./images/icons8-trash-can.svg');
+.cancel{
+	background-image: url('./images/icons8-cancel.svg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
