@@ -434,8 +434,17 @@ input[type=text]{
 }
 
 #projectSelector>ul{
-	margin-left: 1em;
+	margin: 0em 1em;
 	list-style-type: disc;
+}
+
+#projectSelector>ul>section>*{
+	flex-grow: 1;
+	transition: 0.5s;
+}
+
+#projectSelector>ul>section>*:hover{
+	background-color: var(--clr-secondary-opacity-light);
 }
 
 	/*	==========================================
@@ -464,6 +473,41 @@ input[type=text]{
 	margin: 0.5em;
 
 }
+
+#projectSelector>ul>section{
+	display: flex;
+	flex-direction: row;
+	height: 2em;
+}
+
+#projectSelector>ul>section>.edit{
+	background-image: url('./images/icons8-edit.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#projectSelector>ul>section>.delete{
+	background-image: url('./images/icons8-trash-can.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#projectSelector>ul>.addProject{
+	padding: 0.6em;
+	font-size: 1.2em;
+	margin-top: 0.5em;
+	text-decoration: none;
+	border: none;
+	border-radius: 0.5em;
+	color: var(--clr-primary);
+	background-color: var(--clr-accent);
+	transition: 0.5s;
+}
+
+#projectSelector>ul>.addProject:hover{
+	background-color: var(--clr-accent-light);
+}
+
 
 /*	=====================
 	8. Main Section Styes
@@ -616,7 +660,16 @@ input[type=text]{
 	width: 100%;
 	padding: 0;
 	grid-column: span 4;
-	
+}
+
+#editTask{
+	display: grid;
+	margin: auto;
+	width: 80%;
+	padding: 0;
+	border: 0.2em inset var(--clr-accent);
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 0.5em;
 }
 
 #editTask>section{
@@ -626,22 +679,13 @@ input[type=text]{
 	width: 100%;
 }
 
-#editTask{
-	display: grid;
-	width: 80%;
-	margin: auto;
-	padding: 0;
-	border: 0.2em inset var(--clr-accent);
-	grid-template-columns: repeat(4, 25%);
-	column-gap: 0.5em;
-}
-
 #editTask>label{
 	color: var(--clr-secondary);
 	place-self: center;
 	font-size: 1em;
 	width: 100%;
 }
+
 #editTask>.done-cancelSection{
 	flex-direction: row;
 }
