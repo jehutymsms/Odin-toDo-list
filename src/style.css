@@ -4,6 +4,7 @@
 		2.1. Global Styles Variables
 			2.1.1. Global Styles Variables-Color
 			2.1.2. Global Styles Variables-Font
+			2.1.3. Global Styles Images
 		2.2. Global Styles Global
 	3. pageGridContainer Styles
 		3.1. pageGridContainer Global Styles
@@ -20,6 +21,8 @@
 	7. Navigation Menu Section Styles
 		7.1. Navigation Menu Global Styles
 		7.2. Navigation Menu Target Element Styles
+		7.3. Navigation Edit Section Global Styles
+		7.4. Navigation Edit Section Target Element Styles
 	8. Main Section Styes
 		8.1. Main Section Global Styles
 		8.2. Main Section Target Element Styles
@@ -74,6 +77,16 @@
 		 	=================================== */
 
 	--ff-primary:'Roboto', sans-serif;
+
+
+	/*		===========================
+			2.1.3. Global Styles Images
+		 	=========================== */
+
+	--img-trash:url('./images/icons8-trash-can.svg');
+	--img-edit:url('./images/icons8-edit.svg');
+	--img-done:url('./images/icons8-done.svg');
+	--img-cancel:url('./images/icons8-cancel.svg');
 }
 
 	/*	=========================
@@ -508,6 +521,50 @@ input[type=text]{
 	background-color: var(--clr-accent-light);
 }
 
+/*	==========================================
+	7.3. Navigation Edit Section Global Styles
+	========================================== */
+
+#editProjectContainer{
+	display: flex;
+	border: 0.2em inset var(--clr-accent);
+	flex-direction: column;
+}
+
+#editProjectContainer>*{
+	flex-grow: 1;
+}
+
+#editProjectContainer>.done-cancelSection>*{
+	width: 100%;
+	height: 2em;
+}
+
+
+	/*	==============================================
+	7.4. Navigation Edit Section Target Element Styles
+	================================================== */
+
+#editProjectContainer{
+	display: flex;
+	border: 0.2em inset var(--clr-accent);
+	flex-direction: column;
+}
+
+
+#editProjectContainer>.done-cancelSection{
+	display: flex;
+	justify-content: space-evenly;
+	transition: 0.5s;
+}
+
+#editProjectContainer>.editTaskSelect>input{
+	width: 80%;
+}
+
+#editProjectContainer>.done-cancelSection>*:hover{
+	background-color: var(--clr-secondary-opacity-light);
+}
 
 /*	=====================
 	8. Main Section Styes
@@ -605,13 +662,13 @@ input[type=text]{
 }
 
 .edit{
-	background-image: url('./images/icons8-edit.svg');
+	background-image: var(--img-edit);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 
 .delete{
-	background-image: url('./images/icons8-trash-can.svg');
+	background-image: var(--img-trash);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
@@ -652,6 +709,12 @@ input[type=text]{
 	background-color: var(--clr-secondary-opacity-light);
 }
 
+#editTask>.done-cancelSection>*{
+	width: auto;
+	height: auto;
+	flex-grow: 1;
+}
+
 	/*	============================================
 		8.4. Main Edit Section Target Element Styles
 		============================================ */
@@ -690,20 +753,14 @@ input[type=text]{
 	flex-direction: row;
 }
 
-#editTask>.done-cancelSection>*{
-	width: auto;
-	height: auto;
-	flex-grow: 1;
-}
-
 .done{
-	background-image: url('./images/icons8-done.svg');
+	background-image: var(--img-done);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 
 .cancel{
-	background-image: url('./images/icons8-cancel.svg');
+	background-image: var(--img-cancel);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
