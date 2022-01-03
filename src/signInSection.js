@@ -39,6 +39,14 @@ test()
 
 window.localStorage.clear()
 
+// This Sign in module has to handle:
+//      -verification
+//      -Sign-in using data from Local Storage or use Defaults from Demo
+//      -Sign-up page creation/display when needed
+//      -adding created Sign-in to storage (Most likely using a fuction in the userStorage Module)
+//      -Demo Buttton needs to run a function from Main Section module using the Demo user data
+
+
 export const signInSection = (() => {
 
 })()
