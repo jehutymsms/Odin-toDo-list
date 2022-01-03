@@ -4,30 +4,65 @@ export const userStorage = (() =>{
         projectTitles : ['Home Chores', 'Work', 'Food Prep'],
 
         item0:{
-            taskList:['Check Email', 'Team Meeting','Daily Report'],
+            taskList:['Laundry', 'Vacuum', 'Dishes'],
             tasks:{
                 task0:{
-                    dueDate:'Date',
+                    dueDate:'11/26/22',
                     complete: false,
-                    notes:'See if E-mail to Frank has reply'
-
+                    notes:'Gather sheets as Well'
+                },
+                task1:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Be sure to get under Bed'
+                },
+                task2:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Gather dishes from Desk'
                 }
             }
         },
-
-        navTitles: ['aboutPage', 'projectPage', 'contactPage'],
-        aboutPage: {
-            id: 'aboutPage',
-            text: 'About'
+        item1:{
+            taskList:['Check E-mail', 'Update Project', 'Team Meeting'],
+            tasks:{
+                task0:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'See if Frank replied'
+                },
+                task1:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Be sure to include updates from previous Team meeting'
+                },
+                task2:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Clarify any new Update During meeting'
+                }
+            }
         },
-        projectPage: {
-            id: 'projectPage',
-            text: 'Projects'
-        },
-        contactPage: {
-            id: 'contactPage',
-            text: 'Contact'
-        },
-        
+        item2:{
+            taskList:['Thaw Meat', 'Cut Vegetables', 'Cook Rice'],
+            tasks:{
+                task0:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Set Meet in fridge for next day'
+                },
+                task1:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Potatoes cut in fourths'
+                },
+                task2:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                    notes:'Be sure mostt water is evaporated'
+                }
+            }
+        }, 
       }
+      return {Demo:Demo}
 })()
