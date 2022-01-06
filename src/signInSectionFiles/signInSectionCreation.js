@@ -8,90 +8,110 @@ export const signInSectionCreation = (() => {
 
     //Sign in Object List
     const SignInObjectList = {
-        signInTags : ['div', 'h2', 'form','label','input','button'],
+        signInTags: ['signInContainerOuter', 'signInContainerInner', 'appTitle', 'signInFormContainer', 'signinForm', 'demoButton', 'userInfo'],
 
-        signInIds : ['signIn-Container-Outer', 'signIn-Container-Inner', 'appTitle','signIn-Form-Container','userInfo','userName','password','demoButton'],
+        signInContainerOuter: {
+            tag: 'div',
+            id: 'signIn-Container-Outer',
+        },
 
-        signInFors : ['userName', 'password'],
+        signInContainerInner: {
+            tag: 'div',
+            id: 'signIn-Container-Inner',
+        },
 
-        signInTypes : ['text', 'button'],
+        appTitle: {
+            tag: 'h2',
+            id: 'appTitle',
+            htmlString: 'Welcome to Checkist',
+        },
 
-        signInValues : ['Sign In', 'Sign Up'],
+        signInFormContainer: {
+            tag: 'div',
+            id: 'signIn-Form-Container',
+        },
 
-        signInHTMLs : ['Welcome to Checkist', 'Username','Password','Demo'],
+        signinForm: {
+            tag: 'form',
+            id: 'userInfo',
+        },
 
-      };
+        userInfo: {
+            usernameLabel: {
+                tag: 'label',
+                for: 'userName',
+                htmlString: 'Username',
+            },
+            usernameInput: {
+                tag: 'input',
+                id: 'userName',
+                type: 'text',
+                name: 'userName',
+            },
+            passwordLabel: {
+                tag: 'label',
+                for: 'password',
+                html: 'Password',
+            },
+            passwordInput: {
+                tag: 'input',
+                id: 'password',
+                type: 'text',
+                name: 'password',
+            },
+            signinButton: {
+                tag: 'input',
+                type: 'button',
+                value: 'Sign In',
+            },
+            signupButton: {
+                tag: 'input',
+                type: 'button',
+                value: 'Sign Up',
+            },
+        },
+
+        demoButton: {
+            tag: 'button',
+            id: 'demoButton',
+            htmlString: 'Demo',
+        },
+
+    };
     
-      //Fuction List
+    //Fuction List
 
-      //Return Form Element Contents as list
-      const formElementContentList = () => {
+    //Return Form Element Contents as list
+    const formElementContentList = () => {
         let contentList = [];
 
-        // for (let i = 0; i < 2; i++) {
-        //     let label[`${x}`] = globaljs.newElement({
-        //         tag:SignInObjectList.signInTags[3],
-        //         for:SignInObjectList.signInFors[0],
-        //         htmlString:SignInObjectList.signInHTMLs[1],
-        //     })
-        // }
-
-        let label1 = globaljs.newElement({
-            tag:SignInObjectList.signInTags[3],
-            for:SignInObjectList.signInFors[0],
-            htmlString:SignInObjectList.signInHTMLs[1],
-        })
-
-        let label2 = globaljs.newElement({
-            tag:SignInObjectList.signInTags[3],
-            for:SignInObjectList.signInFors[1],
-            htmlString:SignInObjectList.signInHTMLs[2],
-        })
-
-        let input1 = globaljs.newElement({
-            tag:SignInObjectList.signInTags[4],
-            type:SignInObjectList.signInTypes[0],
-            id:SignInObjectList.signInIds[5],
-            name:SignInObjectList.signInIds[5],
-        })
-
-        let input2 = globaljs.newElement({
-            tag:SignInObjectList.signInTags[4],
-            type:SignInObjectList.signInTypes[0],
-            id:SignInObjectList.signInIds[6],
-            name:SignInObjectList.signInIds[6],
-        })
-
-        let input3 = globaljs.newElement({
-            tag:SignInObjectList.signInTags[4],
-            type:SignInObjectList.signInTypes[1],
-            value:SignInObjectList.signInValues[0],
-        })
-
-        let input4 = globaljs.newElement({
-            tag:SignInObjectList.signInTags[4],
-            type:SignInObjectList.signInTypes[1],
-            value:SignInObjectList.signInValues[1],
-        })
-
-
-        contentList.push(label1)
-        contentList.push(input1)
-        contentList.push(label2)
-        contentList.push(input2)
-        contentList.push(input3)
-        contentList.push(input4)
-
-        return contentList
-      } 
+        for (let i = 0; i < Object.keys(SignInObjectList.userInfo).length; i++) {
+            let element = globaljs.newElement(SignInObjectList.userInfo[Object.keys(SignInObjectList.userInfo)[i]]);
+            contentList.push(element);
+        };
+        return contentList;
+    };
       
-      //Returns Form Element Section
+    //Returns Form Element Section
 
-      //Returns Sign In Form Container Section
+    const formElementSection = () => {
+        let contentList = formElementContentList(),
+            element = globaljs.newElement(SignInObjectList.signinForm);
 
-      //Returns Sign In Container Inner Section
 
-      //Returns Sign In Container Outer Section
+        for (let i = 0; i < contentList.length; i++) {
+            element.appendChild(contentList[i]);
+        };
+
+
+        return element;
+    } 
+
+    //Returns Sign In Form Container Section
+
+    //Returns Sign In Container Inner Section
+
+    //Returns Sign In Container Outer Section
 
 
     // Render to DOM
@@ -103,5 +123,5 @@ export const signInSectionCreation = (() => {
         return {bodyAppendChild: bodyAppendChild };
     })();
 
-    return{formElementContentList:formElementContentList,render:render};
+    return{formElementSection:formElementSection,render:render};
 })();
