@@ -1,81 +1,73 @@
 import { globaljs } from '../global';
 
-export const signInSectionCreation = (() => {
+export const signUpSectionCreation = (() => {
     const cacheDom = (() => {
         let body = document.getElementsByTagName('body');
         return { body: body };
     })();
 
     //Sign in Object List
-    const SignInObjectList = {
+    const SignUpObjectList = {
 
-        signInContainerOuter: {
+        signUpContainerOuter: {
             tag: 'div',
-            id: 'signIn-Container-Outer',
+            id: 'signUp-Container-Outer',
         },
 
-        signInContainerInner: {
+        signUpContainerInner: {
             tag: 'div',
-            id: 'signIn-Container-Inner',
+            id: 'signUp-Container-Inner',
         },
 
         appTitle: {
             tag: 'h2',
             id: 'appTitle',
-            htmlString: 'Welcome to Checkist',
+            htmlString: 'Log-In Creation',
         },
 
-        signInFormContainer: {
+        signUpFormContainer: {
             tag: 'div',
-            id: 'signIn-Form-Container',
+            id: 'signUp-Form-Container',
         },
 
-        signinForm: {
+        signUpForm: {
             tag: 'form',
-            id: 'userInfo',
         },
 
         userInfo: {
             usernameLabel: {
                 tag: 'label',
                 for: 'userName',
-                htmlString: 'Username',
+                htmlString: 'Create Username',
             },
             usernameInput: {
                 tag: 'input',
-                id: 'userName',
+                id: 'createUserName',
                 type: 'text',
                 name: 'userName',
             },
             passwordLabel: {
                 tag: 'label',
                 for: 'password',
-                htmlString: 'Password',
+                htmlString: 'Create Password',
             },
             passwordInput: {
                 tag: 'input',
-                id: 'password',
+                id: 'passwcreatePasswordord',
                 type: 'text',
                 name: 'password',
             },
-            signinButton: {
+            createButton: {
                 tag: 'input',
                 type: 'button',
-                value: 'Sign In',
+                value: 'Create',
             },
-            signupButton: {
+            cancelButton: {
                 tag: 'input',
                 type: 'button',
-                value: 'Sign Up',
+                value: 'Cancel',
             },
         },
-
-        demoButton: {
-            tag: 'button',
-            id: 'demoButton',
-            htmlString: 'Demo',
-        },
-
     };
     
     //Fuction List
@@ -84,8 +76,8 @@ export const signInSectionCreation = (() => {
     const formElementContentList = () => {
         let contentList = [];
 
-        for (let i = 0; i < Object.keys(SignInObjectList.userInfo).length; i++) {
-            let element = globaljs.newElement(SignInObjectList.userInfo[Object.keys(SignInObjectList.userInfo)[i]]);
+        for (let i = 0; i < Object.keys(SignUpObjectList.userInfo).length; i++) {
+            let element = globaljs.newElement(SignUpObjectList.userInfo[Object.keys(SignUpObjectList.userInfo)[i]]);
             contentList.push(element);
         };
         return contentList;
@@ -94,7 +86,7 @@ export const signInSectionCreation = (() => {
     //Returns Form Element Section
     const formElementSection = () => {
         let contentList = formElementContentList(),
-            element = globaljs.newElement(SignInObjectList.signinForm);
+            element = globaljs.newElement(SignUpObjectList.signUpForm);
 
         for (let i = 0; i < contentList.length; i++) {
             element.appendChild(contentList[i]);
@@ -104,8 +96,8 @@ export const signInSectionCreation = (() => {
     };
 
     //Returns Sign In Form Container Section
-    const signInFormContainerSection = () => {
-        let element = globaljs.newElement(SignInObjectList.signInFormContainer);
+    const signUpFormContainerSection = () => {
+        let element = globaljs.newElement(SignUpObjectList.signUpFormContainer);
 
         element.appendChild(formElementSection());
 
@@ -113,33 +105,32 @@ export const signInSectionCreation = (() => {
     };
 
     //Returns Sign In Container Inner Section
-    const signInContainerInnerSection = () => {
-        let containerElement = globaljs.newElement(SignInObjectList.signInContainerInner),
-            h2Element = globaljs.newElement(SignInObjectList.appTitle),
-            buttonElement = globaljs.newElement(SignInObjectList.demoButton),
-            signInFormContainer = signInFormContainerSection(),
-            elementList = [h2Element, signInFormContainer, buttonElement];
+    const signUpContainerInnerSection = () => {
+        let containerElement = globaljs.newElement(SignUpObjectList.signUpContainerInner),
+            h2Element = globaljs.newElement(SignUpObjectList.appTitle),
+            signInFormContainer = signUpFormContainerSection(),
+            elementList = [h2Element, signInFormContainer];
 
         for (let i = 0; i < elementList.length; i++) {
             containerElement.appendChild(elementList[i]);
-        };
+        }
 
         return containerElement;
     };
 
     //Returns Sign In Container Outer Section
-    const signInContainerOuterSection = () => {
-        let element = globaljs.newElement(SignInObjectList.signInContainerOuter),
-        signInContainerInner = signInContainerInnerSection();
+    const signUpContainerOuterSection = () => {
+        let element = globaljs.newElement(SignUpObjectList.signUpContainerOuter),
+        signUpContainerInner = signUpContainerInnerSection();
 
-        element.appendChild(signInContainerInner);
+        element.appendChild(signUpContainerInner);
 
         return element;
     };
 
     // Sign In section Creation
     const createSection = () =>{
-        let element = signInContainerOuterSection();
+        let element = signUpContainerOuterSection();
 
         render.bodyAppendChild(element);
     };
