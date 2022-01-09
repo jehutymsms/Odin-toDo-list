@@ -50,7 +50,7 @@ let info = document.getElementById('userInfo')
 
 import { globaljs } from '../global';
 
-export const signInSection = (() => {
+export const signInSectionFunction = (() => {
     const cacheDom = (() => {
         let body = document.getElementsByTagName('body')
         return { body: body };

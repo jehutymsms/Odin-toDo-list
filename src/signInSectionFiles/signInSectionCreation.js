@@ -60,11 +60,13 @@ export const signInSectionCreation = (() => {
             },
             signinButton: {
                 tag: 'input',
+                id:'signInButton',
                 type: 'button',
                 value: 'Sign In',
             },
             signupButton: {
                 tag: 'input',
+                id:'signUpButton',
                 type: 'button',
                 value: 'Sign Up',
             },

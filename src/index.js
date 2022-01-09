@@ -7,5 +7,12 @@ import { signInSectionCreation } from './signInSectionFiles/signInSectionCreatio
 
 signInSectionCreation.createSection();
 
+let testValue = document.getElementById('userName'),
+    testButton = document.getElementById('signInButton')
 
-signUpSectionCreation.createSection();
+const testFunction = () => {
+    console.log(testValue.value)
+}
+
+
+testButton.addEventListener('click', testFunction)
