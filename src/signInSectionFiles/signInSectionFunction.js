@@ -1,14 +1,12 @@
-const Andrew = {
-    password : "Andrew",
-  }
+
   
 // window.localStorage.setItem("Andrew", JSON.stringify(Andrew));
 
-let newObject = window.localStorage.getItem("Andrew");
+// let newObject = window.localStorage.getItem("Andrew");
 // console.log(JSON.parse(newObject));
 
 
-let info = document.getElementById('userInfo')
+// let info = document.getElementById('userInfo')
 
 // console.log(info.elements['userName'].value)
 
@@ -49,23 +47,54 @@ let info = document.getElementById('userInfo')
 //      -Demo Buttton needs to run a function from Main Section module using the Demo user data
 
 import { globaljs } from '../global';
+import { userStorage } from '../userStorage';
 
 export const signInSectionFunction = (() => {
     const cacheDom = (() => {
         let body = document.getElementsByTagName('body')
-        return { body: body };
+        return { body: body};
     })();
+    
+    // Info Object List
+    const users = {
+        userList:['Andrew'],
+
+        Andrew:{
+            userID:'Andrew',
+            password : "Andrew",
+            userStorageInfo: 'Demo'
+        }
+        
+      };
 
     //Event Binds
 
     
     //Function List
-    const newElement = (item) => {
-        let element = document.createElement(item.tag);
-        if (item.classId) { element.classList = item.classId; };
-        if (item.id) { element.id = item.id; };
-        if (item.htmlString) { element.innerHTML = item.htmlString; };
-        return element;
+    const cacheDomTestFunction = () => {
+        let info = document.getElementById('userInfo')
+            signInButton = document.getElementById('signInButton')
+            signUpButton = document.getElementById('signUpButton')
+
+        
+
+        const testFunction = () =>{
+            if(users.userList.includes(info.elements['userName'].value)){
+                console.log('User Id match')
+
+                if(users[info.elements['userName'].value].password == info.elements['password'].value){
+                    console.log('Password Match')
+                }else{
+                    console.log('Password does not match')
+                }
+
+            }else{
+                console.log('User ID does not match')
+            }
+        }
+
+        signInButton.addEventListener('click', testFunction)
+        
     };
 
     // Render to DOM
@@ -76,5 +105,10 @@ export const signInSectionFunction = (() => {
 
         return {bodyAppendChild: bodyAppendChild };
     })();
-    return{render:render}
+
+
+
+    return{render:render,cacheDomTestFunction:cacheDomTestFunction}
+
+
 })()
