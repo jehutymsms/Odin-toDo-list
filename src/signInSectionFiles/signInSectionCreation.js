@@ -55,7 +55,7 @@ export const signInSectionCreation = (() => {
             passwordInput: {
                 tag: 'input',
                 id: 'password',
-                type: 'text',
+                type: 'password',
                 name: 'password',
             },
             signinButton: {
