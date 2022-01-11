@@ -7,4 +7,4 @@ import { signInSectionCreation } from './signInSectionFiles/signInSectionCreatio
 
 signInSectionCreation.createSection();
 
-signInSectionFunction.cacheDomTestFunction()
+signInSectionFunction.signInFunction()

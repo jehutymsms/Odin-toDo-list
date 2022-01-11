@@ -1,5 +1,12 @@
-export const globaljs = (() => {    
-    //Function List
+export const globaljs = (() => {
+    // Cache Dom
+    const cacheDom = (() => {
+        let body = document.getElementsByTagName('body')
+        return { body: body};
+    })();
+
+
+    // Function List
     const newElement = (item) => {
         let element = document.createElement(item.tag);
         if (item.htmlString) { element.innerHTML = item.htmlString; };
@@ -12,5 +19,9 @@ export const globaljs = (() => {
         return element;
     };
 
+
+
+
     return {newElement:newElement}
+
 })()

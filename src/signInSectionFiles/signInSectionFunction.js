@@ -55,60 +55,71 @@ export const signInSectionFunction = (() => {
         return { body: body};
     })();
     
-    // Info Object List
-    const users = {
-        userList:['Andrew'],
 
-        Andrew:{
-            userID:'Andrew',
-            password : "Andrew",
-            userStorageInfo: 'Demo'
-        }
-        
-      };
-
-    //Event Binds
 
     
-    //Function List
-    const cacheDomTestFunction = () => {
-        let info = document.getElementById('userInfo')
-            signInButton = document.getElementById('signInButton')
-            signUpButton = document.getElementById('signUpButton')
+    const signInFunction = () => {
+        // Cache Dom List
+        let info = document.getElementById('userInfo'),
+            signInButton = document.getElementById('signInButton'),
+            signUpButton = document.getElementById('signUpButton');
 
-        
+
+        //Function List
+        const userValidation = ( userToValidate ) =>{
+            if (userStorage.users.userList.includes(userToValidate)) {
+                return true
+            }else{
+                return false
+            };
+        };
+
+        const passwordValidation = ( user, passwordToValidate ) =>{
+            if (userStorage.users[user].password == passwordToValidate) {
+                return true
+            }else{
+                return false
+            };
+        };
 
         const testFunction = () =>{
-            if(users.userList.includes(info.elements['userName'].value)){
-                console.log('User Id match')
+            if(userValidation(info.elements['userName'].value)){
 
-                if(users[info.elements['userName'].value].password == info.elements['password'].value){
-                    console.log('Password Match')
+                if(passwordValidation(info.elements['userName'].value, info.elements['password'].value)){
                 }else{
-                    console.log('Password does not match')
+                    alert('Password does not match')
                 }
 
             }else{
-                console.log('User ID does not match')
+                alert('User ID does not match')
             }
         }
 
+
+        //Event Binds
         signInButton.addEventListener('click', testFunction)
+        signUpButton.addEventListener('click', render.removePrev)
         
     };
+
+    
 
     // Render to DOM
     const render = (() => {
         const bodyAppendChild = (element) =>{
             cacheDom.body[0].appendChild(element);
         };
+        
+        const removePrev = () => {
+            cacheDom.body[0].lastElementChild.remove();
+        }
 
-        return {bodyAppendChild: bodyAppendChild };
+        return {bodyAppendChild: bodyAppendChild, removePrev:removePrev };
     })();
 
 
 
-    return{render:render,cacheDomTestFunction:cacheDomTestFunction}
+    return{render:render,signInFunction:signInFunction}
 
 
 })()

@@ -1,5 +1,17 @@
 export const userStorage = (() =>{
-    const Demo = {
+
+    const users = {
+        userList:['Andrew'],
+
+        Andrew:{
+            userID:'Andrew',
+            password : "Andrew",
+            userStorageInfo: 'Demo'
+        }
+        
+    };
+
+    const demo = {
         password : "Demo",
         projectTitles : ['Home Chores', 'Work', 'Food Prep'],
 
@@ -63,6 +75,6 @@ export const userStorage = (() =>{
                 }
             }
         }, 
-      }
-      return {Demo:Demo}
+    }
+      return {demo:demo, users:users}
 })()
