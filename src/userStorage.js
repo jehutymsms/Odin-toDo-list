@@ -21,17 +21,14 @@ export const userStorage = (() =>{
                 task0:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Gather sheets as Well'
                 },
                 task1:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Be sure to get under Bed'
                 },
                 task2:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Gather dishes from Desk'
                 }
             }
         },
@@ -41,17 +38,15 @@ export const userStorage = (() =>{
                 task0:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'See if Frank replied'
                 },
                 task1:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Be sure to include updates from previous Team meeting'
+
                 },
                 task2:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Clarify any new Update During meeting'
                 }
             }
         },
@@ -61,20 +56,18 @@ export const userStorage = (() =>{
                 task0:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Set Meet in fridge for next day'
                 },
                 task1:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Potatoes cut in fourths'
                 },
                 task2:{
                     dueDate:'11/26/22',
                     complete: false,
-                    notes:'Be sure mostt water is evaporated'
                 }
             }
         }, 
     }
+
       return {demo:demo, users:users}
 })()

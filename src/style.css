@@ -721,7 +721,7 @@ input[type=text]{
 	width: 80%;
 	padding: 0;
 	border: 0.2em inset var(--clr-accent);
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	column-gap: 0.5em;
 }
 
