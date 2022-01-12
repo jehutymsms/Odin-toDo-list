@@ -1,5 +1,6 @@
 import { globaljs } from '../global';
 
+
 export const signUpSectionCreation = (() => {
     const cacheDom = (() => {
         let body = document.getElementsByTagName('body');
@@ -32,6 +33,7 @@ export const signUpSectionCreation = (() => {
 
         signUpForm: {
             tag: 'form',
+            id:'userCreateInfo',
         },
 
         userInfo: {
@@ -39,6 +41,16 @@ export const signUpSectionCreation = (() => {
                 tag: 'label',
                 for: 'userName',
                 htmlString: 'Create Username',
+            },
+            userRequire: {
+                tag: 'h2',
+                id: 'userRequire',
+                htmlString:'Requirements:',
+            },
+            userRequirements: {
+                tag: 'h2',
+                id: 'userRequirements',
+                htmlString:'at least six characters long, one number, one lowercase and one uppercase letter',
             },
             usernameInput: {
                 tag: 'input',
@@ -51,19 +63,32 @@ export const signUpSectionCreation = (() => {
                 for: 'password',
                 htmlString: 'Create Password',
             },
+            passwordRequire: {
+                tag: 'h2',
+                id: 'pwRequire',
+                htmlString:'Requirements:',
+            },
+            passwordRequirements: {
+                tag: 'h2',
+                id: 'pwdRequirements',
+                htmlString:'at least six characters long including underscore,  one number, one lowercase and one uppercase letter',
+            },
             passwordInput: {
                 tag: 'input',
-                id: 'passwcreatePasswordord',
+                id: 'passwcreatePassword',
                 type: 'text',
                 name: 'password',
             },
+            
             createButton: {
                 tag: 'input',
+                id:'signUpCreate',
                 type: 'button',
                 value: 'Create',
             },
             cancelButton: {
                 tag: 'input',
+                id:'signUpCancel',
                 type: 'button',
                 value: 'Cancel',
             },
@@ -132,18 +157,9 @@ export const signUpSectionCreation = (() => {
     const createSection = () =>{
         let element = signUpContainerOuterSection();
 
-        render.bodyAppendChild(element);
+        globaljs.render.bodyAppendChild(element);
     };
 
 
-    // Render to DOM
-    const render = (() => {
-        const bodyAppendChild = (element) =>{
-            cacheDom.body[0].appendChild(element);
-        };
-
-        return {bodyAppendChild: bodyAppendChild };
-    })();
-
-    return{createSection:createSection,render:render};
+    return{createSection:createSection};
 })();

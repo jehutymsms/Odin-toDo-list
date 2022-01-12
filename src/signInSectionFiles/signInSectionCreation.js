@@ -1,5 +1,6 @@
 import { globaljs } from '../global';
 
+
 export const signInSectionCreation = (() => {
     const cacheDom = (() => {
         let body = document.getElementsByTagName('body');
@@ -60,13 +61,13 @@ export const signInSectionCreation = (() => {
             },
             signinButton: {
                 tag: 'input',
-                id:'signInButton',
+                id: 'signInButton',
                 type: 'button',
                 value: 'Sign In',
             },
             signupButton: {
                 tag: 'input',
-                id:'signUpButton',
+                id: 'signUpButton',
                 type: 'button',
                 value: 'Sign Up',
             },
@@ -79,7 +80,7 @@ export const signInSectionCreation = (() => {
         },
 
     };
-    
+
     //Fuction List
 
     //Return Form Element Contents as list
@@ -92,7 +93,7 @@ export const signInSectionCreation = (() => {
         };
         return contentList;
     };
-      
+
     //Returns Form Element Section
     const formElementSection = () => {
         let contentList = formElementContentList(),
@@ -132,7 +133,7 @@ export const signInSectionCreation = (() => {
     //Returns Sign In Container Outer Section
     const signInContainerOuterSection = () => {
         let element = globaljs.newElement(SignInObjectList.signInContainerOuter),
-        signInContainerInner = signInContainerInnerSection();
+            signInContainerInner = signInContainerInnerSection();
 
         element.appendChild(signInContainerInner);
 
@@ -140,21 +141,12 @@ export const signInSectionCreation = (() => {
     };
 
     // Sign In section Creation
-    const createSection = () =>{
+    const createSection = () => {
         let element = signInContainerOuterSection();
 
-        render.bodyAppendChild(element);
+        globaljs.render.bodyAppendChild(element);
     };
 
 
-    // Render to DOM
-    const render = (() => {
-        const bodyAppendChild = (element) =>{
-            cacheDom.body[0].appendChild(element);
-        };
-
-        return {bodyAppendChild: bodyAppendChild };
-    })();
-
-    return{createSection:createSection,render:render};
+    return { createSection: createSection };
 })();

@@ -49,32 +49,64 @@ let info = document.getElementById('userInfo')
 //      -Demo Buttton needs to run a function from Main Section module using the Demo user data
 
 import { globaljs } from '../global';
+import { userStorage } from '../userStorage';
+import { signInSectionCreation } from '../signInSectionFiles/signInSectionCreation';
+import { signInSectionFunction } from '../signInSectionFiles/signInSectionFunction';
 
-export const signInSection = (() => {
+export const signUpSectionFunction = (() => {
     const cacheDom = (() => {
         let body = document.getElementsByTagName('body')
         return { body: body };
     })();
 
-    //Event Binds
+    const signUpFunction = () => {
+        // Cache Dom List
+        let info = document.getElementById('userCreateInfo'),
+            signUpCreate = document.getElementById('signUpCreate'),
+            signUpCancel = document.getElementById('signUpCancel'),
+            signUpContainer = document.getElementById('signUp-Container-Outer');;
 
-    
-    //Function List
-    const newElement = (item) => {
-        let element = document.createElement(item.tag);
-        if (item.classId) { element.classList = item.classId; };
-        if (item.id) { element.id = item.id; };
-        if (item.htmlString) { element.innerHTML = item.htmlString; };
-        return element;
-    };
 
-    // Render to DOM
-    const render = (() => {
-        const bodyAppendChild = (element) =>{
-            cacheDom.body[0].appendChild(element);
+        //Function List
+        const userCreateValidation = ( userToValidate ) =>{
+            if (userStorage.checkUsername(userToValidate)) {
+                return true
+            }else{
+                return false
+            };
         };
 
-        return {bodyAppendChild: bodyAppendChild };
-    })();
-    return{render:render}
+        const passwordCreateValidation = ( passwordToValidate ) =>{
+            if (userStorage.checkPassword(passwordToValidate)) {
+                return true
+            }else{
+                return false
+            };
+        };
+
+        const signUpValidation = () =>{
+            if(userCreateValidation(info.elements['userName'].value)){
+
+                if(passwordCreateValidation(info.elements['password'].value)){
+                }else{
+                    alert('Password does not meet requirements')
+                }
+
+            }else{
+                alert('User ID does not meet requirements')
+            }
+        }
+
+
+        //Event Binds
+        signUpCreate.addEventListener('click', signUpValidation)
+        signUpCancel.addEventListener('click', function () {
+            globaljs.render.removeElement(signUpContainer);
+            signInSectionCreation.createSection();
+            signInSectionFunction.signInFunction();
+        })
+        
+    };
+
+    return{signUpFunction:signUpFunction}
 })()

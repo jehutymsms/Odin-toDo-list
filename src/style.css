@@ -443,7 +443,7 @@ input[type=text]{
 }
 
 #projectSelector>ul{
-	margin: 0em 1em;
+	margin: 1em;
 	list-style-type: disc;
 }
 

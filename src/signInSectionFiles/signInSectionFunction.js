@@ -48,6 +48,8 @@
 
 import { globaljs } from '../global';
 import { userStorage } from '../userStorage';
+import { signUpSectionCreation } from '../signUpSectionFiles/signUpSectionCreation.js';
+import { signUpSectionFunction } from '../signUpSectionFiles/signUpSectionFunction';
 
 export const signInSectionFunction = (() => {
     const cacheDom = (() => {
@@ -62,7 +64,9 @@ export const signInSectionFunction = (() => {
         // Cache Dom List
         let info = document.getElementById('userInfo'),
             signInButton = document.getElementById('signInButton'),
-            signUpButton = document.getElementById('signUpButton');
+            signUpButton = document.getElementById('signUpButton'),
+            demoButton = document.getElementById('demoButton'),
+            signInContainer = document.getElementById('signIn-Container-Outer');;
 
 
         //Function List
@@ -82,7 +86,7 @@ export const signInSectionFunction = (() => {
             };
         };
 
-        const testFunction = () =>{
+        const signInValidation = () =>{
             if(userValidation(info.elements['userName'].value)){
 
                 if(passwordValidation(info.elements['userName'].value, info.elements['password'].value)){
@@ -97,29 +101,20 @@ export const signInSectionFunction = (() => {
 
 
         //Event Binds
-        signInButton.addEventListener('click', testFunction)
-        signUpButton.addEventListener('click', render.removePrev)
+        signInButton.addEventListener('click', signInValidation)
+        signUpButton.addEventListener('click', function () {
+            globaljs.render.removeElement(signInContainer);
+            signUpSectionCreation.createSection();
+            signUpSectionFunction.signUpFunction()
+        })
         
     };
 
     
 
-    // Render to DOM
-    const render = (() => {
-        const bodyAppendChild = (element) =>{
-            cacheDom.body[0].appendChild(element);
-        };
-        
-        const removePrev = () => {
-            cacheDom.body[0].lastElementChild.remove();
-        }
-
-        return {bodyAppendChild: bodyAppendChild, removePrev:removePrev };
-    })();
 
 
-
-    return{render:render,signInFunction:signInFunction}
+    return{signInFunction:signInFunction}
 
 
 })()

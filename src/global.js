@@ -19,9 +19,24 @@ export const globaljs = (() => {
         return element;
     };
 
+    // Render to DOM
+    const render = (() => {
+        const bodyAppendChild = (element) =>{
+            cacheDom.body[0].appendChild(element);
+        };
+
+        const removePrev = () => {
+            cacheDom.body[0].lastElementChild.remove();
+        };
+
+        const removeElement = (element) =>{
+            element.remove();
+        };
+
+        return {bodyAppendChild: bodyAppendChild, removePrev:removePrev, removeElement:removeElement};
+    })();
 
 
-
-    return {newElement:newElement}
+    return {newElement:newElement, render:render}
 
 })()
