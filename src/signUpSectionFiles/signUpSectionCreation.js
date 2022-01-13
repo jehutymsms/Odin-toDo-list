@@ -2,10 +2,6 @@ import { globaljs } from '../global';
 
 
 export const signUpSectionCreation = (() => {
-    const cacheDom = (() => {
-        let body = document.getElementsByTagName('body');
-        return { body: body };
-    })();
 
     //Sign in Object List
     const SignUpObjectList = {

@@ -15,8 +15,8 @@ import { globaljs } from './global';
 
 // signInSectionFunction.signInFunction();
 
-signUpSectionCreation.createSection();
-signUpSectionFunction.signUpFunction()
+// signUpSectionCreation.createSection();
+// signUpSectionFunction.signUpFunction();
 const Andrew = userStorage.demo
   
 window.localStorage.setItem("Andrew", JSON.stringify(Andrew));
