@@ -132,14 +132,14 @@ export const navSectionCreation = (() => {
     };
 
     //Returns Project List Section elements
-    const projectULSection = (item) => {
+    const projectULSection = (list) => {
         let containerULElement = globaljs.newElement(navObjectList.projectList),
         edit_delete = edit_DeleteSection(),
         button = globaljs.newElement(navObjectList.button);
         
-        for (let i = 0; i < item.projectTitles.length; i++) {
-            let item = globaljs.newElement(navObjectList.projectList);
-            item.innerHTML = item.projectTitles[i];
+        for (let i = 0; i < list.projectTitles.length; i++) {
+            let item = globaljs.newElement(navObjectList.projectInfo.item);
+            item.innerHTML = list.projectTitles[i];
             containerULElement.append(item,edit_delete)
         };
 
