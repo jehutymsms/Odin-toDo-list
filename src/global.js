@@ -19,6 +19,15 @@ export const globaljs = (() => {
         return element;
     };
 
+    const pageGridConntainer = () => {
+        let pageGridContainer = {
+            tag: 'div',
+            id: 'pageGridContainer',
+        }
+
+        return globaljs.newElement(pageGridContainer)
+    }
+
     // Render to DOM
     const render = (() => {
         const bodyAppendChild = (element) =>{
@@ -37,6 +46,6 @@ export const globaljs = (() => {
     })();
 
 
-    return {newElement:newElement, render:render}
+    return {newElement:newElement, pageGridConntainer:pageGridConntainer ,render:render}
 
 })()

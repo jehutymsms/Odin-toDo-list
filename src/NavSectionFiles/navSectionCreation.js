@@ -3,13 +3,9 @@ import { globaljs } from '../global';
 
 export const navSectionCreation = (() => {
 
-    //Sign in Object List
+    // Sign in Object List
     const navObjectList = {
 
-        pageGridContainer: {
-            tag: 'div',
-            id: 'pageGridContainer',
-        },
 
         navSection: {
             tag: 'div',
@@ -39,6 +35,7 @@ export const navSectionCreation = (() => {
 
         homeTitle: {
             tag: 'h2',
+            htmlString: 'Home',
         },
 
         projectSelector: {
@@ -85,9 +82,9 @@ export const navSectionCreation = (() => {
 
     };
 
-    //Fuction List
+    // Fuction List
 
-    //Return Nav Section Contents as list
+    // Return Nav Section Contents as list
     const NavSectionContentList = () => {
         let contentList = [];
 
@@ -98,7 +95,7 @@ export const navSectionCreation = (() => {
         return contentList;
     };
 
-    //Returns Nav Element Section
+    // Returns Nav Element Section
     const navElementSection = () => {
         let contentList = NavSectionContentList(),
             element = globaljs.newElement(navObjectList.navSection);
@@ -110,10 +107,10 @@ export const navSectionCreation = (() => {
         return element;
     };
 
-    //Returns defaultSelector Section
+    // Returns defaultSelector Section
     const defaultSelectorSection = () => {
         let element = globaljs.newElement(navObjectList.defaultSelector),
-        item = globaljs.newElement(navObjectList.homeTitle);
+            item = globaljs.newElement(navObjectList.homeTitle);
 
         element.appendChild(item);
 
@@ -123,47 +120,60 @@ export const navSectionCreation = (() => {
     // Edit/delete Section
     const edit_DeleteSection = () => {
         let element = globaljs.newElement(navObjectList.section),
-        edit = globaljs.newElement(navObjectList.edit),
-        deLete = globaljs.newElement(navObjectList.delete);
+            edit = globaljs.newElement(navObjectList.edit),
+            deLete = globaljs.newElement(navObjectList.delete);
 
-        element.append(edit,deLete);
+        element.append(edit, deLete);
 
         return element;
     };
 
-    //Returns Project List Section elements
+    // Returns Project List Section elements
     const projectULSection = (list) => {
         let containerULElement = globaljs.newElement(navObjectList.projectList),
-        edit_delete = edit_DeleteSection(),
-        button = globaljs.newElement(navObjectList.button);
-        
+            button = globaljs.newElement(navObjectList.button);
+
         for (let i = 0; i < list.projectTitles.length; i++) {
-            let item = globaljs.newElement(navObjectList.projectInfo.item);
+            let item = globaljs.newElement(navObjectList.projectInfo.item),
+                edit_delete = edit_DeleteSection();
             item.innerHTML = list.projectTitles[i];
-            containerULElement.append(item,edit_delete)
+            containerULElement.append(item, edit_delete)
+
         };
 
         containerULElement.appendChild(button)
         return containerULElement;
     };
 
-    //Returns projectSelector Section
+    // Returns projectSelector Section
     const projectSelectorSection = (item) => {
         let element = globaljs.newElement(navObjectList.projectSelector),
             projectTitle = globaljs.newElement(navObjectList.projectsTitle),
             projectContentList = projectULSection(item);
 
-        element.append(projectTitle,projectContentList);
+        element.append(projectTitle, projectContentList);
+
+        return element;
+    };
+
+
+    // Returns navMenuSection Section
+    const navMenuSectionSection = (item) => {
+        let element = globaljs.newElement(navObjectList.navMenuSection),
+            defaultSection = defaultSelectorSection(),
+            projectSection = projectSelectorSection(item);
+
+        element.append(defaultSection, projectSection);
 
         return element;
     };
 
 
 
-
     // Sign In section Creation
-    const createSection = () => {
-        let element = signInContainerOuterSection();
+    const createSection = (info) => {
+        let element = globaljs.pageGridConntainer();
+        element.append(navElementSection(),navMenuSectionSection(info))
 
         globaljs.render.bodyAppendChild(element);
     };

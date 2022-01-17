@@ -8,6 +8,10 @@ import { signInSectionFunction } from './signInSectionFiles/signInSectionFunctio
 import { signUpSectionFunction } from './signUpSectionFiles/signUpSectionFunction';
 import { signUpSectionCreation } from './signUpSectionFiles/signUpSectionCreation';
 
+import { navSectionCreation } from './NavSectionFiles/navSectionCreation';
+
+
+
 import { globaljs } from './global';
 // console.log('Now time for the JS')
 
@@ -18,7 +22,7 @@ import { globaljs } from './global';
 // signUpSectionCreation.createSection();
 // signUpSectionFunction.signUpFunction();
 const Andrew = userStorage.demo
-  
+navSectionCreation.createSection(Andrew);
 window.localStorage.setItem("Andrew", JSON.stringify(Andrew));
 
 // let newObject = window.localStorage.getItem("Andrew");
