@@ -421,6 +421,10 @@ input[type=text]{
 	margin-top: 1em;
 }
 
+.navMenuSectionHide{
+	transform: translate(-100%, 0);
+}
+
 #navMenuSection{
 	position: fixed;
 	top: 2em;
@@ -429,9 +433,13 @@ input[type=text]{
 	width: 25%;
 	color: var(--clr-secondary);
 	background-color: var(--clr-primary);
-	transform: translate(-100%, 0);
 	transition: 0.5s;
 }
+
+.navSectionIndicatorActive{
+	transform: rotate(135deg);
+}
+
 
 #dateSelector{
 	display: flex;

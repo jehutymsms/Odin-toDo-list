@@ -10,7 +10,7 @@ import { signUpSectionCreation } from './signUpSectionFiles/signUpSectionCreatio
 
 import { navSectionCreation } from './NavSectionFiles/navSectionCreation';
 
-
+import { navSectionFunction } from './NavSectionFiles/navSectionFunction';
 
 import { globaljs } from './global';
 // console.log('Now time for the JS')
@@ -24,6 +24,7 @@ import { globaljs } from './global';
 const Andrew = userStorage.demo
 navSectionCreation.createSection(Andrew);
 window.localStorage.setItem("Andrew", JSON.stringify(Andrew));
+navSectionFunction.navFunction();
 
 // let newObject = window.localStorage.getItem("Andrew");
 // console.log(JSON.parse(newObject));

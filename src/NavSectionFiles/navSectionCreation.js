@@ -26,6 +26,7 @@ export const navSectionCreation = (() => {
         navMenuSection: {
             tag: 'div',
             id: 'navMenuSection',
+            classId: 'navMenuSectionHide',
         },
 
         defaultSelector: {

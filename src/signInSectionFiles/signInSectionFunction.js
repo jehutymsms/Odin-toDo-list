@@ -52,53 +52,44 @@ import { signUpSectionCreation } from '../signUpSectionFiles/signUpSectionCreati
 import { signUpSectionFunction } from '../signUpSectionFiles/signUpSectionFunction';
 
 export const signInSectionFunction = (() => {
-    const cacheDom = (() => {
-        let body = document.getElementsByTagName('body')
-        return { body: body};
-    })();
-    
 
-
-    
     const signInFunction = () => {
         // Cache Dom List
         let info = document.getElementById('userInfo'),
             signInButton = document.getElementById('signInButton'),
             signUpButton = document.getElementById('signUpButton'),
             demoButton = document.getElementById('demoButton'),
-            signInContainer = document.getElementById('signIn-Container-Outer');;
-
+            signInContainer = document.getElementById('signIn-Container-Outer');
 
         //Function List
-        const userValidation = ( userToValidate ) =>{
+        const userValidation = (userToValidate) => {
             if (userStorage.users.userList.includes(userToValidate)) {
                 return true
-            }else{
+            } else {
                 return false
             };
         };
 
-        const passwordValidation = ( user, passwordToValidate ) =>{
+        const passwordValidation = (user, passwordToValidate) => {
             if (userStorage.users[user].password == passwordToValidate) {
                 return true
-            }else{
+            } else {
                 return false
             };
         };
 
-        const signInValidation = () =>{
-            if(userValidation(info.elements['userName'].value)){
+        const signInValidation = () => {
+            if (userValidation(info.elements['userName'].value)) {
 
-                if(passwordValidation(info.elements['userName'].value, info.elements['password'].value)){
-                }else{
-                    alert('Password does not match')
-                }
+                if (passwordValidation(info.elements['userName'].value, info.elements['password'].value)) {
+                } else {
+                    alert('Password does not match');
+                };
 
-            }else{
-                alert('User ID does not match')
-            }
-        }
-
+            } else {
+                alert('User ID does not match');
+            };
+        };
 
         //Event Binds
         signInButton.addEventListener('click', signInValidation)
@@ -106,15 +97,10 @@ export const signInSectionFunction = (() => {
             globaljs.render.removeElement(signInContainer);
             signUpSectionCreation.createSection();
             signUpSectionFunction.signUpFunction()
-        })
-        
+        });
+
     };
 
-    
+    return { signInFunction: signInFunction };
 
-
-
-    return{signInFunction:signInFunction}
-
-
-})()
+})();
