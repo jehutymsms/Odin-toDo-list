@@ -19,7 +19,6 @@ export const navSectionFunction = (() => {
         //Event Binds
         navSectionH1[0].addEventListener('click', iconRotate)
         
-
     };
 
     return { navFunction: navFunction };
