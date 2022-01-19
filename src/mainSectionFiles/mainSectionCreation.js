@@ -1,8 +1,7 @@
 export const navSectionCreation = (() => {   
    
    // Sign in Object List
-    const navObjectList = {
-
+    const mainObjectList = {
 
         mainSection: {
             tag: 'div',
@@ -14,78 +13,72 @@ export const navSectionCreation = (() => {
             htmlString: 'All Tasks',
         },
 
+        taskItem: {
+            tag: 'div',
+            id: '',
+            classId: 'items',
+        },
 
+        taskItemH2: {
+            tag: 'h2',
+            htmlString: '',
+        },
 
-
-
-
-        navSectionOptions: {
-            item1: {
+        taskDefaultItems: {
+            item0: {
                 tag: 'h1',
-                htmlString: '+',
+                htmlString: 'Complete',
+            },
+            item1: {
+                tag: 'h2',
+                htmlString: 'Tasks',
             },
             item2: {
                 tag: 'h2',
-                htmlString: 'Checkist',
+                htmlString: 'Due Date',
+            },
+            item3: {
+                tag: 'h2',
+                htmlString: 'Edit',
             },
         },
 
-        navMenuSection: {
-            tag: 'div',
-            id: 'navMenuSection',
-            classId: 'navMenuSectionHide',
-        },
-
-        defaultSelector: {
-            tag: 'div',
-            id: 'defaultSelector',
-        },
-
-        homeTitle: {
-            tag: 'h2',
-            htmlString: 'Home',
-        },
-
-        projectSelector: {
-            tag: 'div',
-            id: 'projectSelector',
-        },
-
-        projectsTitle: {
-            tag: 'h2',
-            htmlString: 'Projects',
-        },
-
-        projectList: {
-            tag: 'ul',
-        },
-
-        projectInfo: {
-            item: {
-                tag: 'li',
+        items: {
+            item0: {
+                tag: 'input',
+                classId: '',
+                type: 'checkbox',
+                id: '',
+                name: '',
             },
+            item1: {
+                tag: 'label',
+                classId: '',
+                for: '',
+                htmlString: '',
+            },
+            item2: {
+                tag: 'p',
+                classId: '',
+                htmlString: '',
+            }
         },
 
         section: {
             tag: 'section',
+            classId: '',
         },
 
         edit: {
             tag: 'div',
-            id: 'editProj',
+            id: 'edit',
             classId: 'edit',
         },
 
         delete: {
             tag: 'div',
-            id: 'deleteProj',
+            id: 'delete',
             classId: 'delete',
-        },
-
-        button: {
-            tag: 'button',
-            classId: 'addProject',
-            htmlString: 'Add Project',
         },
 
     };
