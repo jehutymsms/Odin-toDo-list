@@ -86,7 +86,7 @@ export const signInSectionCreation = (() => {
         for (let i = 0; i < Object.keys(SignInObjectList.userInfo).length; i++) {
             let element = globaljs.newElement(SignInObjectList.userInfo[Object.keys(SignInObjectList.userInfo)[i]]);
             contentList.push(element);
-        };
+        }
         return contentList;
     };
 
@@ -97,7 +97,7 @@ export const signInSectionCreation = (() => {
 
         for (let i = 0; i < contentList.length; i++) {
             element.appendChild(contentList[i]);
-        };
+        }
 
         return element;
     };
@@ -121,7 +121,7 @@ export const signInSectionCreation = (() => {
 
         for (let i = 0; i < elementList.length; i++) {
             containerElement.appendChild(elementList[i]);
-        };
+        }
 
         return containerElement;
     };

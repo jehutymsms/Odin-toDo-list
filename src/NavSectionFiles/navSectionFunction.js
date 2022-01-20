@@ -4,9 +4,8 @@ export const navSectionFunction = (() => {
         // Cache Dom List
         let navSection = document.getElementById('navSection'),
             navSectionH1 = navSection.getElementsByTagName('h1'),
-            navMenuSection = document.getElementById('navMenuSection'),
-            demoButton = document.getElementById('demoButton'),
-            signInContainer = document.getElementById('signIn-Container-Outer');
+            navMenuSection = document.getElementById('navMenuSection')
+
 
         //Function List
         const iconRotate = () =>{

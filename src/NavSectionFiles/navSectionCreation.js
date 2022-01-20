@@ -92,7 +92,7 @@ export const navSectionCreation = (() => {
         for (let i = 0; i < Object.keys(navObjectList.navSectionOptions).length; i++) {
             let element = globaljs.newElement(navObjectList.navSectionOptions[Object.keys(navObjectList.navSectionOptions)[i]]);
             contentList.push(element);
-        };
+        }
         return contentList;
     };
 
@@ -103,7 +103,7 @@ export const navSectionCreation = (() => {
 
         for (let i = 0; i < contentList.length; i++) {
             element.appendChild(contentList[i]);
-        };
+        }
 
         return element;
     };
@@ -140,7 +140,7 @@ export const navSectionCreation = (() => {
             item.innerHTML = list.projectTitles[i];
             containerULElement.append(item, edit_delete)
 
-        };
+        }
 
         containerULElement.appendChild(button)
         return containerULElement;

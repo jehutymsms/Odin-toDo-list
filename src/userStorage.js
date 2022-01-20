@@ -5,13 +5,13 @@ export const userStorage = (() =>{
 
         Andrew:{
             userID:'Andrew',
-            password : "Andrew",
+            password : 'Andrew',
             userStorageInfo: 'demo'
         }
     };
 
     const demo = {
-        password : "Demo",
+        password : 'Demo',
         projectTitles : ['Home Chores', 'Work', 'Food Prep'],
 
         item0:{

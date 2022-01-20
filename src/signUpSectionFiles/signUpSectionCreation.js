@@ -100,7 +100,7 @@ export const signUpSectionCreation = (() => {
         for (let i = 0; i < Object.keys(SignUpObjectList.userInfo).length; i++) {
             let element = globaljs.newElement(SignUpObjectList.userInfo[Object.keys(SignUpObjectList.userInfo)[i]]);
             contentList.push(element);
-        };
+        }
         return contentList;
     };
       
@@ -111,7 +111,7 @@ export const signUpSectionCreation = (() => {
 
         for (let i = 0; i < contentList.length; i++) {
             element.appendChild(contentList[i]);
-        };
+        }
 
         return element;
     };

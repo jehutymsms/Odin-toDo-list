@@ -1,3 +1,6 @@
+import { globaljs } from '../global';
+import { userStorage } from '../userStorage';
+
 export const navSectionCreation = (() => {   
    
    // Sign in Object List
@@ -85,32 +88,66 @@ export const navSectionCreation = (() => {
 
     // Fuction List
 
-    // Return Nav Section Contents as list
+    // Input Element
+    const inputElementCreation = (taskNumber) => {
+        let element = globaljs.newElement(mainObjectList.items.item0)
 
+        element.setAttribute('class', taskNumber)
+        element.setAttribute('id', taskNumber)
+        element.setAttribute('name', taskNumber)
 
-    // Returns Nav Element Section
+        return element
+    }
 
+    // Label Element
+    const labelElementCreation = (taskNumber, htmlString) => {
+        let element = globaljs.newElement(mainObjectList.items.item1)
 
-    // Returns defaultSelector Section
+        element.setAttribute('class', taskNumber)
+        element.setAttribute('for', taskNumber)
+        element.innerHTML = htmlString;
+
+        return element
+    }
+
+    // Date Element
+    const dateElementCreation = (taskNumber, htmlString) => {
+        let element = globaljs.newElement(mainObjectList.items.item2)
+
+        element.setAttribute('class', taskNumber)
+        element.innerHTML = htmlString;
+
+        return element
+    }
 
     // Edit/delete Section
+    const edit_DeleteSection = (className) => {
+        let element = globaljs.newElement(mainObjectList.section),
+            edit = globaljs.newElement(mainObjectList.edit),
+            deLete = globaljs.newElement(mainObjectList.delete);
+            
+        element.setAttribute('class', className)
+        element.append(edit, deLete);
+
+    return element;
+    };
+
+    // Default Task Creation
+    const taskElementCreation = (taskNumber, taskDueDate, taskName, taskComplete) => {
+
+    }
 
 
-    // Returns Project List Section elements
 
-    // Returns projectSelector Section
+    // Default Item Creation
 
-
-
-    // Returns navMenuSection Section
-
-
+    // Footer Section
 
 
     // Sign In section Creation
     const createSection = (info) => {
         let element = globaljs.pageGridConntainer();
-        element.append(navElementSection(),navMenuSectionSection(info))
+        
 
         globaljs.render.bodyAppendChild(element);
     };

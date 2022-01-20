@@ -54,10 +54,6 @@ import { signInSectionCreation } from '../signInSectionFiles/signInSectionCreati
 import { signInSectionFunction } from '../signInSectionFiles/signInSectionFunction';
 
 export const signUpSectionFunction = (() => {
-    const cacheDom = (() => {
-        let body = document.getElementsByTagName('body')
-        return { body: body };
-    })();
 
     const signUpFunction = () => {
         // Cache Dom List

@@ -58,7 +58,6 @@ export const signInSectionFunction = (() => {
         let info = document.getElementById('userInfo'),
             signInButton = document.getElementById('signInButton'),
             signUpButton = document.getElementById('signUpButton'),
-            demoButton = document.getElementById('demoButton'),
             signInContainer = document.getElementById('signIn-Container-Outer');
 
         //Function List
@@ -67,7 +66,7 @@ export const signInSectionFunction = (() => {
                 return true
             } else {
                 return false
-            };
+            }
         };
 
         const passwordValidation = (user, passwordToValidate) => {
@@ -75,7 +74,7 @@ export const signInSectionFunction = (() => {
                 return true
             } else {
                 return false
-            };
+            }
         };
 
         const signInValidation = () => {
@@ -84,11 +83,11 @@ export const signInSectionFunction = (() => {
                 if (passwordValidation(info.elements['userName'].value, info.elements['password'].value)) {
                 } else {
                     alert('Password does not match');
-                };
+                }
 
             } else {
                 alert('User ID does not match');
-            };
+            }
         };
 
         //Event Binds
