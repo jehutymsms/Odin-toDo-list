@@ -27,6 +27,11 @@ export const navSectionCreation = (() => {
             htmlString: '',
         },
 
+        tasksSection: {
+            tag: 'div',
+            classId: 'tasks',
+        },
+
         taskDefaultItems: {
             item0: {
                 tag: 'h1',
@@ -84,6 +89,22 @@ export const navSectionCreation = (() => {
             classId: 'delete',
         },
 
+        addTaskBtton: {
+            tag: 'button',
+            classId: 'addTask',
+            htmlString: 'Add Task',
+        },
+
+        footerSection: {
+            tag: 'div',
+            id: 'footerSection',
+        },
+
+        footerContent: {
+            tag: 'h2',
+            htmlString: 'Made by Andrew Humphries',
+        },
+
     };
 
     // Fuction List
@@ -133,15 +154,91 @@ export const navSectionCreation = (() => {
     };
 
     // Default Task Creation
-    const taskElementCreation = (taskNumber, taskDueDate, taskName, taskComplete) => {
+    const taskElementCreation = (taskNumber, taskDueDate, taskName, taskComplete = false) => {
+        let elementList = [],
+            input = inputElementCreation(taskNumber),
+            label = labelElementCreation(taskNumber, taskName),
+            pTag = dateElementCreation(taskNumber, taskDueDate),
+            section = edit_DeleteSection()
 
+            label.checked = taskComplete
+        elementList.append(input,label,pTag,section)
+
+    }
+
+    // Tasks Section Default Creation
+    const tasksDefaultSection = () => {
+        let element = globaljs.newElement(mainObjectList.tasksSection)
+
+        for (let i = 0; i < Object.keys(mainObjectList.taskDefaultItems).length; i++) {
+            let defaultItem = globaljs.newElement(mainObjectList.taskDefaultItems[`item${i}`]);
+
+            element.appendChild(defaultItem)
+        }
+
+        return element
+    }
+
+    // Item Section Creation
+    const itemSectionCreation = (itemID, h2Title) =>{
+        let element = globaljs.newElement(mainObjectList.taskItem),
+            taskH2 = globaljs.newElement(mainObjectList.taskItemH2),
+            addTask = globaljs.newElement(mainObjectList.addTaskBtton)
+
+        taskH2.innerHTML = h2Title
+        element.id = itemID
+
+        element.append(taskH2, addTask)
+
+        return element
+    }
+
+    // Footer Section
+    const footerSection = () =>{
+        let element = globaljs.newElement(mainObjectList.footerSection),
+            content = globaljs.newElement(mainObjectList.footerContent)
+
+        element.appendChild(content)
+
+        return element
+    }
+
+
+    // Main Section Items
+
+    const mainSectionCreate = (userData = userStorage.demo) =>{
+        let itemObjectList = {}
+
+        for (let i = 0; i < userData.projectTitles.length; i++) {
+            itemObjectList[`item${i}`] = itemSectionCreation(`item${i}`,userData.projectTitles[i]);
+
+            
+            
+        }
+
+
+
+
+
+        return itemObjectList
     }
 
 
 
-    // Default Item Creation
 
-    // Footer Section
+
+    // Main Section Creation
+    const mainSectionCreate = () =>{
+        let element = globaljs.newElement(mainObjectList.mainSection),
+            sectionH2 = globaljs.newElement(mainObjectList.mainSectionH2),
+            footer = footerSection()
+
+        element.append(sectionH2, footer)
+
+        return element
+    }
+
+
 
 
     // Sign In section Creation
