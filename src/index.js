@@ -9,8 +9,9 @@ import { signUpSectionFunction } from './signUpSectionFiles/signUpSectionFunctio
 import { signUpSectionCreation } from './signUpSectionFiles/signUpSectionCreation';
 
 import { navSectionCreation } from './NavSectionFiles/navSectionCreation';
-
 import { navSectionFunction } from './NavSectionFiles/navSectionFunction';
+
+import { mainSectionCreation } from './mainSectionFiles/mainSectionCreation';
 
 import { globaljs } from './global';
 // console.log('Now time for the JS')
@@ -21,10 +22,21 @@ import { globaljs } from './global';
 
 // signUpSectionCreation.createSection();
 // signUpSectionFunction.signUpFunction();
+
+// navSectionCreation.createSection(Andrew);
+// window.localStorage.setItem('Andrew', JSON.stringify(Andrew));
+
 const Andrew = userStorage.demo
+
+
 navSectionCreation.createSection(Andrew);
-window.localStorage.setItem("Andrew", JSON.stringify(Andrew));
 navSectionFunction.navFunction();
+
+mainSectionCreation.createSection(Andrew)
+
+let pageGridContainer = document.getElementById('pageGridContainer')
+pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
+
 
 // let newObject = window.localStorage.getItem("Andrew");
 // console.log(JSON.parse(newObject));
