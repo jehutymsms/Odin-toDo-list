@@ -184,7 +184,6 @@ export const mainSectionCreation = (() => {
                 element.appendChild(task[x]);
                 
             }
-
         }
 
         return element
@@ -198,7 +197,7 @@ export const mainSectionCreation = (() => {
             addTask = globaljs.newElement(mainObjectList.addTaskBtton)
 
         taskH2.innerHTML = h2Title
-        element.id = itemID
+        element.id = `item${itemID}`
 
         element.append(taskH2, tasks, addTask)
 
