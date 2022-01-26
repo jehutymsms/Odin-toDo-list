@@ -399,6 +399,7 @@ input[type=text]{
 	font-size: 2em;
 	transition: 0.5s;
 	cursor: pointer;
+	user-select: none;
 }
 
 
