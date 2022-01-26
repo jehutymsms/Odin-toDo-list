@@ -265,6 +265,6 @@ export const mainSectionCreation = (() => {
         return element
     }
 
-    return { createSection: createSection };
+    return { createSection};
 
 })();

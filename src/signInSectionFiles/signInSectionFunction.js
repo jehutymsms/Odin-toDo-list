@@ -100,6 +100,6 @@ export const signInSectionFunction = (() => {
 
     };
 
-    return { signInFunction: signInFunction };
+    return { signInFunction };
 
 })();

@@ -104,5 +104,5 @@ export const signUpSectionFunction = (() => {
         
     };
 
-    return{signUpFunction:signUpFunction}
+    return{signUpFunction}
 })()

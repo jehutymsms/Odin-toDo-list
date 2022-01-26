@@ -11,7 +11,6 @@ export const userStorage = (() =>{
     };
 
     const demo = {
-        password : 'Demo',
         projectTitles : ['Home Chores', 'Work', 'Food Prep'],
 
         item0:{
@@ -68,6 +67,20 @@ export const userStorage = (() =>{
         }, 
     }
 
+    const example = {
+        projectTitles : ['Project Example'],
+
+        item0:{
+            taskList:['task Example'],
+            tasks:{
+                task0:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                },
+            }
+        },
+    }
+
 
     const defaultUserList = {
         userList:['default'],
@@ -78,19 +91,9 @@ export const userStorage = (() =>{
         }
     };
 
-    const defaultData = {
-        password : '',
-        projectTitles : ['Example Project'],
-
-        item0:{
-            taskList:['Example Task'],
-            tasks:{
-                task0:{
-                    dueDate:'11/26/22',
-                    complete: false,
-                },
-            }
-        },
+    const createUserStorageInfo = (user, projects = example) => {
+        let  defaultObject = `${user}`
+        
     }
 
     // Function List
@@ -109,5 +112,5 @@ export const userStorage = (() =>{
         var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-      return {demo:demo, users:users, checkUsername:checkUsername,checkPassword:checkPassword}
+    return { demo, users, checkUsername, checkPassword }
 })()

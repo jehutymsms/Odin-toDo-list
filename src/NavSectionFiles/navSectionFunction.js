@@ -25,6 +25,6 @@ export const navSectionFunction = (() => {
         
     };
 
-    return { navFunction: navFunction };
+    return { navFunction};
 
 })();

@@ -182,5 +182,5 @@ export const navSectionCreation = (() => {
         globaljs.render.bodyAppendChild(element);
     };
 
-    return { createSection: createSection };
+    return { createSection };
 })();

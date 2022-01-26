@@ -157,5 +157,5 @@ export const signUpSectionCreation = (() => {
     };
 
 
-    return{createSection:createSection};
+    return{createSection};
 })();
