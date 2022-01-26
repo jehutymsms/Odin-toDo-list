@@ -68,6 +68,31 @@ export const userStorage = (() =>{
         }, 
     }
 
+
+    const defaultUserList = {
+        userList:['default'],
+
+        default:{
+            password : '',
+            userStorageInfo: 'defaultData'
+        }
+    };
+
+    const defaultData = {
+        password : '',
+        projectTitles : ['Example Project'],
+
+        item0:{
+            taskList:['Example Task'],
+            tasks:{
+                task0:{
+                    dueDate:'11/26/22',
+                    complete: false,
+                },
+            }
+        },
+    }
+
     // Function List
 
 
