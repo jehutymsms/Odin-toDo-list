@@ -119,10 +119,13 @@ export const navSectionCreation = (() => {
     };
 
     // Edit/delete Section
-    const edit_DeleteSection = () => {
+    const edit_DeleteSection = (projectNumber) => {
         let element = globaljs.newElement(navObjectList.section),
             edit = globaljs.newElement(navObjectList.edit),
             deLete = globaljs.newElement(navObjectList.delete);
+
+            edit.id = `editProj${projectNumber}`
+            deLete.id = `deleteProj${projectNumber}`
 
         element.append(edit, deLete);
 
@@ -136,7 +139,7 @@ export const navSectionCreation = (() => {
 
         for (let i = 0; i < list.projectTitles.length; i++) {
             let item = globaljs.newElement(navObjectList.projectInfo.item),
-                edit_delete = edit_DeleteSection();
+                edit_delete = edit_DeleteSection(i);
             item.innerHTML = list.projectTitles[i];
             containerULElement.append(item, edit_delete)
 
