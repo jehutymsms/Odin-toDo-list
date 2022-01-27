@@ -27,15 +27,24 @@ import { globaljs } from './global';
 
 const Andrew = userStorage.demo
 
-
 navSectionCreation.createSection(Andrew);
 navSectionFunction.navFunction();
-
 mainSectionCreation.createSection(Andrew)
 
 let pageGridContainer = document.getElementById('pageGridContainer')
 pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
+let taskRetrieval = document.getElementById('item0').querySelectorAll(`[class^='task0']`)
+let taskRetrieval1 = document.getElementById('item0').querySelectorAll(`[class^='task1']`)
 
+console.log(taskRetrieval)
+console.log(taskRetrieval[0].checked)
+console.log(taskRetrieval[1].innerHTML)
+console.log(taskRetrieval[2].innerHTML)
+
+console.log(taskRetrieval1)
+console.log(taskRetrieval1[0].checked)
+console.log(taskRetrieval1[1].innerHTML)
+console.log(taskRetrieval1[2].innerHTML)
 
 // let newObject = window.localStorage.getItem("Andrew");
 // console.log(JSON.parse(newObject));

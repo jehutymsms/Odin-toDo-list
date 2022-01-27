@@ -4,11 +4,12 @@ export const navSectionFunction = (() => {
         // Cache Dom List
         let navSection = document.getElementById('navSection'),
             navSectionH1 = navSection.getElementsByTagName('h1'),
-            navMenuSection = document.getElementById('navMenuSection'),
-            editButton = document.querySelectorAll(`[id^='editProj']`),
-            matches = editButton[0].id.match(/\d+/);
-            console.log(editButton[0].id)
-            console.log(matches[0])
+            navMenuSection = document.getElementById('navMenuSection')
+            
+            // editButton = document.querySelectorAll(`[id^='editProj']`),
+            // matches = editButton[0].id.match(/\d+/);
+            // console.log(editButton[0].id)
+            // console.log(matches[0])
 
 
 

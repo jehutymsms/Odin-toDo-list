@@ -11,63 +11,65 @@ export const userStorage = (() =>{
     };
 
     const demo = {
-        projectTitles : ['Home Chores', 'Work', 'Food Prep'],
+        user: 'Andrew',
+        projectTitles: ['Home Chores', 'Work', 'Food Prep'],
 
-        item0:{
-            taskList:['Laundry', 'Vacuum', 'Dishes'],
-            tasks:{
-                task0:{
-                    dueDate:'11/26/22',
+        item0: {
+            taskList: ['Laundry', 'Vacuum', 'Dishes'],
+            tasks: {
+                task0: {
+                    dueDate: '11/26/22',
                     complete: false,
                 },
-                task1:{
-                    dueDate:'11/26/22',
+                task1: {
+                    dueDate: '11/26/22',
                     complete: false,
                 },
-                task2:{
-                    dueDate:'11/26/22',
+                task2: {
+                    dueDate: '11/26/22',
                     complete: false,
                 }
             }
         },
-        item1:{
-            taskList:['Check E-mail', 'Update Project', 'Team Meeting'],
-            tasks:{
-                task0:{
-                    dueDate:'11/26/22',
+        item1: {
+            taskList: ['Check E-mail', 'Update Project', 'Team Meeting'],
+            tasks: {
+                task0: {
+                    dueDate: '11/26/22',
                     complete: false,
                 },
-                task1:{
-                    dueDate:'11/26/22',
+                task1: {
+                    dueDate: '11/26/22',
                     complete: false,
 
                 },
-                task2:{
-                    dueDate:'11/26/22',
+                task2: {
+                    dueDate: '11/26/22',
                     complete: false,
                 }
             }
         },
-        item2:{
-            taskList:['Thaw Meat', 'Cut Vegetables', 'Cook Rice'],
-            tasks:{
-                task0:{
-                    dueDate:'11/26/22',
+        item2: {
+            taskList: ['Thaw Meat', 'Cut Vegetables', 'Cook Rice'],
+            tasks: {
+                task0: {
+                    dueDate: '11/26/22',
                     complete: false,
                 },
-                task1:{
-                    dueDate:'11/26/22',
+                task1: {
+                    dueDate: '11/26/22',
                     complete: false,
                 },
-                task2:{
-                    dueDate:'11/26/22',
+                task2: {
+                    dueDate: '11/26/22',
                     complete: false,
                 }
             }
-        }, 
+        },
     }
 
     const example = {
+        user: 'example',
         projectTitles : ['Project Example'],
 
         item0:{
@@ -83,18 +85,36 @@ export const userStorage = (() =>{
 
 
     const defaultUserList = {
-        userList:['default'],
+        userList:['example'],
 
-        default:{
-            password : '',
-            userStorageInfo: 'defaultData'
+        example:{
+            userID:'example',
+            password : 'example',
+            userStorageInfo: 'example'
         }
     };
 
-    const createUserStorageInfo = (user, projects = example) => {
-        let  defaultObject = `${user}`
-        
+    // Collect Project Names Function Store in New Object
+    const createDefaultProjectStorage = (user, projectArray) => {
+        let  defaultObject = {
+            user: user,
+            projectTitles: projectArray
+        }
+        return defaultObject
     }
+
+    // Collect Item Names Store in Object Created by Project Function
+    const itemStorageCreation = (object) => {
+        for (let i = 0; i < object.projectTitles.length; i++) {
+            object[`item${i}`] = {}
+        }
+        return object
+    }
+
+    // Collect Task Data and Store in Object Created by Project Function
+
+
+
 
     // Function List
 
@@ -112,5 +132,5 @@ export const userStorage = (() =>{
         var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, checkUsername, checkPassword }
+    return { demo, users,example ,checkUsername, checkPassword }
 })()
