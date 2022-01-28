@@ -111,10 +111,48 @@ export const userStorage = (() =>{
         return object
     }
 
+    // Collect Task List and Store in Object Created by Project Function
+    // Collects Task List based on Item Number
+    const taskArrayStorageCreation = (object, itemNumber) => {
+        let taskRetrieval = document.getElementById(`item${itemNumber}`).querySelectorAll(`label`),
+            taskArray = []
+        
+        for (let i = 0; i < taskRetrieval.length; i++) {
+            taskArray.push(taskRetrieval[0].innerHTML)
+        }
+
+        object[`item${itemNumber}`].taskList = taskArray
+
+        return object
+    }
+
     // Collect Task Data and Store in Object Created by Project Function
+    const taskDataCollection = (object, itemNumber) => {
+        let itemElement = document.getElementById(`item${itemNumber}`).querySelectorAll(`p`),
+            dueDate = itemElement.querySelectorAll(`p`),
+            taskStatus = itemElement.querySelectorAll(`input`),
+            item = object[`item${itemNumber}`]
+        
+        for (let i = 0; i < item.taskList.length; i++) {
+            item.tasks[`task${i}`].dueDate = dueDate[i].innerHTML
+            item.tasks[`task${i}`].complete = taskStatus[i].checked
+        }
 
 
+        return object
+    }
 
+    // Collect Project Title Names
+    const projectCollection = () => {
+        let projectRetrieval = document.getElementById('projectSelector').querySelectorAll(`li`),
+        projectArray = []
+        
+        for (let i = 0; i < projectRetrieval.length; i++) {
+            projectArray.push(projectRetrieval[i].innerHTML)
+        }
+
+        return projectArray
+    }
 
     // Function List
 
