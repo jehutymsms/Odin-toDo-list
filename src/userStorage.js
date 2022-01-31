@@ -1,11 +1,11 @@
-export const userStorage = (() =>{
+export const userStorage = (() => {
 
     const users = {
-        userList:['Andrew'],
+        userList: ['Andrew'],
 
-        Andrew:{
-            userID:'Andrew',
-            password : 'Andrew',
+        Andrew: {
+            userID: 'Andrew',
+            password: 'Andrew',
             userStorageInfo: 'demo'
         }
     };
@@ -22,11 +22,11 @@ export const userStorage = (() =>{
                     complete: false,
                 },
                 task1: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/27/22',
                     complete: false,
                 },
                 task2: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/28/22',
                     complete: false,
                 }
             }
@@ -35,16 +35,16 @@ export const userStorage = (() =>{
             taskList: ['Check E-mail', 'Update Project', 'Team Meeting'],
             tasks: {
                 task0: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/22/22',
                     complete: false,
                 },
                 task1: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/23/22',
                     complete: false,
 
                 },
                 task2: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/24/22',
                     complete: false,
                 }
             }
@@ -53,15 +53,15 @@ export const userStorage = (() =>{
             taskList: ['Thaw Meat', 'Cut Vegetables', 'Cook Rice'],
             tasks: {
                 task0: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/10/22',
                     complete: false,
                 },
                 task1: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/11/22',
                     complete: false,
                 },
                 task2: {
-                    dueDate: '11/26/22',
+                    dueDate: '11/12/22',
                     complete: false,
                 }
             }
@@ -70,13 +70,13 @@ export const userStorage = (() =>{
 
     const example = {
         user: 'example',
-        projectTitles : ['Project Example'],
+        projectTitles: ['Project Example'],
 
-        item0:{
-            taskList:['task Example'],
-            tasks:{
-                task0:{
-                    dueDate:'11/26/22',
+        item0: {
+            taskList: ['task Example'],
+            tasks: {
+                task0: {
+                    dueDate: '11/26/22',
                     complete: false,
                 },
             }
@@ -84,19 +84,19 @@ export const userStorage = (() =>{
     }
 
 
-    const defaultUserList = {
-        userList:['example'],
+    const defaultUser = {
+        user: 'example',
 
-        example:{
-            userID:'example',
-            password : 'example',
+        example: {
+            userID: 'example',
+            password: 'example',
             userStorageInfo: 'example'
         }
     };
 
     // Collect Project Names Function Store in New Object
     const createDefaultProjectStorage = (user, projectArray) => {
-        let  defaultObject = {
+        let defaultObject = {
             user: user,
             projectTitles: projectArray
         }
@@ -116,9 +116,9 @@ export const userStorage = (() =>{
     const taskArrayStorageCreation = (object, itemNumber) => {
         let taskRetrieval = document.getElementById(`item${itemNumber}`).querySelectorAll(`label`),
             taskArray = []
-        
+
         for (let i = 0; i < taskRetrieval.length; i++) {
-            taskArray.push(taskRetrieval[0].innerHTML)
+            taskArray.push(taskRetrieval[i].innerHTML)
         }
 
         object[`item${itemNumber}`].taskList = taskArray
@@ -128,12 +128,16 @@ export const userStorage = (() =>{
 
     // Collect Task Data and Store in Object Created by Project Function
     const taskDataCollection = (object, itemNumber) => {
-        let itemElement = document.getElementById(`item${itemNumber}`).querySelectorAll(`p`),
+        let itemElement = document.getElementById(`item${itemNumber}`),
             dueDate = itemElement.querySelectorAll(`p`),
             taskStatus = itemElement.querySelectorAll(`input`),
             item = object[`item${itemNumber}`]
-        
+        item.tasks = {}
+
         for (let i = 0; i < item.taskList.length; i++) {
+
+            item.tasks[`task${i}`] = {}
+
             item.tasks[`task${i}`].dueDate = dueDate[i].innerHTML
             item.tasks[`task${i}`].complete = taskStatus[i].checked
         }
@@ -145,13 +149,50 @@ export const userStorage = (() =>{
     // Collect Project Title Names
     const projectCollection = () => {
         let projectRetrieval = document.getElementById('projectSelector').querySelectorAll(`li`),
-        projectArray = []
-        
+            projectArray = []
+
         for (let i = 0; i < projectRetrieval.length; i++) {
             projectArray.push(projectRetrieval[i].innerHTML)
         }
 
         return projectArray
+    }
+
+    // Collect Data Object Creation
+    const dataObjectCreation = (user = defaultUser) => {
+        let projectArray = projectCollection(),
+            NewDefaultObject = createDefaultProjectStorage(user.user, projectArray),
+            ObjectItemsCreated = itemStorageCreation(NewDefaultObject),
+            ObjectItemTasksCreated = {},
+            ObjectItemTaskDataCollected = {}
+
+        //Task Collection and Storage
+
+        for (let i = 0; i < ObjectItemsCreated.projectTitles.length; i++) {
+            ObjectItemTasksCreated = taskArrayStorageCreation(ObjectItemsCreated, i)
+        }
+
+        for (let i = 0; i < ObjectItemTasksCreated.projectTitles.length; i++) {
+            ObjectItemTaskDataCollected = taskDataCollection(ObjectItemsCreated, i)
+        }
+
+        return ObjectItemTaskDataCollected
+    }
+
+    // Store Data as JSOn
+    const dataJSONStorage = (object) => {
+        window.localStorage.setItem(object.user, JSON.stringify(object))
+    }
+
+
+
+    // This was a test function to see about how to Store an Object using the User ID in the Object as a title from DataJSONStorage
+    const testdataJSONStorage = () => {
+        console.log(dataObjectCreation())
+        dataJSONStorage(demo)
+        dataJSONStorage(dataObjectCreation())
+
+        return console.log('Test Function')
     }
 
     // Function List
@@ -170,5 +211,5 @@ export const userStorage = (() =>{
         var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users,example ,checkUsername, checkPassword }
+    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage }
 })()

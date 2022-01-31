@@ -39,8 +39,7 @@ let taskRetrieval = document.getElementById('item0').querySelectorAll(`[class^='
 
 let taskRetrieval1 = document.getElementById('projectSelector').querySelectorAll(`li`)
 
-console.log(taskRetrieval1[0].innerHTML)
-
+userStorage.testdataJSONStorage()
 
 // let newObject = window.localStorage.getItem("Andrew");
 // console.log(JSON.parse(newObject));
