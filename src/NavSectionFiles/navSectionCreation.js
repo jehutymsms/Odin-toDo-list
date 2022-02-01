@@ -109,11 +109,13 @@ export const navSectionCreation = (() => {
     };
 
     // Returns defaultSelector Section
-    const defaultSelectorSection = () => {
+    const defaultSelectorSection = (user) => {
         let element = globaljs.newElement(navObjectList.defaultSelector),
-            item = globaljs.newElement(navObjectList.homeTitle);
+            item1 = globaljs.newElement(navObjectList.homeTitle),
+            item2 = globaljs.newElement(navObjectList.homeTitle);
 
-        element.appendChild(item);
+        item2.innerHTML = user
+        element.append(item1,item2);
 
         return element;
     };
@@ -164,7 +166,7 @@ export const navSectionCreation = (() => {
     // Returns navMenuSection Section
     const navMenuSectionSection = (item) => {
         let element = globaljs.newElement(navObjectList.navMenuSection),
-            defaultSection = defaultSelectorSection(),
+            defaultSection = defaultSelectorSection(item.user),
             projectSection = projectSelectorSection(item);
 
         element.append(defaultSection, projectSection);
