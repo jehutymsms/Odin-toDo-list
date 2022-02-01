@@ -38,7 +38,7 @@ let taskRetrieval = document.getElementById('item0').querySelectorAll(`[class^='
 // console.log(taskRetrieval)
 
 let taskRetrieval1 = document.getElementById('projectSelector').querySelectorAll(`li`)
-
+window.localStorage.clear()
 userStorage.testdataJSONStorage()
 
 // let newObject = window.localStorage.getItem("Andrew");

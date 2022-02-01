@@ -164,7 +164,7 @@ export const userStorage = (() => {
             NewDefaultObject = createDefaultProjectStorage(user.user, projectArray),
             ObjectItemsCreated = itemStorageCreation(NewDefaultObject),
             ObjectItemTasksCreated = {},
-            ObjectItemTaskDataCollected = {}
+            ObjectItemTaskDataCollected = {};
 
         //Task Collection and Storage
 
@@ -179,19 +179,35 @@ export const userStorage = (() => {
         return ObjectItemTaskDataCollected
     }
 
-    // Store Data as JSOn
-    const dataJSONStorage = (object) => {
-        window.localStorage.setItem(object.user, JSON.stringify(object))
+    // Collect Username
+    const userNameCollection = () => {
+        let usernameRetrieval = document.getElementById('defaultSelector').querySelectorAll(`h2`)
+
+        return usernameRetrieval[1].innerHTML
     }
 
 
+    // Store Data as JSOn
+    const storedataJSONStorage = (object) => {
+        window.localStorage.setItem(object.user, JSON.stringify(object))
+    }
+
+    // Get Data from JSON Storage as an object
+    const getdataJSONStorage = (item) => {
+        return JSON.parse(window.localStorage.getItem(item))
+    }
 
     // This was a test function to see about how to Store an Object using the User ID in the Object as a title from DataJSONStorage
     const testdataJSONStorage = () => {
-        console.log(dataObjectCreation())
-        dataJSONStorage(demo)
-        dataJSONStorage(dataObjectCreation())
-
+        console.log(dataObjectCreation(example))
+        storedataJSONStorage(dataObjectCreation(example))
+        console.log('Data Stored')
+        console.log(getdataJSONStorage(example.user))
+        console.log('Data retrieved')
+        console.log(getdataJSONStorage(example))
+        console.log('False Name given to test what data is retrieved')
+        console.log(userNameCollection())
+        console.log('Test Username Retreival')
         return console.log('Test Function')
     }
 
