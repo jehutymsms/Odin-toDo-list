@@ -1,13 +1,20 @@
 export const userStorage = (() => {
 
     const users = {
-        userList: ['Andrew'],
+        userList: ['Andrew', 'example'],
 
         Andrew: {
             userID: 'Andrew',
             password: 'Andrew',
             userStorageInfo: 'demo'
-        }
+        },
+
+        example: {
+            userID: 'example',
+            password: 'example',
+            userStorageInfo: 'example'
+        },
+        
     };
 
     const demo = {
@@ -84,16 +91,6 @@ export const userStorage = (() => {
     }
 
 
-    const defaultUser = {
-        user: 'example',
-
-        example: {
-            userID: 'example',
-            password: 'example',
-            userStorageInfo: 'example'
-        }
-    };
-
     // Collect Project Names Function Store in New Object
     const createDefaultProjectStorage = (user, projectArray) => {
         let defaultObject = {
@@ -159,7 +156,7 @@ export const userStorage = (() => {
     }
 
     // Collect Data Object Creation
-    const dataObjectCreation = (user = defaultUser) => {
+    const dataObjectCreation = (user = example) => {
         let projectArray = projectCollection(),
             NewDefaultObject = createDefaultProjectStorage(user.user, projectArray),
             ObjectItemsCreated = itemStorageCreation(NewDefaultObject),
