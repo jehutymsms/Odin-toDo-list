@@ -286,10 +286,11 @@ input[type=text], input[type=password]{
 		5.1. Sign-Up Global Styles
 		========================== */
 
-form{
+#userCreateInfo{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	width:80%;
 }
 
 #signUp-Container-Inner, #signUp-Container-Outer{
@@ -313,6 +314,8 @@ form{
 }
 
 #signUp-Form-Container{
+	display:Flex;
+	justify-content: center;
 	margin:0 1em;
 	padding: 1.5em 0;
 	min-width: 60%;
