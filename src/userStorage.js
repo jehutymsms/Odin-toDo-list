@@ -90,6 +90,28 @@ export const userStorage = (() => {
         },
     }
 
+    // Create Default User Storage Object and add to user Storage
+    const createNewUser = (username, password) => {
+        let userListObject = getdataJSONStorage('user'),
+        newUserObject = {}
+
+        newUserObject['userID'] = username
+        newUserObject['password'] = password
+        newUserObject['userStorageInfo'] = username
+        
+        return newUserObject
+    }
+
+    // Add User Storage Object to user List
+    const addUserLocalStorage = (username, password) => {
+        let userListObject = getdataJSONStorage('user'),
+            newUser = createNewUser(username, password)
+        
+        userListObject.userList.push(username)
+        userListObject['username'] = createNewUser(username, password)
+
+        userJSONStorage(userListObject)
+    }
 
     // Collect Project Names Function Store in New Object
     const createDefaultProjectStorage = (user, projectArray) => {
@@ -183,7 +205,6 @@ export const userStorage = (() => {
         return usernameRetrieval[1].innerHTML
     }
 
-
     // Store Data as JSOn
     const storedataJSONStorage = (object) => {
         window.localStorage.setItem(object.user, JSON.stringify(object))
@@ -194,35 +215,55 @@ export const userStorage = (() => {
         return JSON.parse(window.localStorage.getItem(item))
     }
 
+    const userJSONStorage = (object) => {
+        window.localStorage.setItem('users', JSON.stringify(object))
+    }
+
     // This was a test function to see about how to Store an Object using the User ID in the Object as a title from DataJSONStorage
     const testdataJSONStorage = () => {
-        console.log(dataObjectCreation(example))
-        storedataJSONStorage(dataObjectCreation(example))
-        console.log('Data Stored')
-        console.log(getdataJSONStorage(example.user))
-        console.log('Data retrieved')
-        console.log(getdataJSONStorage(example))
-        console.log('False Name given to test what data is retrieved')
-        console.log(userNameCollection())
-        console.log('Test Username Retreival')
-        return console.log('Test Function')
+        // console.log(dataObjectCreation(example))
+        // storedataJSONStorage(dataObjectCreation(example))
+        // console.log('Data Stored')
+        // console.log(getdataJSONStorage(example.user))
+        // console.log('Data retrieved')
+        // console.log(getdataJSONStorage(example))
+        // console.log('False Name given to test what data is retrieved')
+        // console.log(userNameCollection())
+        // console.log('Test Username Retreival')
+        // return console.log('Test Function')
+
+        // userJSONStorage(users)
+        // storedataJSONStorage(example)
+        // storedataJSONStorage(demo)
+        // console.log(getdataJSONStorage('users'))
     }
 
     // Function List
 
-
+    // at least one number, one lowercase and one uppercase letter
+    // at least six characters
     const checkUsername = (str) => {
-        // at least one number, one lowercase and one uppercase letter
-        // at least six characters
-        var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-        return re.test(str);
+        let re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+        try {
+            let userListObject = getdataJSONStorage('users')
+            if (userListObject.userList.includes(str)) {
+                return 'User ID Already Used'
+            }else{
+                return re.test(str)
+            }
+        } catch (error) {
+            userJSONStorage(users)
+            checkUsername(str)
+        }
+        
     }
 
+    // at least one number, one lowercase and one uppercase letter
+    // at least six characters that are letters, numbers or the underscore
     const checkPassword = (str) => {
-        // at least one number, one lowercase and one uppercase letter
-        // at least six characters that are letters, numbers or the underscore
-        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
+        
+        let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage }
+    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage, getdataJSONStorage }
 })()

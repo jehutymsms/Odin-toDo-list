@@ -17,18 +17,17 @@ import { globaljs } from './global';
 
 const Andrew = userStorage.demo
 
-navSectionCreation.createSection(Andrew);
-navSectionFunction.navFunction();
+// navSectionCreation.createSection(Andrew);
+// navSectionFunction.navFunction();
 // mainSectionCreation.createSection(Andrew)
 
-let pageGridContainer = document.getElementById('pageGridContainer')
-pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
-let taskRetrieval = document.getElementById('item0').querySelectorAll(`[class^='task']`)
+// let pageGridContainer = document.getElementById('pageGridContainer')
+// pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
 
 // console.log(taskRetrieval)
 
-let taskRetrieval1 = document.getElementById('projectSelector').querySelectorAll(`li`)
 window.localStorage.clear()
 userStorage.testdataJSONStorage()
 
-
+signInSectionCreation.createSection()
+signInSectionFunction.signInFunction()

@@ -60,16 +60,12 @@ export const signUpSectionFunction = (() => {
         let info = document.getElementById('userCreateInfo'),
             signUpCreate = document.getElementById('signUpCreate'),
             signUpCancel = document.getElementById('signUpCancel'),
-            signUpContainer = document.getElementById('signUp-Container-Outer');;
+            signUpContainer = document.getElementById('signUp-Container-Outer');
 
 
         //Function List
         const userCreateValidation = ( userToValidate ) =>{
-            if (userStorage.checkUsername(userToValidate)) {
-                return true
-            }else{
-                return false
-            };
+            return userStorage.checkUsername(userToValidate)
         };
 
         const passwordCreateValidation = ( passwordToValidate ) =>{
@@ -77,19 +73,21 @@ export const signUpSectionFunction = (() => {
                 return true
             }else{
                 return false
-            };
+            }
         };
 
         const signUpValidation = () =>{
-            if(userCreateValidation(info.elements['userName'].value)){
-
+            if (userCreateValidation(info.elements['userName'].value) == true) {
                 if(passwordCreateValidation(info.elements['password'].value)){
+                    console.log('PW good')
                 }else{
                     alert('Password does not meet requirements')
                 }
 
-            }else{
+            }else if(userCreateValidation(info.elements['userName'].value) == false){
                 alert('User ID does not meet requirements')
+            }else{
+                alert(userCreateValidation(info.elements['userName'].value)) 
             }
         }
 

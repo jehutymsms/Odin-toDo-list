@@ -67,7 +67,7 @@ export const signUpSectionCreation = (() => {
             passwordRequirements: {
                 tag: 'h2',
                 id: 'pwdRequirements',
-                htmlString:'at least six characters long including underscore,  one number, one lowercase and one uppercase letter',
+                htmlString:'at least six characters long, one number, one lowercase and one uppercase letter',
             },
             passwordInput: {
                 tag: 'input',
