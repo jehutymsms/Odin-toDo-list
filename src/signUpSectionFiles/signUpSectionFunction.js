@@ -77,28 +77,33 @@ export const signUpSectionFunction = (() => {
         };
 
         const signUpValidation = () =>{
-            if (userCreateValidation(info.elements['userName'].value) == true) {
-                if(passwordCreateValidation(info.elements['password'].value)){
-                    console.log('PW good')
+            let userID = info.elements['userName'].value,
+                password = info.elements['password'].value
+
+            if (userCreateValidation(userID) == true) {
+                if(passwordCreateValidation(password)){
+                    userStorage.addUserLocalStorage(userID,password);
+                    closeSignUp();
                 }else{
                     alert('Password does not meet requirements')
                 }
 
-            }else if(userCreateValidation(info.elements['userName'].value) == false){
+            }else if(userCreateValidation(userID) == false){
                 alert('User ID does not meet requirements')
             }else{
-                alert(userCreateValidation(info.elements['userName'].value)) 
+                alert(userCreateValidation(userID)) 
             }
         }
 
-
-        //Event Binds
-        signUpCreate.addEventListener('click', signUpValidation)
-        signUpCancel.addEventListener('click', function () {
+        const closeSignUp = () => {
             globaljs.render.removeElement(signUpContainer);
             signInSectionCreation.createSection();
             signInSectionFunction.signInFunction();
-        })
+        }
+
+        //Event Binds
+        signUpCreate.addEventListener('click', signUpValidation)
+        signUpCancel.addEventListener('click', closeSignUp)
         
     };
 

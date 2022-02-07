@@ -1,5 +1,7 @@
 export const userStorage = (() => {
 
+    const currentMDY = new Date().toLocaleDateString(undefined, {day: 'numeric', month: 'numeric', year: '2-digit'})
+
     const users = {
         userList: ['Andrew', 'example'],
 
@@ -83,7 +85,7 @@ export const userStorage = (() => {
             taskList: ['task Example'],
             tasks: {
                 task0: {
-                    dueDate: '11/26/22',
+                    dueDate: currentMDY,
                     complete: false,
                 },
             }
@@ -92,23 +94,21 @@ export const userStorage = (() => {
 
     // Create Default User Storage Object and add to user Storage
     const createNewUser = (username, password) => {
-        let userListObject = getdataJSONStorage('user'),
-        newUserObject = {}
-
-        newUserObject['userID'] = username
-        newUserObject['password'] = password
-        newUserObject['userStorageInfo'] = username
+        let newUserObject = {
+            userID: username,
+            password: password,
+            userStorageInfo: username,
+        }
         
         return newUserObject
     }
 
     // Add User Storage Object to user List
     const addUserLocalStorage = (username, password) => {
-        let userListObject = getdataJSONStorage('user'),
-            newUser = createNewUser(username, password)
+        let userListObject = getdataJSONStorage('users')
         
         userListObject.userList.push(username)
-        userListObject['username'] = createNewUser(username, password)
+        userListObject[username] = createNewUser(username, password)
 
         userJSONStorage(userListObject)
     }
@@ -178,7 +178,7 @@ export const userStorage = (() => {
     }
 
     // Collect Data Object Creation
-    const dataObjectCreation = (user = example) => {
+    const dataCollectionObjectCreation = (user = example) => {
         let projectArray = projectCollection(),
             NewDefaultObject = createDefaultProjectStorage(user.user, projectArray),
             ObjectItemsCreated = itemStorageCreation(NewDefaultObject),
@@ -232,9 +232,9 @@ export const userStorage = (() => {
         // console.log('Test Username Retreival')
         // return console.log('Test Function')
 
-        // userJSONStorage(users)
-        // storedataJSONStorage(example)
-        // storedataJSONStorage(demo)
+        userJSONStorage(users)
+        storedataJSONStorage(example)
+        storedataJSONStorage(demo)
         // console.log(getdataJSONStorage('users'))
     }
 
@@ -265,5 +265,5 @@ export const userStorage = (() => {
         let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage, getdataJSONStorage }
+    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage, getdataJSONStorage, addUserLocalStorage}
 })()
