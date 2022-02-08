@@ -27,15 +27,15 @@ export const userStorage = (() => {
             taskList: ['Laundry', 'Vacuum', 'Dishes'],
             tasks: {
                 task0: {
-                    dueDate: '11/26/22',
+                    dueDate: currentMDY,
                     complete: false,
                 },
                 task1: {
-                    dueDate: '11/27/22',
+                    dueDate: currentMDY,
                     complete: false,
                 },
                 task2: {
-                    dueDate: '11/28/22',
+                    dueDate: currentMDY,
                     complete: false,
                 }
             }
@@ -44,16 +44,16 @@ export const userStorage = (() => {
             taskList: ['Check E-mail', 'Update Project', 'Team Meeting'],
             tasks: {
                 task0: {
-                    dueDate: '11/22/22',
+                    dueDate: currentMDY,
                     complete: false,
                 },
                 task1: {
-                    dueDate: '11/23/22',
+                    dueDate: currentMDY,
                     complete: false,
 
                 },
                 task2: {
-                    dueDate: '11/24/22',
+                    dueDate: currentMDY,
                     complete: false,
                 }
             }
@@ -62,15 +62,15 @@ export const userStorage = (() => {
             taskList: ['Thaw Meat', 'Cut Vegetables', 'Cook Rice'],
             tasks: {
                 task0: {
-                    dueDate: '11/10/22',
+                    dueDate: currentMDY,
                     complete: false,
                 },
                 task1: {
-                    dueDate: '11/11/22',
+                    dueDate: currentMDY,
                     complete: false,
                 },
                 task2: {
-                    dueDate: '11/12/22',
+                    dueDate: currentMDY,
                     complete: false,
                 }
             }
@@ -177,8 +177,8 @@ export const userStorage = (() => {
         return projectArray
     }
 
-    // Collect Data Object Creation
-    const dataCollectionObjectCreation = (user = example) => {
+    // Collect User Data Object Creation
+    const userDataCollection = (user = example) => {
         let projectArray = projectCollection(),
             NewDefaultObject = createDefaultProjectStorage(user.user, projectArray),
             ObjectItemsCreated = itemStorageCreation(NewDefaultObject),
@@ -196,6 +196,14 @@ export const userStorage = (() => {
         }
 
         return ObjectItemTaskDataCollected
+    }
+
+    // Create User Data Object Creation
+    const userDataCreation = (username = example.user) => {
+        let ObjectCreation = example
+        ObjectCreation.user = username
+        console.log(ObjectCreation)
+        storedataJSONStorage(ObjectCreation)
     }
 
     // Collect Username
@@ -265,5 +273,5 @@ export const userStorage = (() => {
         let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage, getdataJSONStorage, addUserLocalStorage}
+    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage, getdataJSONStorage, addUserLocalStorage, userDataCreation}
 })()

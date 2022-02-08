@@ -83,6 +83,7 @@ export const signUpSectionFunction = (() => {
             if (userCreateValidation(userID) == true) {
                 if(passwordCreateValidation(password)){
                     userStorage.addUserLocalStorage(userID,password);
+                    userStorage.userDataCreation(userID);
                     closeSignUp();
                 }else{
                     alert('Password does not meet requirements')

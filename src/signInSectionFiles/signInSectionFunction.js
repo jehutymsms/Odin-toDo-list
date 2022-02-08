@@ -67,6 +67,7 @@ export const signInSectionFunction = (() => {
             signInButton = document.getElementById('signInButton'),
             signUpButton = document.getElementById('signUpButton'),
             signInContainer = document.getElementById('signIn-Container-Outer'),
+            demoButton = document.getElementById('demoButton'),
             userInfo = userStorage.getdataJSONStorage('users');
 
             
@@ -131,7 +132,17 @@ export const signInSectionFunction = (() => {
             });
         })
         
+        demoButton.addEventListener('click', function () {
+            let userData = userStorage.demo
 
+                    globaljs.render.removeElement(signInContainer)
+
+                    navSectionCreation.createSection(userData);
+                    navSectionFunction.navFunction();
+
+                    let pageGridContainer = document.getElementById('pageGridContainer')
+                        pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
+        })
         
 
 
