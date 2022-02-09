@@ -26,8 +26,7 @@ const Andrew = userStorage.demo
 
 // console.log(taskRetrieval)
 
-window.localStorage.clear()
-userStorage.testdataJSONStorage()
+userStorage.initialJSONStorageData()
 
 signInSectionCreation.createSection()
 signInSectionFunction.signInFunction()

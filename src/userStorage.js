@@ -228,22 +228,13 @@ export const userStorage = (() => {
     }
 
     // This was a test function to see about how to Store an Object using the User ID in the Object as a title from DataJSONStorage
-    const testdataJSONStorage = () => {
-        // console.log(dataObjectCreation(example))
-        // storedataJSONStorage(dataObjectCreation(example))
-        // console.log('Data Stored')
-        // console.log(getdataJSONStorage(example.user))
-        // console.log('Data retrieved')
-        // console.log(getdataJSONStorage(example))
-        // console.log('False Name given to test what data is retrieved')
-        // console.log(userNameCollection())
-        // console.log('Test Username Retreival')
-        // return console.log('Test Function')
-
-        userJSONStorage(users)
-        storedataJSONStorage(example)
-        storedataJSONStorage(demo)
-        // console.log(getdataJSONStorage('users'))
+    const initialJSONStorageData = () => {
+        if (getdataJSONStorage('users') !== false) {
+            userJSONStorage(users)
+            storedataJSONStorage(demo)
+            storedataJSONStorage(example)
+            console.log('Not Stored')
+        }
     }
 
     // Function List
@@ -273,5 +264,5 @@ export const userStorage = (() => {
         let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword, testdataJSONStorage, getdataJSONStorage, addUserLocalStorage, userDataCreation}
+    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation}
 })()
