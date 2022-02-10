@@ -17,16 +17,16 @@ import { globaljs } from './global';
 
 const Andrew = userStorage.demo
 
-// navSectionCreation.createSection(Andrew);
-// navSectionFunction.navFunction();
-// mainSectionCreation.createSection(Andrew)
+navSectionCreation.createSection(Andrew);
+navSectionFunction.navFunction();
+mainSectionCreation.createSection(Andrew)
 
-// let pageGridContainer = document.getElementById('pageGridContainer')
-// pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
+let pageGridContainer = document.getElementById('pageGridContainer')
+pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
 
 // console.log(taskRetrieval)
 
 userStorage.initialJSONStorageData()
 
-signInSectionCreation.createSection()
-signInSectionFunction.signInFunction()
+// signInSectionCreation.createSection()
+// signInSectionFunction.signInFunction()

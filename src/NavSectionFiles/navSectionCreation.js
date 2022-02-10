@@ -115,6 +115,7 @@ export const navSectionCreation = (() => {
             item2 = globaljs.newElement(navObjectList.homeTitle);
 
         item2.innerHTML = user
+        item2.id = 'userName'
         element.append(item1,item2);
 
         return element;
@@ -162,7 +163,6 @@ export const navSectionCreation = (() => {
         return element;
     };
 
-
     // Returns navMenuSection Section
     const navMenuSectionSection = (item) => {
         let element = globaljs.newElement(navObjectList.navMenuSection),
@@ -173,8 +173,6 @@ export const navSectionCreation = (() => {
 
         return element;
     };
-
-
 
     // Sign In section Creation
     const createSection = (info) => {

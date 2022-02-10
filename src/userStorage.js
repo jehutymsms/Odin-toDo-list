@@ -233,7 +233,6 @@ export const userStorage = (() => {
             userJSONStorage(users)
             storedataJSONStorage(demo)
             storedataJSONStorage(example)
-            console.log('Not Stored')
         }
     }
 
