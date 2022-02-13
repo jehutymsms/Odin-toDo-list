@@ -1,9 +1,9 @@
 import { globaljs } from '../global';
-
+import { omit } from 'lodash'
 
 export const navSectionCreation = (() => {
 
-    // Sign in Object List
+    // Navigation Object List
     const navObjectList = {
 
 
@@ -83,7 +83,72 @@ export const navSectionCreation = (() => {
 
     };
 
+    // Edit Project Object List
+    const editProjList = {
+        editProjectContainer: {
+            tag: 'div',
+            id: 'editProjectContainer',
+        },
+        editTaskSelect: {
+            tag: 'section',
+            classId: 'editTaskSelect',
+        },
+        label: {
+            tag: 'label',
+            classId: 'editTaskSelect',
+            for: 'editTaskSelect',
+            htmlString: '',
+        },
+        input: {
+            tag: 'input',
+            id: 'editTaskSelect',
+            classId: 'editTaskSelect',
+            for: 'editTaskSelect',
+            type: 'textarea',
+            name: 'userName',
+        },
+        doneCancelSection: {
+            tag: 'section',
+            classId: 'done-cancelSection',
+        },
+        done: {
+            tag: 'div',
+            id: 'done',
+            classId: 'done',
+        },
+        cancel: {
+            tag: 'div',
+            id: 'cancel',
+            classId: 'cancel',
+        },
+    }
+
     // Fuction List
+
+    // Edit Project Section
+    const editProjectContainer = (projectTitle, projectNumber) => {
+        let elementObject = {};
+
+        for (const [key, value] of Object.entries(editProjList)) {
+            elementObject[key] = globaljs.newElement(value)
+        }
+
+        elementObject.editProjectContainer.classList = `editProjectContainer${projectNumber}`
+        elementObject.label.innerHTML = projectTitle
+        elementObject.done.id = `doneProject${projectNumber}`
+        elementObject.cancel.id = `cancelProject${projectNumber}`
+    
+        elementObject.doneCancelSection.append(elementObject.done, elementObject.cancel);
+
+
+        elementObject.editTaskSelect.append(elementObject.label, elementObject.input);
+
+        elementObject.editProjectContainer.append(elementObject.editTaskSelect, elementObject.doneCancelSection)
+
+        elementObject = omit(elementObject, ['done', 'cancel', 'label', 'editTaskSelect', 'doneCancelSection', 'input'])
+
+        return elementObject.editProjectContainer
+    }
 
     // Return Nav Section Contents as list
     const NavSectionContentList = () => {
@@ -127,8 +192,9 @@ export const navSectionCreation = (() => {
             edit = globaljs.newElement(navObjectList.edit),
             deLete = globaljs.newElement(navObjectList.delete);
 
-            edit.id = `editProj${projectNumber}`
-            deLete.id = `deleteProj${projectNumber}`
+        element.id = `sectionEditDeleteProj${projectNumber}`
+        edit.id = `editProj${projectNumber}`
+        deLete.id = `deleteProj${projectNumber}`
 
         element.append(edit, deLete);
 
@@ -182,5 +248,5 @@ export const navSectionCreation = (() => {
         globaljs.render.bodyAppendChild(element);
     };
 
-    return { createSection };
+    return { createSection ,editProjectContainer};
 })();

@@ -1,4 +1,5 @@
 import { userStorage } from '../userStorage';
+import { navSectionCreation } from './navSectionCreation';
 
 export const navSectionFunction = (() => {
 
@@ -8,13 +9,11 @@ export const navSectionFunction = (() => {
             navSectionH1 = navSection.getElementsByTagName('h1'),
             navMenuSection = document.getElementById('navMenuSection'),
             username = document.getElementById('userName'),
+            sectionEditDeleteProj = document.querySelectorAll(`[id^='sectionEditDeleteProj']`),
             editButtons = document.querySelectorAll(`[id^='editProj']`),
             deleteButtons = document.querySelectorAll(`[id^='deleteProj']`),
             matches = editButtons[0].id.match(/\d+/);
-            console.log(editButtons.length)
-            console.log(editButtons)
-            console.log(username)
-            
+    
 
         //Function List
         const iconRotate = () =>{
@@ -27,8 +26,12 @@ export const navSectionFunction = (() => {
         navSectionH1[0].addEventListener('click', iconRotate)
         
         editButtons[0].addEventListener('click', function() {
-            console.log(userStorage.getdataJSONStorage(username.innerHTML))
+            navSectionCreation.editProjectContainer(userStorage.getdataJSONStorage(username.innerHTML).projectTitles[0], 0)
+
+            sectionEditDeleteProj[0].parentNode.insertBefore(navSectionCreation.editProjectContainer(userStorage.getdataJSONStorage(username.innerHTML).projectTitles[0], 0), sectionEditDeleteProj[0].nextSibling);
         })
+
+
         deleteButtons[0].addEventListener('click', function() {
             console.log('Delete clicked')
         })

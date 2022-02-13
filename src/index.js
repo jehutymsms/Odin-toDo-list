@@ -14,7 +14,6 @@ import { mainSectionCreation } from './mainSectionFiles/mainSectionCreation';
 
 import { globaljs } from './global';
 
-
 const Andrew = userStorage.demo
 
 navSectionCreation.createSection(Andrew);
@@ -27,6 +26,20 @@ pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
 // console.log(taskRetrieval)
 
 userStorage.initialJSONStorageData()
+
+let testElements = navSectionCreation.editProjectContainer('Home Chores',0)
+
+// for (let i = 0; i < Object.keys(testElements).length; i++) {
+//     pageGridContainer.append(testElements[Object.keys(testElements)[i]])
+// }
+
+
+// pageGridContainer.appendChild(testElements)
+
+
+// for (const [key, value] of Object.entries(testElements)) {
+//     pageGridContainer.appendChild(value)
+// }
 
 // signInSectionCreation.createSection()
 // signInSectionFunction.signInFunction()
