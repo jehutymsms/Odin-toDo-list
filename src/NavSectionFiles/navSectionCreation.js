@@ -137,7 +137,8 @@ export const navSectionCreation = (() => {
         elementObject.label.innerHTML = projectTitle
         elementObject.done.id = `doneProject${projectNumber}`
         elementObject.cancel.id = `cancelProject${projectNumber}`
-    
+        elementObject.input.id = `editTaskSelect${projectNumber}`
+
         elementObject.doneCancelSection.append(elementObject.done, elementObject.cancel);
 
 
