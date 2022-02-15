@@ -77,6 +77,7 @@ export const navSectionCreation = (() => {
 
         button: {
             tag: 'button',
+            id: 'addProject',
             classId: 'addProject',
             htmlString: 'Add Project',
         },

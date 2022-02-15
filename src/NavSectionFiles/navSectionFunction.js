@@ -1,17 +1,20 @@
 import { userStorage } from '../userStorage';
 import { navSectionCreation } from './navSectionCreation';
+import { mainSectionCreation } from '../mainSectionFiles/mainSectionCreation';
 
 export const navSectionFunction = (() => {
 
     const navFunction = () => {
         // Cache Dom List
-        let navSection = document.getElementById('navSection'),
+        let pageGridContainer = document.getElementById('pageGridContainer'), 
+            navSection = document.getElementById('navSection'),
             navSectionH1 = navSection.getElementsByTagName('h1'),
             navMenuSection = document.getElementById('navMenuSection'),
             username = document.getElementById('userName'),
             sectionEditDeleteProj = document.querySelectorAll(`[id^='sectionEditDeleteProj']`),
             editButtons = document.querySelectorAll(`[id^='editProj']`),
-            deleteButtons = document.querySelectorAll(`[id^='deleteProj']`)
+            deleteButtons = document.querySelectorAll(`[id^='deleteProj']`),
+            addProjectButton = document.getElementById('addProject')
 
         //Function List
         const iconRotate = () =>{
@@ -49,9 +52,15 @@ export const navSectionFunction = (() => {
 
         const projectDelete = (projectNumber) => {
             let edit_deleteSection = document.getElementById(`sectionEditDeleteProj${projectNumber}`),
-                projectTitle = edit_deleteSection.previousElementSibling
+                projectTitle = edit_deleteSection.previousElementSibling,
+                mainSection = document.getElementById('mainSection')
+                
                 edit_deleteSection.remove()
                 projectTitle.remove()
+                userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
+                mainSection.remove()
+                pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
+                
         }
 
         const editProjectBindings = (projectNumber) => {
@@ -68,10 +77,13 @@ export const navSectionFunction = (() => {
                         title_Delete(projectNumber)
                         titleHide_Show(projectNumber)
                     }else{
+                        let mainSection = document.getElementById('mainSection')
                         titleUpdate(projectNumber,getTitle(projectNumber))
                         title_Delete(projectNumber)
                         titleHide_Show(projectNumber)
                         userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
+                        mainSection.remove()
+                        pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
                     }
                 })
         }

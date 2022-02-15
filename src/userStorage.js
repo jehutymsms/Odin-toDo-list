@@ -92,6 +92,8 @@ export const userStorage = (() => {
         },
     }
 
+    // Function List
+
     // Create Default User Storage Object and add to user Storage
     const createNewUser = (username, password) => {
         let newUserObject = {
@@ -202,7 +204,6 @@ export const userStorage = (() => {
     const userDataCreation = (username = example.user) => {
         let ObjectCreation = example
         ObjectCreation.user = username
-        console.log(ObjectCreation)
         storedataJSONStorage(ObjectCreation)
     }
 
@@ -223,11 +224,12 @@ export const userStorage = (() => {
         return JSON.parse(window.localStorage.getItem(item))
     }
 
+    // Store Object in JSON
     const userJSONStorage = (object) => {
         window.localStorage.setItem('users', JSON.stringify(object))
     }
 
-    // This was a test function to see about how to Store an Object using the User ID in the Object as a title from DataJSONStorage
+    // Initial JSON Data Storage
     const initialJSONStorageData = () => {
         if (getdataJSONStorage('users') !== false) {
             userJSONStorage(users)
@@ -236,7 +238,18 @@ export const userStorage = (() => {
         }
     }
 
-    // Function List
+    // Project Deletetion from JSON
+    const deleteProject = (username, projectName) => {
+        let userProfile = getdataJSONStorage(username)
+        
+        delete userProfile[`item${userProfile.projectTitles.indexOf(projectName)}`]
+        
+        userProfile.projectTitles.splice(userProfile.projectTitles.indexOf(projectName),1)
+
+        storedataJSONStorage(userDataCollection(userProfile)) 
+
+    }
+
 
     // at least one number, one lowercase and one uppercase letter
     // at least six characters
@@ -263,5 +276,5 @@ export const userStorage = (() => {
         let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation, userDataCollection, storedataJSONStorage}
+    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation, userDataCollection, storedataJSONStorage, deleteProject}
 })()
