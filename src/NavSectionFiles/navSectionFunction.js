@@ -44,9 +44,14 @@ export const navSectionFunction = (() => {
         }
 
         const getTitle = (projectNumber) => {
-            let newTitle = document.getElementById(`editTaskSelect${projectNumber}`).value
+            return document.getElementById(`editTaskSelect${projectNumber}`).value
+        }
 
-            return newTitle
+        const projectDelete = (projectNumber) => {
+            let edit_deleteSection = document.getElementById(`sectionEditDeleteProj${projectNumber}`),
+                projectTitle = edit_deleteSection.previousElementSibling
+                edit_deleteSection.remove()
+                projectTitle.remove()
         }
 
         const editProjectBindings = (projectNumber) => {
@@ -59,10 +64,15 @@ export const navSectionFunction = (() => {
                 })
 
                 done.addEventListener('click',function(){
-                    console.log('Function Run')
-                    titleUpdate(projectNumber,getTitle(projectNumber))
-                    title_Delete(projectNumber)
-                    titleHide_Show(projectNumber)
+                    if (getTitle(projectNumber).replace(/\s/g,'') == '') {
+                        title_Delete(projectNumber)
+                        titleHide_Show(projectNumber)
+                    }else{
+                        titleUpdate(projectNumber,getTitle(projectNumber))
+                        title_Delete(projectNumber)
+                        titleHide_Show(projectNumber)
+                        userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
+                    }
                 })
         }
 
@@ -70,28 +80,31 @@ export const navSectionFunction = (() => {
         //Event Binds
         navSectionH1[0].addEventListener('click', iconRotate)
 
+        for (let i = 0; i < sectionEditDeleteProj.length; i++) {
+            editButtons[i].addEventListener('click', function() {
+                let edit_deleteSection = document.getElementById(`sectionEditDeleteProj${i}`),
+                    projectTitle = edit_deleteSection.previousElementSibling
+    
+                navSectionCreation.editProjectContainer(userStorage.getdataJSONStorage(username.innerHTML).projectTitles[i], i)
+    
+                sectionEditDeleteProj[i].parentNode.insertBefore(navSectionCreation.editProjectContainer(projectTitle.innerHTML, i), sectionEditDeleteProj[i].nextSibling);
+                edit_deleteSection.style.display = 'none';
+                projectTitle.style.display = 'none';
+                editProjectBindings(i)
+            })
+    
+            deleteButtons[i].addEventListener('click', function() {
+                projectDelete(i)
+            })
+            
+        }
 
 
-        editButtons[0].addEventListener('click', function() {
-            let edit_deleteSection = document.getElementById('sectionEditDeleteProj0'),
-                projectTitle = edit_deleteSection.previousElementSibling
-
-            navSectionCreation.editProjectContainer(userStorage.getdataJSONStorage(username.innerHTML).projectTitles[0], 0)
-
-            sectionEditDeleteProj[0].parentNode.insertBefore(navSectionCreation.editProjectContainer(projectTitle.innerHTML, 0), sectionEditDeleteProj[0].nextSibling);
-            edit_deleteSection.style.display = 'none';
-            projectTitle.style.display = 'none';
-            editProjectBindings(0)
-        })
-
-
-        deleteButtons[0].addEventListener('click', function() {
-            console.log('Delete clicked')
-        })
+        
 
 
     };
 
-    return { navFunction};
+    return { navFunction };
 
 })();

@@ -214,8 +214,8 @@ export const userStorage = (() => {
     }
 
     // Store Data as JSOn
-    const storedataJSONStorage = (object) => {
-        window.localStorage.setItem(object.user, JSON.stringify(object))
+    const storedataJSONStorage = (object, user = object.user) => {
+        window.localStorage.setItem(user, JSON.stringify(object))
     }
 
     // Get Data from JSON Storage as an object
@@ -263,5 +263,5 @@ export const userStorage = (() => {
         let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation}
+    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation, userDataCollection, storedataJSONStorage}
 })()
