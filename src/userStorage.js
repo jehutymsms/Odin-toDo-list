@@ -276,5 +276,5 @@ export const userStorage = (() => {
         let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
         return re.test(str);
     }
-    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation, userDataCollection, storedataJSONStorage, deleteProject}
+    return { demo, users, example, checkUsername, checkPassword,initialJSONStorageData, getdataJSONStorage, addUserLocalStorage, userDataCreation, userDataCollection, storedataJSONStorage, deleteProject,currentMDY}
 })()

@@ -88,6 +88,29 @@ export const navSectionFunction = (() => {
                 })
         }
 
+        const addProjectBindings = (projectNumber) => {
+            let done = document.getElementById(`doneProject${projectNumber}`),
+                cancel = document.getElementById(`cancelProject${projectNumber}`),
+                userData = userStorage.getdataJSONStorage(username.innerHTML)
+
+                cancel.addEventListener('click',function(){
+                    title_Delete(projectNumber)
+                })
+
+                done.addEventListener('click',function(){
+                    if (getTitle(projectNumber).replace(/\s/g,'') == '') {
+                        title_Delete(projectNumber)
+                    }else{
+                        let mainSection = document.getElementById('mainSection')
+                        userData.projectTitle.push(getTitle(projectNumber))
+                        userData[`item${projectNumber}`] = {}
+                        
+                        mainSection.remove()
+                        pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
+                    }
+                })
+        }
+
 
         //Event Binds
         navSectionH1[0].addEventListener('click', iconRotate)
@@ -112,7 +135,13 @@ export const navSectionFunction = (() => {
         }
 
 
-        
+        addProjectButton.addEventListener('click', function(){
+            let newProjectNumber = userStorage.getdataJSONStorage(username.innerHTML).projectTitles.length
+
+            console.log('Function Run')
+            addProjectButton.parentNode.insertBefore(navSectionCreation.editProjectContainer('New Project', newProjectNumber),addProjectButton)
+            addProjectBindings(newProjectNumber)
+        })
 
 
     };
