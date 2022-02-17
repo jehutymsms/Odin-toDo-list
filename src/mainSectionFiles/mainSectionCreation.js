@@ -110,56 +110,56 @@ export const mainSectionCreation = (() => {
     // Fuction List
 
     // Input Element
-    const inputElementCreation = (taskNumber) => {
+    const inputElementCreation = (taskNumber, itemID) => {
         let element = globaljs.newElement(mainObjectList.items.item0)
 
-        element.setAttribute('class', `task${taskNumber}`)
-        element.setAttribute('id', `task${taskNumber}`)
-        element.setAttribute('name', `task${taskNumber}`)
+        element.setAttribute('class', `task${taskNumber}p${itemID}`)
+        element.setAttribute('id', `task${taskNumber}p${itemID}`)
+        element.setAttribute('name', `task${taskNumber}p${itemID}`)
 
         return element
     }
 
     // Label Element
-    const labelElementCreation = (taskNumber, htmlString) => {
+    const labelElementCreation = (taskNumber, htmlString, itemID) => {
         let element = globaljs.newElement(mainObjectList.items.item1)
 
-        element.setAttribute('class', `task${taskNumber}`)
-        element.setAttribute('for', `task${taskNumber}`)
+        element.setAttribute('class', `task${taskNumber}p${itemID}`)
+        element.setAttribute('for', `task${taskNumber}p${itemID}`)
         element.innerHTML = htmlString;
 
         return element
     }
 
     // Date Element
-    const dateElementCreation = (taskNumber, htmlString) => {
+    const dateElementCreation = (taskNumber, htmlString, itemID) => {
         let element = globaljs.newElement(mainObjectList.items.item2)
 
-        element.setAttribute('class', `task${taskNumber}`)
+        element.setAttribute('class', `task${taskNumber}p${itemID}`)
         element.innerHTML = htmlString;
 
         return element
     }
 
     // Edit/delete Section
-    const edit_DeleteSection = (className) => {
+    const edit_DeleteSection = (className, itemID) => {
         let element = globaljs.newElement(mainObjectList.section),
             edit = globaljs.newElement(mainObjectList.edit),
             deLete = globaljs.newElement(mainObjectList.delete);
 
-        element.setAttribute('class', `task${className}`)
+        element.setAttribute('class', `task${className}p${itemID}`)
         element.append(edit, deLete);
 
         return element;
     };
 
     // Default Task Creation
-    const taskElementCreation = (taskNumber, taskDueDate, taskName, taskComplete = false) => {
+    const taskElementCreation = (taskNumber, taskDueDate, taskName, itemID, taskComplete = false) => {
         let elementList = [],
-            input = inputElementCreation(taskNumber),
-            label = labelElementCreation(taskNumber, taskName),
-            pTag = dateElementCreation(taskNumber, taskDueDate),
-            section = edit_DeleteSection(taskNumber)
+            input = inputElementCreation(taskNumber, itemID),
+            label = labelElementCreation(taskNumber, taskName, itemID),
+            pTag = dateElementCreation(taskNumber, taskDueDate, itemID),
+            section = edit_DeleteSection(taskNumber, itemID)
 
         label.checked = taskComplete
         elementList.push(input, label, pTag, section)
@@ -167,9 +167,9 @@ export const mainSectionCreation = (() => {
     }
 
     // Tasks Section Default Creation
-    const tasksDefaultSection = (taskName, userData = userStorage.demo) => {
+    const tasksDefaultSection = (taskName, itemID, userData = userStorage.demo) => {
         let element = globaljs.newElement(mainObjectList.tasksSection),
-            tasks = taskElementObjectList(taskName, userData)
+            tasks = taskElementObjectList(taskName, itemID, userData)
 
         for (let i = 0; i < Object.keys(mainObjectList.taskDefaultItems).length; i++) {
             let defaultItem = globaljs.newElement(mainObjectList.taskDefaultItems[`item${i}`]);
@@ -193,12 +193,11 @@ export const mainSectionCreation = (() => {
     const itemSectionCreation = (itemID, h2Title, userData = userStorage.demo) => {
         let element = globaljs.newElement(mainObjectList.taskItem),
             taskH2 = globaljs.newElement(mainObjectList.taskItemH2),
-            tasks = tasksDefaultSection(h2Title, userData),
+            tasks = tasksDefaultSection(h2Title, itemID, userData),
             addTask = globaljs.newElement(mainObjectList.addTaskBtton)
 
         taskH2.innerHTML = h2Title
         element.id = `item${itemID}`
-
         element.append(taskH2, tasks, addTask)
 
         return element
@@ -217,7 +216,7 @@ export const mainSectionCreation = (() => {
 
     // Task Element List 
 
-    const taskElementObjectList = (itemName, userData = userStorage.demo) => {
+    const taskElementObjectList = (itemName, itemID,userData = userStorage.demo) => {
         let taskObjectList = {},
             taskNumber = userData.projectTitles.indexOf(itemName)
 
@@ -226,7 +225,7 @@ export const mainSectionCreation = (() => {
                 taskName = userData[`item${taskNumber}`].taskList[i],
                 taskComplete = userData[`item${taskNumber}`].tasks[`task${i}`].complete
 
-            taskObjectList[`task${i}`] = taskElementCreation(i, dueDate, taskName, taskComplete);
+            taskObjectList[`task${i}`] = taskElementCreation(i, dueDate, taskName, itemID, taskComplete);
         }
         return taskObjectList
     }
