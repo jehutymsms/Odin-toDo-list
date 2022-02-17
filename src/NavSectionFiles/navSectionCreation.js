@@ -250,5 +250,5 @@ export const navSectionCreation = (() => {
         globaljs.render.bodyAppendChild(element);
     };
 
-    return { createSection ,editProjectContainer};
+    return { createSection ,editProjectContainer,navMenuSectionSection};
 })();
