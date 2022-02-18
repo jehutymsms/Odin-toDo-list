@@ -107,7 +107,75 @@ export const mainSectionCreation = (() => {
 
     };
 
+    // Edit Task Object List
+    const editTaskList = {
+        editTaskContainer: {
+            tag: 'div',
+            id: 'editTaskContainer',
+        },
+        editTask: {
+            tag: 'div',
+            id: 'editTask',
+        },
+        editTaskSelectSection: {
+            tag: 'section',
+            classId: 'editTaskSelect',
+        },
+        editTaskSelectLabel: {
+            tag: 'label',
+            for: 'editTaskSelect',
+            htmlString: 'Task',
+        },
+        editTaskSelectTextArea: {
+            tag: 'textarea',
+            id: 'editTaskSelect',
+            name: 'Task',
+            cols: '10',
+            rows: '1',
+        },
+        editDateSelect: {
+            tag: 'section',
+            classId: 'editDateSelect',
+        },
+
+        editDateSelectLabel: {
+            tag: 'label',
+            for: 'editDateSelect',
+            htmlString: 'Date',
+        },
+        editDateSelectInput: {
+            tag: 'input',
+            id: 'editDateSelect',
+            type: 'date',
+            name: 'editDateSelect',
+        },
+        doneCancelSection: {
+            tag: 'section',
+            classId: 'done-cancelSection',
+        },
+        done: {
+            tag: 'div',
+            id: 'done',
+            classId: 'done',
+        },
+        cancel: {
+            tag: 'div',
+            id: 'cancel',
+            classId: 'cancel',
+        },
+    }
     // Fuction List
+
+    // Edit Task Container Element
+    const editTaskContainerElement = (taskNumber, itemID) => {
+        let element = globaljs.newElement(mainObjectList.items.item0)
+
+        element.setAttribute('class', `task${taskNumber}p${itemID}`)
+        element.setAttribute('id', `task${taskNumber}p${itemID}`)
+        element.setAttribute('name', `task${taskNumber}p${itemID}`)
+
+        return element
+}
 
     // Input Element
     const inputElementCreation = (taskNumber, itemID) => {
@@ -214,8 +282,7 @@ export const mainSectionCreation = (() => {
     }
 
 
-    // Task Element List 
-
+    // Task Element List
     const taskElementObjectList = (itemName, itemID,userData = userStorage.demo) => {
         let taskObjectList = {},
             taskNumber = userData.projectTitles.indexOf(itemName)

@@ -43,6 +43,7 @@
 
   <!-- <div id='pageGridContainer'>
 
+
     <div id="navSection">
       <h1>+</h1>
       <h2>Checkist</h2>
@@ -219,6 +220,155 @@
     </div>
 
   </div> -->
+
+<div id="pageGridContainer">
+  <div id="navSection">
+    <h1>+</h1>
+    <h2>Checkist</h2>
+  </div>
+  <div class="navMenuSectionHide" id="navMenuSection">
+    <div id="defaultSelector">
+      <h2>Home</h2>
+      <h2 id="userName">Andrew</h2>
+    </div>
+    <div id="projectSelector">
+      <h2>Projects</h2>
+      <ul>
+        <li>Home Chores</li>
+        <section id="sectionEditDeleteProj0">
+          <div class="edit" id="editProj0"></div>
+          <div class="delete" id="deleteProj0"></div>
+        </section>
+        <li>Work</li>
+        <section id="sectionEditDeleteProj1">
+          <div class="edit" id="editProj1"></div>
+          <div class="delete" id="deleteProj1"></div>
+        </section>
+        <li>Food Prep</li>
+        <section id="sectionEditDeleteProj2">
+          <div class="edit" id="editProj2"></div>
+          <div class="delete" id="deleteProj2"></div>
+        </section><button class="addProject" id="addProject">Add Project</button>
+      </ul>
+    </div>
+  </div>
+  <div id="mainSection">
+    <h2>All Tasks</h2>
+
+    <div class="items" id="item0">
+      <h2>Home Chores</h2>
+      <div class="tasks">
+
+        <h1>Complete</h1>
+        <h2>Tasks</h2>
+        <h2>Due Date</h2>
+        <h2>Edit</h2>
+
+        <input type="checkbox" class="task0p0" id="task0p0" name="task0p0">
+        <label class="task0p0" for="task0p0">Laundry</label>
+        <p class="task0p0">2/18/22</p>
+        <section class="task0p0">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section>
+
+        <div id="editTaskContainer">
+          <div id="editTask">
+            <section class='editTaskSelect'>
+              <label for="editTaskSelect">Task</label>
+              <textarea name="editTaskSelect" id="editTaskSelect" cols="10" rows="1"></textarea>
+            </section>
+            <section class='editDateSelect'>
+              <label for="editDateSelect">Date</label>
+              <input type="date" id="editDateSelect" name="editDateSelect">  
+            </section>
+            <section class='done-cancelSection'>
+              <div class='done' id='done'></div>
+              <div class='cancel' id='cancel'></div>
+            </section>
+          </div>
+        </div>
+
+        <input type="checkbox" class="task1p0" id="task1p0" name="task1p0">
+        <label class="task1p0"for="task1p0">Vacuum</label>
+        <p class="task1p0">2/18/22</p>
+        <section class="task1p0">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section>
+
+        <input type="checkbox" class="task2p0" id="task2p0" name="task2p0">
+        <label class="task2p0"for="task2p0">Dishes</label>
+        <p class="task2p0">2/18/22</p>
+        <section class="task2p0">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section>
+
+      </div><button class="addTask">Add Task</button>
+    </div>
+
+    <div class="items" id="item1">
+      <h2>Work</h2>
+      <div class="tasks">
+        <h1>Complete</h1>
+        <h2>Tasks</h2>
+        <h2>Due Date</h2>
+        <h2>Edit</h2><input type="checkbox" class="task0p1" id="task0p1" name="task0p1"><label class="task0p1"
+          for="task0p1">Check E-mail</label>
+        <p class="task0p1">2/18/22</p>
+        <section class="task0p1">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section><input type="checkbox" class="task1p1" id="task1p1" name="task1p1"><label class="task1p1"
+          for="task1p1">Update Project</label>
+        <p class="task1p1">2/18/22</p>
+        <section class="task1p1">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section><input type="checkbox" class="task2p1" id="task2p1" name="task2p1"><label class="task2p1"
+          for="task2p1">Team Meeting</label>
+        <p class="task2p1">2/18/22</p>
+        <section class="task2p1">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section>
+      </div><button class="addTask">Add Task</button>
+    </div>
+
+    <div class="items" id="item2">
+      <h2>Food Prep</h2>
+      <div class="tasks">
+        <h1>Complete</h1>
+        <h2>Tasks</h2>
+        <h2>Due Date</h2>
+        <h2>Edit</h2><input type="checkbox" class="task0p2" id="task0p2" name="task0p2"><label class="task0p2"
+          for="task0p2">Thaw Meat</label>
+        <p class="task0p2">2/18/22</p>
+        <section class="task0p2">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section><input type="checkbox" class="task1p2" id="task1p2" name="task1p2"><label class="task1p2"
+          for="task1p2">Cut Vegetables</label>
+        <p class="task1p2">2/18/22</p>
+        <section class="task1p2">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section><input type="checkbox" class="task2p2" id="task2p2" name="task2p2"><label class="task2p2"
+          for="task2p2">Cook Rice</label>
+        <p class="task2p2">2/18/22</p>
+        <section class="task2p2">
+          <div class="edit" id="edit"></div>
+          <div class="delete" id="delete"></div>
+        </section>
+      </div><button class="addTask">Add Task</button>
+    </div>
+
+    <div id="footerSection">
+      <h2>Made by Andrew Humphries</h2>
+    </div>
+  </div>
+</div>
 
 </body>
 

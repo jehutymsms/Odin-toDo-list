@@ -16,6 +16,8 @@ export const globaljs = (() => {
         if (item.type) { element.setAttribute('type', item.type)}
         if (item.name) { element.setAttribute('name', item.name)}
         if (item.value) { element.setAttribute('value', item.value)}
+        if (item.cols) { element.setAttribute('cols', item.cols)}
+        if (item.rows) { element.setAttribute('rows', item.rows)}
         return element;
     };
 

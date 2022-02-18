@@ -11,23 +11,24 @@ import { navSectionCreation } from './NavSectionFiles/navSectionCreation';
 import { navSectionFunction } from './NavSectionFiles/navSectionFunction';
 
 import { mainSectionCreation } from './mainSectionFiles/mainSectionCreation';
+import { mainSectionFunction } from './mainSectionFiles/mainSectionFunction';
+
 
 import { globaljs } from './global';
 
-const Andrew = userStorage.demo
+// const Andrew = userStorage.demo
 
-navSectionCreation.createSection(Andrew);
-navSectionFunction.navFunction();
-mainSectionCreation.createSection(Andrew)
+// navSectionCreation.createSection(Andrew);
+// navSectionFunction.navFunction();
+// mainSectionCreation.createSection(Andrew)
 
-let pageGridContainer = document.getElementById('pageGridContainer')
-pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
+// let pageGridContainer = document.getElementById('pageGridContainer')
+// pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
 
-// console.log(taskRetrieval)
 
-userStorage.initialJSONStorageData()
-
-let testElements = navSectionCreation.editProjectContainer('Home Chores',0)
+// userStorage.initialJSONStorageData()
+// mainSectionFunction.mainFunction()
+// let testElements = navSectionCreation.editProjectContainer('Home Chores',0)
 
 // for (let i = 0; i < Object.keys(testElements).length; i++) {
 //     pageGridContainer.append(testElements[Object.keys(testElements)[i]])
