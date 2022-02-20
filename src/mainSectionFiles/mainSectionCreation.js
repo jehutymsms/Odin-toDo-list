@@ -111,11 +111,11 @@ export const mainSectionCreation = (() => {
     const editTaskList = {
         editTaskContainer: {
             tag: 'div',
-            id: 'editTaskContainer',
+            classId: 'editTaskContainer',
         },
         editTask: {
             tag: 'div',
-            id: 'editTask',
+            classId: 'editTask',
         },
         editTaskSelectSection: {
             tag: 'section',
@@ -128,7 +128,6 @@ export const mainSectionCreation = (() => {
         },
         editTaskSelectTextArea: {
             tag: 'textarea',
-            id: 'editTaskSelect',
             name: 'Task',
             cols: '10',
             rows: '1',
@@ -145,7 +144,6 @@ export const mainSectionCreation = (() => {
         },
         editDateSelectInput: {
             tag: 'input',
-            id: 'editDateSelect',
             type: 'date',
             name: 'editDateSelect',
         },
@@ -166,16 +164,103 @@ export const mainSectionCreation = (() => {
     }
     // Fuction List
 
+
+// Main Task Edit Creation Elements
+
     // Edit Task Container Element
     const editTaskContainerElement = (taskNumber, itemID) => {
-        let element = globaljs.newElement(mainObjectList.items.item0)
+        let element = globaljs.newElement(editTaskList.editTaskContainer)
 
-        element.setAttribute('class', `task${taskNumber}p${itemID}`)
-        element.setAttribute('id', `task${taskNumber}p${itemID}`)
-        element.setAttribute('name', `task${taskNumber}p${itemID}`)
+        element.setAttribute('id', `editTaskContainerT${taskNumber}I${itemID}`)
 
         return element
-}
+    }
+
+    const editTaskElement = (taskNumber, itemID) => {
+        let element = globaljs.newElement(editTaskList.editTask)
+
+        element.setAttribute('id', `editTaskT${taskNumber}I${itemID}`)
+
+        return element
+    }
+
+    const editTaskSelectSectionElement = () => {
+        let element = globaljs.newElement(editTaskList.editTaskSelectSection)
+
+        return element
+    }
+
+    const editTaskSelectLabelElement = () => {
+        let element = globaljs.newElement(editTaskList.editTaskSelectLabel)
+
+        return element
+    }
+
+    const editTaskSelectTextAreaElement = (taskNumber, itemID) => {
+        let element = globaljs.newElement(editTaskList.editTaskSelectTextArea)
+
+        element.setAttribute('id', `editTaskSelectT${taskNumber}I${itemID}`)
+
+        return element
+    }
+
+    const editDateSelectSectionElement = () => {
+        let element = globaljs.newElement(editTaskList.editDateSelect)
+
+        return element
+    }
+
+    const editDateSelectLabelElement = () => {
+        let element = globaljs.newElement(editTaskList.editDateSelectLabel)
+
+        return element
+    }
+
+    const editDateSelectInputElement = (taskNumber, itemID) => {
+        let element = globaljs.newElement(editTaskList.editDateSelectInput)
+
+        element.setAttribute('id', `editDateSelectT${taskNumber}I${itemID}`)
+
+        return element
+    }
+
+    const doneCancelSectionElement = () => {
+        let element = globaljs.newElement(editTaskList.doneCancelSection)
+        return element
+    }
+
+    const doneElement = () => {
+        let element = globaljs.newElement(editTaskList.done)
+        return element
+    }
+
+    const cancelElement = () => {
+        let element = globaljs.newElement(editTaskList.cancel)
+        return element
+    }
+
+
+    const editTaskElementCreation = (taskNumber, itemID) => {
+        let editTaskContainerElement = editTaskContainerElement(taskNumber, itemID),
+            editTask = editTaskElement(taskNumber, itemID),
+            editTaskSelect = editTaskSelectSectionElement(),
+            editDateSelect = editDateSelectSectionElement(),
+            doneCancelSection = doneCancelSectionElement()
+
+            editTaskSelect.append(editTaskSelectLabelElement(),editTaskSelectTextAreaElement(taskNumber, itemID))
+
+            editDateSelect.append(editDateSelectLabelElement(),editDateSelectInputElement(taskNumber, itemID))
+
+            doneCancelSection.append(doneElement(), cancelElement())
+
+            editTask.append(editTaskSelect, editDateSelect, doneCancelSection)
+
+            editTaskContainerElement.append(editTask)
+
+        return editTaskContainerElement
+    }
+
+// Main Task Creation Elements
 
     // Input Element
     const inputElementCreation = (taskNumber, itemID) => {
@@ -216,6 +301,8 @@ export const mainSectionCreation = (() => {
             deLete = globaljs.newElement(mainObjectList.delete);
 
         element.setAttribute('class', `task${className}p${itemID}`)
+        edit.setAttribute('id', `edit${className}p${itemID}`)
+        deLete.setAttribute('id', `delete${className}p${itemID}`)
         element.append(edit, deLete);
 
         return element;
@@ -331,6 +418,6 @@ export const mainSectionCreation = (() => {
         return element
     }
 
-    return { createSection};
+    return { createSection, editTaskElementCreation };
 
 })();

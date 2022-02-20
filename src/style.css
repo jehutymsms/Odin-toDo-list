@@ -697,21 +697,21 @@ input[type=text]{
 		8.3. Main Edit Section Global Styles
 		==================================== */
 
-#editTask>*{
+.editTask>*{
 	place-self: center;
 }
 
-#editTask>section>*{
+.editTask>section>*{
 	height: auto;
 	width: 90%;
 	transition: 0.5s;
 }
 
-#editTask>.done-cancelSection>*:hover{
+.editTask>.done-cancelSection>*:hover{
 	background-color: var(--clr-secondary-opacity-light);
 }
 
-#editTask>.done-cancelSection>*{
+.editTask>.done-cancelSection>*{
 	width: auto;
 	height: auto;
 	flex-grow: 1;
@@ -721,13 +721,13 @@ input[type=text]{
 		8.4. Main Edit Section Target Element Styles
 		============================================ */
 
-#editTaskContainer{
+.editTaskContainer{
 	width: 100%;
 	padding: 0;
 	grid-column: span 4;
 }
 
-#editTask{
+.editTask{
 	display: grid;
 	margin: auto;
 	width: 80%;
@@ -737,25 +737,25 @@ input[type=text]{
 	column-gap: 0.5em;
 }
 
-#editTask>section{
+.editTask>section{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
 }
 
-#editTask>section>label{
+.editTask>section>label{
 	color: var(--clr-secondary);
 	place-self: center;
 	font-size: 1em;
 	width: 100%;
 }
 
-#editTask>section>textarea{
+.editTask>section>textarea{
 	resize: vertical;
 }
 
-#editTask>.done-cancelSection{
+.editTask>.done-cancelSection{
 	flex-direction: row;
 }
 
