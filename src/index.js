@@ -27,4 +27,4 @@ pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
 
 
 userStorage.initialJSONStorageData()
-mainFunction()
+mainFunction(Andrew)

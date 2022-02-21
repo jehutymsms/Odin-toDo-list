@@ -21,7 +21,7 @@ export const globaljs = (() => {
         return element;
     };
 
-    const pageGridConntainer = () => {
+    const pageGridContainer = () => {
         let pageGridContainer = {
             tag: 'div',
             id: 'pageGridContainer',
@@ -48,6 +48,6 @@ export const globaljs = (() => {
     })();
 
 
-    return {newElement:newElement, pageGridConntainer:pageGridConntainer ,render:render}
+    return {newElement, pageGridContainer ,render}
 
 })()

@@ -1,16 +1,25 @@
 import { userStorage } from '../userStorage';
+import { mainSectionCreation } from './mainSectionCreation';
 
-
-export const mainFunction = () => {
+export const mainFunction = (user = userStorage.demo) => {
     // Cache Dom List
-    let sectionEditDeleteProj = document.querySelectorAll(`[id^='item']`),
-        task0 = document.getElementById('edit0p0')
+    let pageGridContainer = document.getElementById('pageGridContainer')
 
+    // This will be null of main section is not present
+    console.log(document.getElementById('mainSection'))
 
-
-    console.log(sectionEditDeleteProj)
-    console.log(task0)
-    //Function List
+    // Function List
+    // Hide/Show Item Function
     
+    // Edit Item
+
+    // Delete Item
+
+    // Event Binding 
+    for (let i = 0; i < user.projectTitles.length; i++) {
+        for (let x = 0; x < user[`item${i}`].taskList.length; x++) {
+            let task = document.getElementById(`edit${x}p${i}`)
+        }
+    }
     
 };

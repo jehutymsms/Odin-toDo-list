@@ -244,7 +244,7 @@ export const navSectionCreation = (() => {
 
     // Sign In section Creation
     const createSection = (info) => {
-        let element = globaljs.pageGridConntainer();
+        let element = globaljs.pageGridContainer();
         element.append(navElementSection(),navMenuSectionSection(info))
 
         globaljs.render.bodyAppendChild(element);
