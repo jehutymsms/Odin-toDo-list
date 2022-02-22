@@ -10,7 +10,21 @@ export const mainFunction = (user = userStorage.demo) => {
 
     // Function List
     // Hide/Show Item Function
-    
+    const hideShowTask = (itemNumber, taskNumber) => {
+        let taskElements = document.getElementsByClassName(`task${itemNumber}p${taskNumber}`)
+        console.log(taskElements)
+        for (let i = 0; i < taskElements.length; i++) {
+            if (taskElements[i].style.display === 'none') {
+                console.log('Element is hidden')
+            }else{
+                console.log('Element is Showing')
+            }
+        }
+
+        
+
+    }
+    hideShowTask(0,0)
     // Edit Item
 
     // Delete Item
