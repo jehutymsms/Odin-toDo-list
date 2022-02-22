@@ -11,7 +11,7 @@ import { navSectionCreation } from './NavSectionFiles/navSectionCreation';
 import { navSectionFunction } from './NavSectionFiles/navSectionFunction';
 
 import { mainSectionCreation } from './mainSectionFiles/mainSectionCreation';
-import { mainFunction } from './mainSectionFiles/mainSectionFunction';
+import { mainSectionFunction } from './mainSectionFiles/mainSectionFunction';
 
 
 import { globaljs } from './global';
@@ -27,4 +27,4 @@ pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
 
 
 userStorage.initialJSONStorageData()
-mainFunction(Andrew)
+mainSectionFunction.mainFunction(Andrew)

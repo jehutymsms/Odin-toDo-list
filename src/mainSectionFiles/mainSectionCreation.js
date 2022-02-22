@@ -13,7 +13,7 @@ export const mainSectionCreation = (() => {
 
         mainSectionH2: {
             tag: 'h2',
-            htmlString: 'All Tasks',
+            htmlString: 'All Projects',
         },
 
         taskItem: {
@@ -153,12 +153,10 @@ export const mainSectionCreation = (() => {
         },
         done: {
             tag: 'div',
-            id: 'done',
             classId: 'done',
         },
         cancel: {
             tag: 'div',
-            id: 'cancel',
             classId: 'cancel',
         },
     }
@@ -229,19 +227,21 @@ export const mainSectionCreation = (() => {
         return element
     }
 
-    const doneElement = () => {
+    const doneElement = (itemID) => {
         let element = globaljs.newElement(editTaskList.done)
+        element.id = `doneI${itemID}`
         return element
     }
 
-    const cancelElement = () => {
+    const cancelElement = (itemID) => {
         let element = globaljs.newElement(editTaskList.cancel)
+        element.id = `cancelI${itemID}`
         return element
     }
 
 
     const editTaskElementCreation = (taskNumber, itemID) => {
-        let editTaskContainerElement = editTaskContainerElement(taskNumber, itemID),
+        let containerElement = editTaskContainerElement(taskNumber, itemID),
             editTask = editTaskElement(taskNumber, itemID),
             editTaskSelect = editTaskSelectSectionElement(),
             editDateSelect = editDateSelectSectionElement(),
@@ -251,13 +251,13 @@ export const mainSectionCreation = (() => {
 
             editDateSelect.append(editDateSelectLabelElement(),editDateSelectInputElement(taskNumber, itemID))
 
-            doneCancelSection.append(doneElement(), cancelElement())
+            doneCancelSection.append(doneElement(taskNumber), cancelElement(taskNumber))
 
             editTask.append(editTaskSelect, editDateSelect, doneCancelSection)
 
-            editTaskContainerElement.append(editTask)
+            containerElement.append(editTask)
 
-        return editTaskContainerElement
+        return containerElement
     }
 
 // Main Task Creation Elements
