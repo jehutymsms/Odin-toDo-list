@@ -81,7 +81,7 @@ export const navSectionFunction = (() => {
                 })
 
                 done.addEventListener('click',function(){
-                    if (getTitle(projectNumber).replace(/\s/g,'') == '') {
+                    if (getTitle(projectNumber).replace(/\s/g,'') === '') {
                         title_Delete(projectNumber)
                         titleHide_Show(projectNumber)
                     }else{

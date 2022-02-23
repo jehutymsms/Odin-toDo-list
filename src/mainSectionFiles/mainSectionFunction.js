@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import { userStorage } from '../userStorage';
 import { mainSectionCreation } from './mainSectionCreation';
 
@@ -64,8 +65,21 @@ export const mainSectionFunction = (() => {
                     })
 
                     doneButton.addEventListener('click', function(){
-                        remoteEditElement( x ,i )
-                        hideShowTask(x, i)
+                        if (document.getElementById(`editTaskSelectT${x}I${i}`).value.replace(/\s/g,'') === '') {
+                            if (document.getElementById(`editDateSelectT${x}I${i}`).value !=='') {
+                                console.log(document.getElementById(`editDateSelectT${x}I${i}`).value)
+                            }
+                            remoteEditElement( x ,i )
+                            hideShowTask(x, i)
+                            
+                        }else{
+                            document.getElementsByClassName(`task${x}p${i}`)[1].innerHTML = document.getElementById(`editTaskSelectT${x}I${i}`).value
+                            console.log(document.getElementById(`editDateSelectT${x}I${i}`).value)
+                            
+
+                            remoteEditElement( x ,i )
+                            hideShowTask(x, i)
+                        }
                     })
 
                     hideShowTask(x, i)
