@@ -65,21 +65,29 @@ export const mainSectionFunction = (() => {
                     })
 
                     doneButton.addEventListener('click', function(){
-                        if (document.getElementById(`editTaskSelectT${x}I${i}`).value.replace(/\s/g,'') === '') {
-                            if (document.getElementById(`editDateSelectT${x}I${i}`).value !=='') {
-                                console.log(document.getElementById(`editDateSelectT${x}I${i}`).value)
-                            }
-                            remoteEditElement( x ,i )
-                            hideShowTask(x, i)
-                            
-                        }else{
-                            document.getElementsByClassName(`task${x}p${i}`)[1].innerHTML = document.getElementById(`editTaskSelectT${x}I${i}`).value
-                            console.log(document.getElementById(`editDateSelectT${x}I${i}`).value)
-                            
+                        let editTaskSelect = document.getElementById(`editTaskSelectT${x}I${i}`),
+                            editDateSelect = document.getElementById(`editDateSelectT${x}I${i}`),
+                            taskList = document.getElementsByClassName(`task${x}p${i}`)
 
-                            remoteEditElement( x ,i )
-                            hideShowTask(x, i)
-                        }
+ 
+                        if (editTaskSelect.value.replace(/\s/g,'') === '') {
+                            if (editDateSelect.value !=='') {
+                                // console.log(editDateSelect.value)
+                            }
+                                remoteEditElement( x ,i )
+                                hideShowTask(x, i)
+                            
+                            }else{
+                                taskList[1].innerHTML = editTaskSelect.innerHTML
+
+                                console.log(editDateSelect.value)
+                                console.log(taskList[2].innerHTML)
+                                
+                                taskList[2].innerHTML = editDateSelect.value
+
+                                remoteEditElement( x ,i )
+                                hideShowTask(x, i)
+                            }
                     })
 
                     hideShowTask(x, i)
