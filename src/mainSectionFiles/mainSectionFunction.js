@@ -82,7 +82,7 @@ export const mainSectionFunction = (() => {
 
                                 console.log(editDateSelect.value)
                                 console.log(taskList[2].innerHTML)
-                                
+                                // Create a function that specifically updates the task based on the Project number and task number. Include all needed elements to retrieve in that function
                                 taskList[2].innerHTML = editDateSelect.value
 
                                 remoteEditElement( x ,i )
