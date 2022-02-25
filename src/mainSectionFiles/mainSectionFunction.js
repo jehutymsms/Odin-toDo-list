@@ -23,7 +23,7 @@ export const mainSectionFunction = (() => {
                 }
                 taskElements[3].style.display = 'flex'
 
-            }else{
+            } else {
                 for (let i = 0; i < taskElements.length; i++) {
                     taskElements[i].style.display = 'none'
                 }
@@ -32,12 +32,39 @@ export const mainSectionFunction = (() => {
         }
 
         // remove Edit Task Element
-        const remoteEditElement = (taskNumber, itemID) => {
+        const removeEditElement = (taskNumber, itemID) => {
             document.getElementById(`editTaskContainerT${taskNumber}I${itemID}`).remove()
-            
+
         }
 
+        // Create a function that specifically updates the task based on the Project number and task number. Include all needed elements to retrieve in that function
         // Edit Item
+        const updateItemInfo = (projectNumber, taskNumber) => {
+            let taskElements = document.getElementsByClassName(`task${projectNumber}p${taskNumber}`),
+                userInfo = userStorage.getdataJSONStorage(username.innerHTML)[`item${projectNumber}`],
+                label = taskElements[1],
+                date = taskElements[2]
+
+            label.innerHTML = userInfo.taskList[taskNumber]
+            date.innerHTML = userInfo.tasks[`task${taskNumber}`].dueDate
+        }
+
+        const updateStoredItemName = (projectNumber, taskNumber, updatedName) => {
+            let user = userStorage.getdataJSONStorage(username.innerHTML),
+                userInfo = user[`item${projectNumber}`]
+
+            userInfo.taskList[taskNumber] = updatedName
+            userStorage.storedataJSONStorage(user, username.innerHTML)
+        }
+
+         // The value Entered into this function needs to be corrected. It subtracts 1 day from what is input
+        const updateStoredItemDueDate = (projectNumber, taskNumber, dueDate) => {
+            let user = userStorage.getdataJSONStorage(username.innerHTML),
+                userInfo = user[`item${projectNumber}`]
+
+            userInfo.tasks[`task${taskNumber}`].dueDate = dueDate
+            userStorage.storedataJSONStorage(user, username.innerHTML)
+        }
 
         // Delete Item
 
@@ -47,11 +74,11 @@ export const mainSectionFunction = (() => {
                 let editButton = document.getElementById(`edit${x}p${i}`),
                     deleteButton = document.getElementById(`delete${x}p${i}`)
 
-                editButton.addEventListener('click', function(){
+                editButton.addEventListener('click', function () {
                     let inputElement = document.getElementById(`task${x}p${i}`),
                         parentElement = document.getElementById(`task${x}p${i}`).parentNode,
-                        newEditTaskContainer = mainSectionCreation.editTaskElementCreation( x, i)
-                    
+                        newEditTaskContainer = mainSectionCreation.editTaskElementCreation(x, i)
+
                     parentElement.insertBefore(newEditTaskContainer, inputElement)
 
 
@@ -59,41 +86,39 @@ export const mainSectionFunction = (() => {
                         doneButton = document.getElementById(`doneI${x}`)
 
 
-                    cancelButton.addEventListener('click', function(){
-                        remoteEditElement( x ,i )
+                    cancelButton.addEventListener('click', function () {
+                        removeEditElement(x, i)
                         hideShowTask(x, i)
                     })
 
-                    doneButton.addEventListener('click', function(){
+                    doneButton.addEventListener('click', function () {
                         let editTaskSelect = document.getElementById(`editTaskSelectT${x}I${i}`),
-                            editDateSelect = document.getElementById(`editDateSelectT${x}I${i}`),
-                            taskList = document.getElementsByClassName(`task${x}p${i}`)
+                            editDateSelect = document.getElementById(`editDateSelectT${x}I${i}`)
 
- 
-                        if (editTaskSelect.value.replace(/\s/g,'') === '') {
-                            if (editDateSelect.value !=='') {
-                                // console.log(editDateSelect.value)
-                            }
-                                remoteEditElement( x ,i )
-                                hideShowTask(x, i)
-                            
-                            }else{
-                                taskList[1].innerHTML = editTaskSelect.innerHTML
 
-                                console.log(editDateSelect.value)
-                                console.log(taskList[2].innerHTML)
-                                // Create a function that specifically updates the task based on the Project number and task number. Include all needed elements to retrieve in that function
-                                taskList[2].innerHTML = editDateSelect.value
+                        if (editTaskSelect.value.replace(/\s/g, '') !== '') {
+                            updateStoredItemName(x, i, editTaskSelect.value)
+                            updateItemInfo(x, i)
+                        }
 
-                                remoteEditElement( x ,i )
-                                hideShowTask(x, i)
-                            }
+                       
+
+
+                        if (editDateSelect.value.replace(/\s/g, '') !== '') {
+
+                             // The value Entered into this function needs to be corrected. It subtracts 1 day from what is input
+                            updateStoredItemDueDate(x, i, new Date(editDateSelect.value).toLocaleDateString(undefined, { day: 'numeric', month: 'numeric', year: '2-digit' }))
+                            updateItemInfo(x, i)
+                        }
+                        removeEditElement(x, i)
+                        hideShowTask(x, i)
+
                     })
 
                     hideShowTask(x, i)
                 })
 
-                deleteButton.addEventListener('click', function(){
+                deleteButton.addEventListener('click', function () {
                     let taskElements = document.getElementsByClassName(`task${x}p${i}`)
 
                     for (let i = 0; i < 4; i++) {
@@ -106,7 +131,6 @@ export const mainSectionFunction = (() => {
                 })
             }
         }
-        
     };
 
     return { mainFunction }
