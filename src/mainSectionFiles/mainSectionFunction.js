@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import moment from 'moment';
 import { userStorage } from '../userStorage';
 import { mainSectionCreation } from './mainSectionCreation';
 
@@ -9,8 +9,6 @@ export const mainSectionFunction = (() => {
         let pageGridContainer = document.getElementById('pageGridContainer'),
             username = document.getElementById('userName')
 
-        // This will be null of main section is not present
-        console.log(document.getElementById('mainSection'))
 
         // Function List
         // Hide/Show Item Function
@@ -95,7 +93,6 @@ export const mainSectionFunction = (() => {
                         let editTaskSelect = document.getElementById(`editTaskSelectT${x}I${i}`),
                             editDateSelect = document.getElementById(`editDateSelectT${x}I${i}`)
 
-
                         if (editTaskSelect.value.replace(/\s/g, '') !== '') {
                             updateStoredItemName(x, i, editTaskSelect.value)
                             updateItemInfo(x, i)
@@ -106,8 +103,7 @@ export const mainSectionFunction = (() => {
 
                         if (editDateSelect.value.replace(/\s/g, '') !== '') {
 
-                             // The value Entered into this function needs to be corrected. It subtracts 1 day from what is input
-                            updateStoredItemDueDate(x, i, new Date(editDateSelect.value).toLocaleDateString(undefined, { day: 'numeric', month: 'numeric', year: '2-digit' }))
+                            updateStoredItemDueDate(x, i, moment(editDateSelect.value).format('M/D/YY'))
                             updateItemInfo(x, i)
                         }
                         removeEditElement(x, i)
