@@ -1,6 +1,7 @@
 import { userStorage } from '../userStorage';
 import { navSectionCreation } from './navSectionCreation';
 import { mainSectionCreation } from '../mainSectionFiles/mainSectionCreation';
+import { mainSectionFunction } from '../mainSectionFiles/mainSectionFunction';
 
 export const navSectionFunction = (() => {
 
@@ -68,6 +69,7 @@ export const navSectionFunction = (() => {
                 userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
                 mainSection.remove()
                 pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
+                mainSectionFunction.mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
                 
         }
 
@@ -86,6 +88,7 @@ export const navSectionFunction = (() => {
                         titleHide_Show(projectNumber)
                     }else{
                         let mainSection = document.getElementById('mainSection')
+                        
                         titleUpdate(projectNumber,getTitle(projectNumber))
                         title_Delete(projectNumber)
                         titleHide_Show(projectNumber)
@@ -133,6 +136,7 @@ export const navSectionFunction = (() => {
                         navMenuSection.remove()
                         
                         pageGridContainer.append(navSectionCreation.navMenuSectionSection(userData),mainSectionCreation.createSection(userData))
+                        mainSectionFunction.mainFunction(userData)
                         navSectionFunction.navFunction();
                     }
                 })

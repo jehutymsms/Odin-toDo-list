@@ -64,13 +64,40 @@ export const mainSectionFunction = (() => {
             userStorage.storedataJSONStorage(user, username.innerHTML)
         }
 
+        const updateStoredItemComplete = (projectNumber, taskNumber, CompleteBoolean) => {
+            let user = userStorage.getdataJSONStorage(username.innerHTML),
+                userInfo = user[`item${projectNumber}`].tasks[`task${taskNumber}`]
+            userInfo.complete = CompleteBoolean
+
+            userStorage.storedataJSONStorage(user, username.innerHTML)
+        }
         // Delete Item
 
         // Event Binding 
         for (let i = 0; i < user.projectTitles.length; i++) {
-            for (let x = 0; x < user[`item${i}`].taskList.length; x++) {
+            let addItemElement = document.getElementById(`addItem${i}`),
+                taskList = user[`item${i}`].taskList
+
+            addItemElement.addEventListener('click', function () {
+                console.log(`${addItemElement.id} was clicked`)
+
+                let newTaskContainer = mainSectionCreation.editTaskElementCreation(taskList.length, i),
+                    parentElement = addItemElement.parentNode
+
+                parentElement.insertBefore(newTaskContainer, addItemElement)
+                let cancelButton = document.getElementById(`cancelI${taskList.length}`),
+                    doneButton = document.getElementById(`doneI${taskList.length}`)
+                    
+                console.log(doneButton)
+            })
+
+
+            for (let x = 0; x < taskList.length; x++) {
                 let editButton = document.getElementById(`edit${x}p${i}`),
-                    deleteButton = document.getElementById(`delete${x}p${i}`)
+                    deleteButton = document.getElementById(`delete${x}p${i}`),
+                    inputElement = document.getElementById(`task${x}p${i}`)
+                    
+
 
                 editButton.addEventListener('click', function () {
                     let inputElement = document.getElementById(`task${x}p${i}`),
@@ -115,7 +142,8 @@ export const mainSectionFunction = (() => {
                 })
 
                 deleteButton.addEventListener('click', function () {
-                    let taskElements = document.getElementsByClassName(`task${x}p${i}`)
+                    let taskElements = document.getElementsByClassName(`task${x}p${i}`),
+                        mainSection = document.getElementById('mainSection')
 
                     for (let i = 0; i < 4; i++) {
                         taskElements[0].remove()
@@ -123,8 +151,16 @@ export const mainSectionFunction = (() => {
 
                     userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
 
+                    mainSection.remove()
+                    pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
+                    mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
 
                 })
+
+                inputElement.addEventListener('click', function () {
+                    updateStoredItemComplete(x, i, inputElement.checked)
+                })
+
             }
         }
     };

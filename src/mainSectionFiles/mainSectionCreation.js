@@ -353,6 +353,7 @@ export const mainSectionCreation = (() => {
 
         taskH2.innerHTML = h2Title
         element.id = `item${itemID}`
+        addTask.id = `addItem${itemID}`
         element.append(taskH2, tasks, addTask)
 
         return element
