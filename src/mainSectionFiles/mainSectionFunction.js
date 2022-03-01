@@ -29,6 +29,16 @@ export const mainSectionFunction = (() => {
 
         }
 
+        const hideShowAddButton = (itemNumber) => {
+            let addElement = document.getElementById(`addItem${itemNumber}`)
+
+            if (addElement.style.display === 'none') {
+                addElement.style.display = 'block'
+            } else {
+                addElement.style.display = 'none'
+            }
+        }
+
         // remove Edit Task Element
         const removeEditElement = (taskNumber, itemID) => {
             document.getElementById(`editTaskContainerT${taskNumber}I${itemID}`).remove()
@@ -72,6 +82,16 @@ export const mainSectionFunction = (() => {
             userStorage.storedataJSONStorage(user, username.innerHTML)
         }
         // Delete Item
+        const addStoredItem = (projectNumber, taskNumber, itemInfo) => {
+            let user = userStorage.getdataJSONStorage(username.innerHTML)
+
+            user[`item${projectNumber}`].taskList.push(itemInfo.itemName)
+            user[`item${projectNumber}`].tasks[`task${taskNumber}`] = {
+                dueDate:itemInfo.itemDueDate,
+                complete: false,
+            }
+            userStorage.storedataJSONStorage(user, username.innerHTML)
+        }
 
         // Event Binding 
         for (let i = 0; i < user.projectTitles.length; i++) {
@@ -79,16 +99,45 @@ export const mainSectionFunction = (() => {
                 taskList = user[`item${i}`].taskList
 
             addItemElement.addEventListener('click', function () {
-                console.log(`${addItemElement.id} was clicked`)
 
                 let newTaskContainer = mainSectionCreation.editTaskElementCreation(taskList.length, i),
-                    parentElement = addItemElement.parentNode
+                    parentElement = addItemElement.parentNode,mainSection = document.getElementById('mainSection')
 
                 parentElement.insertBefore(newTaskContainer, addItemElement)
                 let cancelButton = document.getElementById(`cancelI${taskList.length}`),
                     doneButton = document.getElementById(`doneI${taskList.length}`)
-                    
-                console.log(doneButton)
+
+                cancelButton.addEventListener('click', function () {
+                    removeEditElement(taskList.length, i)
+                    hideShowAddButton(i)
+                })
+
+                doneButton.addEventListener('click', function () {
+                    let editTaskSelect = document.getElementById(`editTaskSelectT${taskList.length}I${i}`),
+                        editDateSelect = document.getElementById(`editDateSelectT${taskList.length}I${i}`)
+
+                    let itemObject = {
+                        itemName: editTaskSelect.value,
+                        itemDueDate: moment(editDateSelect.value).format('M/D/YY'),
+                    }
+                    if (editDateSelect.value.replace(/\s/g, '') === ''){
+                        itemObject.itemDueDate = moment(new Date()).format('M/D/YY')
+                    }
+
+                    if (editTaskSelect.value.replace(/\s/g, '') !== ''){
+                        addStoredItem(i,taskList.length, itemObject)
+                    }
+                    removeEditElement(taskList.length, i)
+                    hideShowAddButton(i)
+
+                    mainSection.remove()
+                    pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
+                    mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
+
+                })
+
+                hideShowAddButton(i)
+          
             })
 
 

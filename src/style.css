@@ -679,7 +679,6 @@ input[type=text]{
 	padding: 0.6em;
 	margin-bottom: 0.5em;
 	font-size: 0.8em;
-	justify-content: center;
 	grid-column: 2;
 	text-decoration: none;
 	border: none;
