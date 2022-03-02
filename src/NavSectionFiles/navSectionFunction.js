@@ -62,12 +62,25 @@ export const navSectionFunction = (() => {
         const projectDelete = (projectNumber) => {
             let edit_deleteSection = document.getElementById(`sectionEditDeleteProj${projectNumber}`),
                 projectTitle = edit_deleteSection.previousElementSibling,
-                mainSection = document.getElementById('mainSection')
+                mainSection = document.getElementById('mainSection'),
+                project = document.getElementById(`item${projectNumber}`)
                 
+                userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
+                
+                
+                
+                console.log(userStorage.userDataCollection(username.innerHTML))
+
+
                 edit_deleteSection.remove()
                 projectTitle.remove()
-                userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
+                project.remove()
+
+                userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
+
                 mainSection.remove()
+
+
                 pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
                 mainSectionFunction.mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
                 
@@ -95,6 +108,7 @@ export const navSectionFunction = (() => {
                         userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
                         mainSection.remove()
                         pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
+                        mainSectionFunction.mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
                     }
                 })
         }
