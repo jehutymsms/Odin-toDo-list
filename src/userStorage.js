@@ -241,12 +241,12 @@ export const userStorage = (() => {
     // Project Deletetion from JSON
     const deleteProject = (username, projectName) => {
         let userProfile = getdataJSONStorage(username)
-        
-        delete userProfile[`item${userProfile.projectTitles.indexOf(projectName)}`]
-        
-        userProfile.projectTitles.splice(userProfile.projectTitles.indexOf(projectName),1)
 
-        storedataJSONStorage(userDataCollection(userProfile)) 
+        delete userProfile[`item${userProfile.projectTitles.indexOf(projectName)}`]
+
+        userProfile.projectTitles.splice(userProfile.projectTitles.indexOf(projectName),1)
+        
+        storedataJSONStorage(userProfile,username) 
 
     }
 
