@@ -48,7 +48,7 @@ export const mainSectionFunction = (() => {
         // Create a function that specifically updates the task based on the Project number and task number. Include all needed elements to retrieve in that function
         // Edit Item
         const updateItemInfo = (projectNumber, taskNumber) => {
-            let taskElements = document.getElementsByClassName(`task${projectNumber}p${taskNumber}`),
+            let taskElements = document.getElementsByClassName(`task${taskNumber}p${projectNumber}`),
                 userInfo = userStorage.getdataJSONStorage(username.innerHTML)[`item${projectNumber}`],
                 label = taskElements[1],
                 date = taskElements[2]
@@ -120,13 +120,15 @@ export const mainSectionFunction = (() => {
                         itemName: editTaskSelect.value,
                         itemDueDate: moment(editDateSelect.value).format('M/D/YY'),
                     }
-                    if (editDateSelect.value.replace(/\s/g, '') === ''){
-                        itemObject.itemDueDate = moment(new Date()).format('M/D/YY')
-                    }
+                    
 
                     if (editTaskSelect.value.replace(/\s/g, '') !== ''){
+                        if (editDateSelect.value.replace(/\s/g, '') === ''){
+                            itemObject.itemDueDate = moment(new Date()).format('M/D/YY')
+                        }
                         addStoredItem(i,taskList.length, itemObject)
                     }
+
                     removeEditElement(taskList.length, i)
                     hideShowAddButton(i)
 
@@ -170,8 +172,8 @@ export const mainSectionFunction = (() => {
                             editDateSelect = document.getElementById(`editDateSelectT${x}I${i}`)
 
                         if (editTaskSelect.value.replace(/\s/g, '') !== '') {
-                            updateStoredItemName(x, i, editTaskSelect.value)
-                            updateItemInfo(x, i)
+                            updateStoredItemName(i, x, editTaskSelect.value)
+                            updateItemInfo(i, x)
                         }
 
                        
@@ -179,8 +181,8 @@ export const mainSectionFunction = (() => {
 
                         if (editDateSelect.value.replace(/\s/g, '') !== '') {
 
-                            updateStoredItemDueDate(x, i, moment(editDateSelect.value).format('M/D/YY'))
-                            updateItemInfo(x, i)
+                            updateStoredItemDueDate(i, x, moment(editDateSelect.value).format('M/D/YY'))
+                            updateItemInfo(i, x)
                         }
                         removeEditElement(x, i)
                         hideShowTask(x, i)
@@ -207,7 +209,7 @@ export const mainSectionFunction = (() => {
                 })
 
                 inputElement.addEventListener('click', function () {
-                    updateStoredItemComplete(x, i, inputElement.checked)
+                    updateStoredItemComplete(i, x, inputElement.checked)
                 })
 
             }
