@@ -135,25 +135,27 @@ export const userStorage = (() => {
     // Collect Task List and Store in Object Created by Project Function
     // Collects Task List based on Item Number
     const taskArrayStorageCreation = (object, itemNumber) => {
-        let taskRetrieval = document.getElementById(`item${itemNumber}`).querySelectorAll(`label`),
+        let taskNameRetrieval = document.querySelectorAll(`[id^='item']`),
+            nameRetrieval = taskNameRetrieval[itemNumber].querySelectorAll(`label`),
             taskArray = []
-
-        for (let i = 0; i < taskRetrieval.length; i++) {
-            taskArray.push(taskRetrieval[i].innerHTML)
+                  
+        for (let i = 0; i < nameRetrieval.length; i++) {
+            taskArray.push(nameRetrieval[i].innerHTML)
         }
 
         object[`item${itemNumber}`].taskList = taskArray
-
         return object
     }
 
+
     // Collect Task Data and Store in Object Created by Project Function
     const taskDataCollection = (object, itemNumber) => {
-        let itemElement = document.getElementById(`item${itemNumber}`),
-            dueDate = itemElement.querySelectorAll(`p`),
-            taskStatus = itemElement.querySelectorAll(`input`),
+        let itemElement = document.querySelectorAll(`[id^='item']`),
+            dueDate = itemElement[itemNumber].querySelectorAll(`p`),
+            taskStatus = itemElement[itemNumber].querySelectorAll(`input`),
             item = object[`item${itemNumber}`]
-        item.tasks = {}
+
+            item.tasks = {}
 
         for (let i = 0; i < item.taskList.length; i++) {
 
@@ -171,7 +173,6 @@ export const userStorage = (() => {
     const projectCollection = () => {
         let projectRetrieval = document.getElementById('projectSelector').querySelectorAll(`li`),
             projectArray = []
-
         for (let i = 0; i < projectRetrieval.length; i++) {
             projectArray.push(projectRetrieval[i].innerHTML)
         }
@@ -181,6 +182,7 @@ export const userStorage = (() => {
 
     // Collect User Data Object Creation
     const userDataCollection = (user = example) => {
+        
         let projectArray = projectCollection(),
             NewDefaultObject = createDefaultProjectStorage(user.user, projectArray),
             ObjectItemsCreated = itemStorageCreation(NewDefaultObject),
@@ -190,13 +192,15 @@ export const userStorage = (() => {
         //Task Collection and Storage
 
         for (let i = 0; i < ObjectItemsCreated.projectTitles.length; i++) {
+
             ObjectItemTasksCreated = taskArrayStorageCreation(ObjectItemsCreated, i)
         }
 
         for (let i = 0; i < ObjectItemTasksCreated.projectTitles.length; i++) {
             ObjectItemTaskDataCollected = taskDataCollection(ObjectItemsCreated, i)
         }
-
+        
+        ObjectItemTaskDataCollected.user = userNameCollection()
         return ObjectItemTaskDataCollected
     }
 

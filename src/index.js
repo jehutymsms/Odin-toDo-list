@@ -20,7 +20,7 @@ const Andrew = userStorage.demo
 
 navSectionCreation.createSection(Andrew);
 navSectionFunction.navFunction();
-mainSectionCreation.createSection(Andrew)
+
 
 let pageGridContainer = document.getElementById('pageGridContainer')
 pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))

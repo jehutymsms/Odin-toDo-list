@@ -67,9 +67,7 @@ export const navSectionFunction = (() => {
                 
                 userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
                 
-                
-                
-                console.log(userStorage.userDataCollection(username.innerHTML))
+
 
 
                 edit_deleteSection.remove()
@@ -77,11 +75,16 @@ export const navSectionFunction = (() => {
                 project.remove()
 
                 userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
+                pageGridContainer.remove()
 
-                mainSection.remove()
+                navSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML));
+                navSectionFunction.navFunction();
+                
 
+                pageGridContainer = document.getElementById('pageGridContainer')
 
                 pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
+
                 mainSectionFunction.mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
                 
         }
