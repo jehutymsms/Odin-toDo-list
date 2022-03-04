@@ -81,6 +81,11 @@ export const navSectionCreation = (() => {
             classId: 'addProject',
             htmlString: 'Add Project',
         },
+        logout: {
+            tag: 'button',
+            id: 'logOut',
+            htmlString: 'Log Out',
+        },
 
     };
 
@@ -183,7 +188,7 @@ export const navSectionCreation = (() => {
 
         item2.innerHTML = user
         item2.id = 'userName'
-        element.append(item1,item2);
+        element.append(item1, item2);
 
         return element;
     };
@@ -234,10 +239,11 @@ export const navSectionCreation = (() => {
     // Returns navMenuSection Section
     const navMenuSectionSection = (item) => {
         let element = globaljs.newElement(navObjectList.navMenuSection),
+            logOutButton = globaljs.newElement(navObjectList.logout),
             defaultSection = defaultSelectorSection(item.user),
             projectSection = projectSelectorSection(item);
 
-        element.append(defaultSection, projectSection);
+        element.append(defaultSection, projectSection, logOutButton);
 
         return element;
     };
@@ -245,10 +251,10 @@ export const navSectionCreation = (() => {
     // Sign In section Creation
     const createSection = (info) => {
         let element = globaljs.pageGridContainer();
-        element.append(navElementSection(),navMenuSectionSection(info))
+        element.append(navElementSection(), navMenuSectionSection(info))
 
         globaljs.render.bodyAppendChild(element);
     };
 
-    return { createSection ,editProjectContainer,navMenuSectionSection};
+    return { createSection, editProjectContainer, navMenuSectionSection };
 })();

@@ -2,6 +2,9 @@ import { userStorage } from '../userStorage';
 import { navSectionCreation } from './navSectionCreation';
 import { mainSectionCreation } from '../mainSectionFiles/mainSectionCreation';
 import { mainSectionFunction } from '../mainSectionFiles/mainSectionFunction';
+import { signInSectionCreation } from '../signInSectionFiles/signInSectionCreation';
+import { signInSectionFunction } from '../signInSectionFiles/signInSectionFunction';
+
 
 export const navSectionFunction = (() => {
 
@@ -15,7 +18,8 @@ export const navSectionFunction = (() => {
             sectionEditDeleteProj = document.querySelectorAll(`[id^='sectionEditDeleteProj']`),
             editButtons = document.querySelectorAll(`[id^='editProj']`),
             deleteButtons = document.querySelectorAll(`[id^='deleteProj']`),
-            addProjectButton = document.getElementById('addProject')
+            addProjectButton = document.getElementById('addProject'),
+            logOutButton = document.getElementById('logOut')
 
         //Function List
         const iconRotate = () =>{
@@ -62,7 +66,6 @@ export const navSectionFunction = (() => {
         const projectDelete = (projectNumber) => {
             let edit_deleteSection = document.getElementById(`sectionEditDeleteProj${projectNumber}`),
                 projectTitle = edit_deleteSection.previousElementSibling,
-                mainSection = document.getElementById('mainSection'),
                 project = document.getElementById(`item${projectNumber}`)
                 
                 userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
@@ -79,7 +82,7 @@ export const navSectionFunction = (() => {
 
                 navSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML));
                 navSectionFunction.navFunction();
-                
+
 
                 pageGridContainer = document.getElementById('pageGridContainer')
 
@@ -158,10 +161,16 @@ export const navSectionFunction = (() => {
                     }
                 })
         }
-
+        const closeProfile = () => {
+            console.log('Log Out Button Pressed')
+            pageGridContainer.remove()
+            signInSectionCreation.createSection()
+            signInSectionFunction.signInFunction()
+        }
 
         //Event Binds
         navSectionH1[0].addEventListener('click', iconRotate)
+        logOutButton.addEventListener('click', closeProfile)
 
         for (let i = 0; i < sectionEditDeleteProj.length; i++) {
             editButtons[i].addEventListener('click', function() {

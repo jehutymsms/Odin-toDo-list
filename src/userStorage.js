@@ -235,7 +235,7 @@ export const userStorage = (() => {
 
     // Initial JSON Data Storage
     const initialJSONStorageData = () => {
-        if (getdataJSONStorage('users') !== false) {
+        if (getdataJSONStorage('users') === null) {
             userJSONStorage(users)
             storedataJSONStorage(demo)
             storedataJSONStorage(example)

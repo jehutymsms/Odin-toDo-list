@@ -8,6 +8,7 @@ import { navSectionCreation } from '../NavSectionFiles/navSectionCreation';
 import { navSectionFunction } from '../NavSectionFiles/navSectionFunction';
 
 import { mainSectionCreation } from '../mainSectionFiles/mainSectionCreation';
+import { mainSectionFunction } from '../mainSectionFiles/mainSectionFunction';
 
 export const signInSectionFunction = (() => {
 
@@ -94,11 +95,8 @@ export const signInSectionFunction = (() => {
 
                     let pageGridContainer = document.getElementById('pageGridContainer')
                         pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
-        })
-        
-
-
-        
+                        mainSectionFunction.mainFunction()
+        })    
 
     };
 

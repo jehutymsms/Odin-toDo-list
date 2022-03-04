@@ -16,15 +16,14 @@ import { mainSectionFunction } from './mainSectionFiles/mainSectionFunction';
 
 import { globaljs } from './global';
 
-const Andrew = userStorage.demo
-
-navSectionCreation.createSection(Andrew);
-navSectionFunction.navFunction();
-
-
-let pageGridContainer = document.getElementById('pageGridContainer')
-pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
-
+// userStorage.initialJSONStorageData()
+// const Andrew = userStorage.demo
+// navSectionCreation.createSection(Andrew);
+// navSectionFunction.navFunction();
+// let pageGridContainer = document.getElementById('pageGridContainer')
+// pageGridContainer.appendChild(mainSectionCreation.createSection(Andrew))
+// mainSectionFunction.mainFunction(Andrew)
 
 userStorage.initialJSONStorageData()
-mainSectionFunction.mainFunction(Andrew)
+signInSectionCreation.createSection()
+signInSectionFunction.signInFunction()
