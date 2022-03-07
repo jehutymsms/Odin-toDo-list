@@ -29,7 +29,7 @@ export const signUpSectionCreation = (() => {
 
         signUpForm: {
             tag: 'form',
-            id:'userCreateInfo',
+            id: 'userCreateInfo',
         },
 
         userInfo: {
@@ -38,59 +38,67 @@ export const signUpSectionCreation = (() => {
                 for: 'userName',
                 htmlString: 'Create Username',
             },
+
             userRequire: {
                 tag: 'h2',
                 id: 'userRequire',
-                htmlString:'Requirements:',
+                htmlString: 'Requirements:',
             },
+
             userRequirements: {
                 tag: 'h2',
                 id: 'userRequirements',
-                htmlString:'at least six characters long, one number, one lowercase and one uppercase letter',
+                htmlString: 'at least six characters long, one number, one lowercase and one uppercase letter',
             },
+
             usernameInput: {
                 tag: 'input',
                 id: 'createUserName',
                 type: 'text',
                 name: 'userName',
             },
+
             passwordLabel: {
                 tag: 'label',
                 for: 'password',
                 htmlString: 'Create Password',
             },
+
             passwordRequire: {
                 tag: 'h2',
                 id: 'pwRequire',
-                htmlString:'Requirements:',
+                htmlString: 'Requirements:',
             },
+
             passwordRequirements: {
                 tag: 'h2',
                 id: 'pwdRequirements',
-                htmlString:'at least six characters long, one number, one lowercase and one uppercase letter',
+                htmlString: 'at least six characters long, one number, one lowercase and one uppercase letter',
             },
+
             passwordInput: {
                 tag: 'input',
                 id: 'passwcreatePassword',
                 type: 'text',
                 name: 'password',
             },
-            
+
             createButton: {
                 tag: 'input',
-                id:'signUpCreate',
+                id: 'signUpCreate',
                 type: 'button',
                 value: 'Create',
             },
+
             cancelButton: {
                 tag: 'input',
-                id:'signUpCancel',
+                id: 'signUpCancel',
                 type: 'button',
                 value: 'Cancel',
             },
         },
     };
-    
+
     //Fuction List
 
     //Return Form Element Contents as list
@@ -101,9 +109,10 @@ export const signUpSectionCreation = (() => {
             let element = globaljs.newElement(SignUpObjectList.userInfo[Object.keys(SignUpObjectList.userInfo)[i]]);
             contentList.push(element);
         }
+
         return contentList;
     };
-      
+
     //Returns Form Element Section
     const formElementSection = () => {
         let contentList = formElementContentList(),
@@ -142,7 +151,7 @@ export const signUpSectionCreation = (() => {
     //Returns Sign In Container Outer Section
     const signUpContainerOuterSection = () => {
         let element = globaljs.newElement(SignUpObjectList.signUpContainerOuter),
-        signUpContainerInner = signUpContainerInnerSection();
+            signUpContainerInner = signUpContainerInnerSection();
 
         element.appendChild(signUpContainerInner);
 
@@ -150,12 +159,12 @@ export const signUpSectionCreation = (() => {
     };
 
     // Sign In section Creation
-    const createSection = () =>{
+    const createSection = () => {
         let element = signUpContainerOuterSection();
 
         globaljs.render.bodyAppendChild(element);
     };
 
 
-    return{createSection};
+    return { createSection };
 })();

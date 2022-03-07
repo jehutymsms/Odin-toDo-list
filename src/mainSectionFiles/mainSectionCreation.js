@@ -33,18 +33,22 @@ export const mainSectionCreation = (() => {
         },
 
         taskDefaultItems: {
+
             item0: {
                 tag: 'h1',
                 htmlString: 'Complete',
             },
+
             item1: {
                 tag: 'h2',
                 htmlString: 'Tasks',
             },
+
             item2: {
                 tag: 'h2',
                 htmlString: 'Due Date',
             },
+
             item3: {
                 tag: 'h2',
                 htmlString: 'Edit',
@@ -52,6 +56,7 @@ export const mainSectionCreation = (() => {
         },
 
         items: {
+
             item0: {
                 tag: 'input',
                 classId: '',
@@ -104,34 +109,39 @@ export const mainSectionCreation = (() => {
             tag: 'h2',
             htmlString: 'Made by Andrew Humphries',
         },
-
     };
 
     // Edit Task Object List
     const editTaskList = {
+
         editTaskContainer: {
             tag: 'div',
             classId: 'editTaskContainer',
         },
+
         editTask: {
             tag: 'div',
             classId: 'editTask',
         },
+
         editTaskSelectSection: {
             tag: 'section',
             classId: 'editTaskSelect',
         },
+
         editTaskSelectLabel: {
             tag: 'label',
             for: 'editTaskSelect',
             htmlString: 'Task',
         },
+
         editTaskSelectTextArea: {
             tag: 'textarea',
             name: 'Task',
             cols: '10',
             rows: '1',
         },
+
         editDateSelect: {
             tag: 'section',
             classId: 'editDateSelect',
@@ -142,30 +152,31 @@ export const mainSectionCreation = (() => {
             for: 'editDateSelect',
             htmlString: 'Date',
         },
+
         editDateSelectInput: {
             tag: 'input',
             type: 'date',
             name: 'editDateSelect',
         },
+        
         doneCancelSection: {
             tag: 'section',
             classId: 'done-cancelSection',
         },
+
         done: {
             tag: 'div',
             classId: 'done',
         },
+
         cancel: {
             tag: 'div',
             classId: 'cancel',
         },
     }
+
     // Fuction List
-
-
-// Main Task Edit Creation Elements
-
-    // Edit Task Container Element
+    // Main Task Edit Creation Elements
     const editTaskContainerElement = (taskNumber, itemID) => {
         let element = globaljs.newElement(editTaskList.editTaskContainer)
 
@@ -224,21 +235,23 @@ export const mainSectionCreation = (() => {
 
     const doneCancelSectionElement = () => {
         let element = globaljs.newElement(editTaskList.doneCancelSection)
+
         return element
     }
 
     const doneElement = (itemID) => {
         let element = globaljs.newElement(editTaskList.done)
         element.id = `doneI${itemID}`
+
         return element
     }
 
     const cancelElement = (itemID) => {
         let element = globaljs.newElement(editTaskList.cancel)
         element.id = `cancelI${itemID}`
+
         return element
     }
-
 
     const editTaskElementCreation = (taskNumber, itemID) => {
         let containerElement = editTaskContainerElement(taskNumber, itemID),
@@ -247,20 +260,20 @@ export const mainSectionCreation = (() => {
             editDateSelect = editDateSelectSectionElement(),
             doneCancelSection = doneCancelSectionElement()
 
-            editTaskSelect.append(editTaskSelectLabelElement(),editTaskSelectTextAreaElement(taskNumber, itemID))
+        editTaskSelect.append(editTaskSelectLabelElement(), editTaskSelectTextAreaElement(taskNumber, itemID))
 
-            editDateSelect.append(editDateSelectLabelElement(),editDateSelectInputElement(taskNumber, itemID))
+        editDateSelect.append(editDateSelectLabelElement(), editDateSelectInputElement(taskNumber, itemID))
 
-            doneCancelSection.append(doneElement(taskNumber), cancelElement(taskNumber))
+        doneCancelSection.append(doneElement(taskNumber), cancelElement(taskNumber))
 
-            editTask.append(editTaskSelect, editDateSelect, doneCancelSection)
+        editTask.append(editTaskSelect, editDateSelect, doneCancelSection)
 
-            containerElement.append(editTask)
+        containerElement.append(editTask)
 
         return containerElement
     }
 
-// Main Task Creation Elements
+    // Main Task Creation Elements
 
     // Input Element
     const inputElementCreation = (taskNumber, itemID) => {
@@ -318,6 +331,7 @@ export const mainSectionCreation = (() => {
 
         label.checked = taskComplete
         elementList.push(input, label, pTag, section)
+
         return elementList
     }
 
@@ -337,7 +351,6 @@ export const mainSectionCreation = (() => {
 
             for (let x = 0; x < task.length; x++) {
                 element.appendChild(task[x]);
-                
             }
         }
 
@@ -369,9 +382,8 @@ export const mainSectionCreation = (() => {
         return element
     }
 
-
     // Task Element List
-    const taskElementObjectList = (itemName, itemID,userData = userStorage.demo) => {
+    const taskElementObjectList = (itemName, itemID, userData = userStorage.demo) => {
         let taskObjectList = {},
             taskNumber = userData.projectTitles.indexOf(itemName)
 
@@ -382,6 +394,7 @@ export const mainSectionCreation = (() => {
 
             taskObjectList[`task${i}`] = taskElementCreation(i, dueDate, taskName, itemID, taskComplete);
         }
+
         return taskObjectList
     }
 
@@ -393,13 +406,10 @@ export const mainSectionCreation = (() => {
             let itemName = userData.projectTitles[i]
 
             itemListObject[`item${i}`] = itemSectionCreation(i, itemName, userData);
-
         }
 
         return itemListObject
     }
-
-
 
     // Main Section Creation
     const createSection = (userData = userStorage.demo) => {

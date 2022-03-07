@@ -6,7 +6,6 @@ export const navSectionCreation = (() => {
     // Navigation Object List
     const navObjectList = {
 
-
         navSection: {
             tag: 'div',
             id: 'navSection',
@@ -91,20 +90,24 @@ export const navSectionCreation = (() => {
 
     // Edit Project Object List
     const editProjList = {
+
         editProjectContainer: {
             tag: 'div',
             id: 'editProjectContainer',
         },
+
         editTaskSelect: {
             tag: 'section',
             classId: 'editTaskSelect',
         },
+
         label: {
             tag: 'label',
             classId: 'editTaskSelect',
             for: 'editTaskSelect',
             htmlString: '',
         },
+
         input: {
             tag: 'input',
             id: 'editTaskSelect',
@@ -113,15 +116,18 @@ export const navSectionCreation = (() => {
             type: 'textarea',
             name: 'userName',
         },
+
         doneCancelSection: {
             tag: 'section',
             classId: 'done-cancelSection',
         },
+
         done: {
             tag: 'div',
             id: 'done',
             classId: 'done',
         },
+
         cancel: {
             tag: 'div',
             id: 'cancel',
@@ -146,12 +152,8 @@ export const navSectionCreation = (() => {
         elementObject.input.id = `editTaskSelect${projectNumber}`
 
         elementObject.doneCancelSection.append(elementObject.done, elementObject.cancel);
-
-
         elementObject.editTaskSelect.append(elementObject.label, elementObject.input);
-
         elementObject.editProjectContainer.append(elementObject.editTaskSelect, elementObject.doneCancelSection)
-
         elementObject = omit(elementObject, ['done', 'cancel', 'label', 'editTaskSelect', 'doneCancelSection', 'input'])
 
         return elementObject.editProjectContainer
@@ -160,11 +162,11 @@ export const navSectionCreation = (() => {
     // Return Nav Section Contents as list
     const NavSectionContentList = () => {
         let contentList = [];
-
         for (let i = 0; i < Object.keys(navObjectList.navSectionOptions).length; i++) {
             let element = globaljs.newElement(navObjectList.navSectionOptions[Object.keys(navObjectList.navSectionOptions)[i]]);
             contentList.push(element);
         }
+
         return contentList;
     };
 
@@ -218,10 +220,10 @@ export const navSectionCreation = (() => {
                 edit_delete = edit_DeleteSection(i);
             item.innerHTML = list.projectTitles[i];
             containerULElement.append(item, edit_delete)
-
         }
-
+        
         containerULElement.appendChild(button)
+
         return containerULElement;
     };
 

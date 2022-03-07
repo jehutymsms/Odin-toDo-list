@@ -33,34 +33,40 @@ export const signInSectionCreation = (() => {
         },
 
         userInfo: {
+
             usernameLabel: {
                 tag: 'label',
                 for: 'userName',
                 htmlString: 'Username',
             },
+
             usernameInput: {
                 tag: 'input',
                 id: 'userName',
                 type: 'text',
                 name: 'userName',
             },
+
             passwordLabel: {
                 tag: 'label',
                 for: 'password',
                 htmlString: 'Password',
             },
+
             passwordInput: {
                 tag: 'input',
                 id: 'password',
                 type: 'password',
                 name: 'password',
             },
+
             signinButton: {
                 tag: 'input',
                 id: 'signInButton',
                 type: 'button',
                 value: 'Sign In',
             },
+
             signupButton: {
                 tag: 'input',
                 id: 'signUpButton',
@@ -74,7 +80,6 @@ export const signInSectionCreation = (() => {
             id: 'demoButton',
             htmlString: 'Demo',
         },
-
     };
 
     //Fuction List
@@ -87,6 +92,7 @@ export const signInSectionCreation = (() => {
             let element = globaljs.newElement(SignInObjectList.userInfo[Object.keys(SignInObjectList.userInfo)[i]]);
             contentList.push(element);
         }
+        
         return contentList;
     };
 

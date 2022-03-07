@@ -2,11 +2,8 @@ import { globaljs } from '../global';
 import { userStorage } from '../userStorage';
 import { signUpSectionCreation } from '../signUpSectionFiles/signUpSectionCreation.js';
 import { signUpSectionFunction } from '../signUpSectionFiles/signUpSectionFunction';
-
 import { navSectionCreation } from '../NavSectionFiles/navSectionCreation';
-
 import { navSectionFunction } from '../NavSectionFiles/navSectionFunction';
-
 import { mainSectionCreation } from '../mainSectionFiles/mainSectionCreation';
 import { mainSectionFunction } from '../mainSectionFiles/mainSectionFunction';
 
@@ -45,19 +42,19 @@ export const signInSectionFunction = (() => {
             let user = info.elements['userName'].value,
                 password = info.elements['password'].value
 
-
             if (userValidation(user)) {
                 if (passwordValidation(user, password)) {
 
                     let userData = userStorage.getdataJSONStorage(user)
 
                     globaljs.render.removeElement(signInContainer)
-
                     navSectionCreation.createSection(userData);
                     navSectionFunction.navFunction();
 
                     let pageGridContainer = document.getElementById('pageGridContainer')
-                        pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
+
+                    pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
+                    mainSectionFunction.mainFunction(userData)
                 }
                 else{
                     alert('Password is Not Valid')
@@ -88,14 +85,13 @@ export const signInSectionFunction = (() => {
         demoButton.addEventListener('click', function () {
             let userData = userStorage.getdataJSONStorage('Andrew')
 
-                    globaljs.render.removeElement(signInContainer)
+            globaljs.render.removeElement(signInContainer)
+            navSectionCreation.createSection(userData);
+            navSectionFunction.navFunction();
 
-                    navSectionCreation.createSection(userData);
-                    navSectionFunction.navFunction();
-
-                    let pageGridContainer = document.getElementById('pageGridContainer')
-                        pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
-                        mainSectionFunction.mainFunction()
+            let pageGridContainer = document.getElementById('pageGridContainer')
+                pageGridContainer.appendChild(mainSectionCreation.createSection(userData))
+                mainSectionFunction.mainFunction(userData)
         })    
 
     };

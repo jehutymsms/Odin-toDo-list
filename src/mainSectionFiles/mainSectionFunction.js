@@ -9,7 +9,6 @@ export const mainSectionFunction = (() => {
         let pageGridContainer = document.getElementById('pageGridContainer'),
             username = document.getElementById('userName')
 
-
         // Function List
         // Hide/Show Item Function
         const hideShowTask = (itemNumber, taskNumber) => {
@@ -20,7 +19,6 @@ export const mainSectionFunction = (() => {
                     taskElements[i].style.display = 'block'
                 }
                 taskElements[3].style.display = 'flex'
-
             } else {
                 for (let i = 0; i < taskElements.length; i++) {
                     taskElements[i].style.display = 'none'
@@ -42,7 +40,6 @@ export const mainSectionFunction = (() => {
         // remove Edit Task Element
         const removeEditElement = (taskNumber, itemID) => {
             document.getElementById(`editTaskContainerT${taskNumber}I${itemID}`).remove()
-
         }
 
         // Create a function that specifically updates the task based on the Project number and task number. Include all needed elements to retrieve in that function
@@ -65,7 +62,7 @@ export const mainSectionFunction = (() => {
             userStorage.storedataJSONStorage(user, username.innerHTML)
         }
 
-         // The value Entered into this function needs to be corrected. It subtracts 1 day from what is input
+        // The value Entered into this function needs to be corrected. It subtracts 1 day from what is input
         const updateStoredItemDueDate = (projectNumber, taskNumber, dueDate) => {
             let user = userStorage.getdataJSONStorage(username.innerHTML),
                 userInfo = user[`item${projectNumber}`]
@@ -77,8 +74,8 @@ export const mainSectionFunction = (() => {
         const updateStoredItemComplete = (projectNumber, taskNumber, CompleteBoolean) => {
             let user = userStorage.getdataJSONStorage(username.innerHTML),
                 userInfo = user[`item${projectNumber}`].tasks[`task${taskNumber}`]
-            userInfo.complete = CompleteBoolean
 
+            userInfo.complete = CompleteBoolean
             userStorage.storedataJSONStorage(user, username.innerHTML)
         }
         // Delete Item
@@ -87,7 +84,7 @@ export const mainSectionFunction = (() => {
 
             user[`item${projectNumber}`].taskList.push(itemInfo.itemName)
             user[`item${projectNumber}`].tasks[`task${taskNumber}`] = {
-                dueDate:itemInfo.itemDueDate,
+                dueDate: itemInfo.itemDueDate,
                 complete: false,
             }
             userStorage.storedataJSONStorage(user, username.innerHTML)
@@ -101,7 +98,7 @@ export const mainSectionFunction = (() => {
             addItemElement.addEventListener('click', function () {
 
                 let newTaskContainer = mainSectionCreation.editTaskElementCreation(taskList.length, i),
-                    parentElement = addItemElement.parentNode,mainSection = document.getElementById('mainSection')
+                    parentElement = addItemElement.parentNode, mainSection = document.getElementById('mainSection')
 
                 parentElement.insertBefore(newTaskContainer, addItemElement)
                 let cancelButton = document.getElementById(`cancelI${taskList.length}`),
@@ -120,13 +117,13 @@ export const mainSectionFunction = (() => {
                         itemName: editTaskSelect.value,
                         itemDueDate: moment(editDateSelect.value).format('M/D/YY'),
                     }
-                    
 
-                    if (editTaskSelect.value.replace(/\s/g, '') !== ''){
-                        if (editDateSelect.value.replace(/\s/g, '') === ''){
+
+                    if (editTaskSelect.value.replace(/\s/g, '') !== '') {
+                        if (editDateSelect.value.replace(/\s/g, '') === '') {
                             itemObject.itemDueDate = moment(new Date()).format('M/D/YY')
                         }
-                        addStoredItem(i,taskList.length, itemObject)
+                        addStoredItem(i, taskList.length, itemObject)
                     }
 
                     removeEditElement(taskList.length, i)
@@ -137,9 +134,7 @@ export const mainSectionFunction = (() => {
                     mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
 
                 })
-
                 hideShowAddButton(i)
-          
             })
 
 
@@ -147,8 +142,6 @@ export const mainSectionFunction = (() => {
                 let editButton = document.getElementById(`edit${x}p${i}`),
                     deleteButton = document.getElementById(`delete${x}p${i}`),
                     inputElement = document.getElementById(`task${x}p${i}`)
-                    
-
 
                 editButton.addEventListener('click', function () {
                     let inputElement = document.getElementById(`task${x}p${i}`),
@@ -157,10 +150,8 @@ export const mainSectionFunction = (() => {
 
                     parentElement.insertBefore(newEditTaskContainer, inputElement)
 
-
                     let cancelButton = document.getElementById(`cancelI${x}`),
                         doneButton = document.getElementById(`doneI${x}`)
-
 
                     cancelButton.addEventListener('click', function () {
                         removeEditElement(x, i)
@@ -176,9 +167,6 @@ export const mainSectionFunction = (() => {
                             updateItemInfo(i, x)
                         }
 
-                       
-
-
                         if (editDateSelect.value.replace(/\s/g, '') !== '') {
 
                             updateStoredItemDueDate(i, x, moment(editDateSelect.value).format('M/D/YY'))
@@ -186,9 +174,7 @@ export const mainSectionFunction = (() => {
                         }
                         removeEditElement(x, i)
                         hideShowTask(x, i)
-
                     })
-
                     hideShowTask(x, i)
                 })
 
@@ -201,17 +187,13 @@ export const mainSectionFunction = (() => {
                     }
 
                     userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
-
                     mainSection.remove()
                     pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
                     mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
-
                 })
-
                 inputElement.addEventListener('click', function () {
                     updateStoredItemComplete(i, x, inputElement.checked)
                 })
-
             }
         }
     };

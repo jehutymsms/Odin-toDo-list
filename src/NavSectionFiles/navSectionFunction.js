@@ -26,6 +26,7 @@ export const navSectionFunction = (() => {
             navSectionH1[0].classList.toggle('navSectionIndicatorActive')
             navMenuSection.classList.toggle('navMenuSectionHide')
         }
+
         // Showing/Hiding Project Title -- Edit Delete Buttons
         const titleHide_Show = (projectNumber) =>{
             let edit_deleteSection = document.getElementById(`sectionEditDeleteProj${projectNumber}`),
@@ -69,27 +70,16 @@ export const navSectionFunction = (() => {
                 project = document.getElementById(`item${projectNumber}`)
                 
                 userStorage.deleteProject(username.innerHTML,projectTitle.innerHTML)
-                
-
-
-
                 edit_deleteSection.remove()
                 projectTitle.remove()
                 project.remove()
-
                 userStorage.storedataJSONStorage(userStorage.userDataCollection(username.innerHTML), username.innerHTML)
                 pageGridContainer.remove()
-
                 navSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML));
                 navSectionFunction.navFunction();
-
-
                 pageGridContainer = document.getElementById('pageGridContainer')
-
                 pageGridContainer.appendChild(mainSectionCreation.createSection(userStorage.getdataJSONStorage(username.innerHTML)))
-
                 mainSectionFunction.mainFunction(userStorage.getdataJSONStorage(username.innerHTML))
-                
         }
 
         const editProjectBindings = (projectNumber) => {
@@ -124,45 +114,43 @@ export const navSectionFunction = (() => {
                 cancel = document.getElementById(`cancelProject${projectNumber}`),
                 userData = userStorage.getdataJSONStorage(username.innerHTML)
 
-                cancel.addEventListener('click',function(){
+            cancel.addEventListener('click',function(){
+                title_Delete(projectNumber)
+                addProjectButtonHide_show()
+            })
+
+            done.addEventListener('click',function(){
+                if (getTitle(projectNumber).replace(/\s/g,'') == '') {
                     title_Delete(projectNumber)
                     addProjectButtonHide_show()
-                })
+                }else{
 
-                done.addEventListener('click',function(){
-                    if (getTitle(projectNumber).replace(/\s/g,'') == '') {
-                        title_Delete(projectNumber)
-                        addProjectButtonHide_show()
-                    }else{
+                    let mainSection = document.getElementById('mainSection'),
+                        navMenuSection = document.getElementById('navMenuSection')
 
-                        let mainSection = document.getElementById('mainSection'),
-                            navMenuSection = document.getElementById('navMenuSection')
+                    userData.projectTitles.push(getTitle(projectNumber))
 
-
-                        userData.projectTitles.push(getTitle(projectNumber))
-
-                        userData[`item${projectNumber}`] = {
-                            taskList: ['New Task'],
-                            tasks: {
-                                task0: {
-                                    dueDate: userStorage.currentMDY,
-                                    complete: false,
-                                }
+                    userData[`item${projectNumber}`] = {
+                        taskList: ['New Task'],
+                        tasks: {
+                            task0: {
+                                dueDate: userStorage.currentMDY,
+                                complete: false,
                             }
                         }
-                        userStorage.storedataJSONStorage(userData)
-
-                        mainSection.remove()
-                        navMenuSection.remove()
-                        
-                        pageGridContainer.append(navSectionCreation.navMenuSectionSection(userData),mainSectionCreation.createSection(userData))
-                        mainSectionFunction.mainFunction(userData)
-                        navSectionFunction.navFunction();
                     }
-                })
+
+                    userStorage.storedataJSONStorage(userData)
+                    mainSection.remove()
+                    navMenuSection.remove()
+                    pageGridContainer.append(navSectionCreation.navMenuSectionSection(userData),mainSectionCreation.createSection(userData))
+                    mainSectionFunction.mainFunction(userData)
+                    navSectionFunction.navFunction();
+                }
+            })
         }
+
         const closeProfile = () => {
-            console.log('Log Out Button Pressed')
             pageGridContainer.remove()
             signInSectionCreation.createSection()
             signInSectionFunction.signInFunction()
@@ -178,7 +166,6 @@ export const navSectionFunction = (() => {
                     projectTitle = edit_deleteSection.previousElementSibling
     
                 navSectionCreation.editProjectContainer(userStorage.getdataJSONStorage(username.innerHTML).projectTitles[i], i)
-    
                 sectionEditDeleteProj[i].parentNode.insertBefore(navSectionCreation.editProjectContainer(projectTitle.innerHTML, i), sectionEditDeleteProj[i].nextSibling);
                 edit_deleteSection.style.display = 'none';
                 projectTitle.style.display = 'none';
@@ -191,7 +178,6 @@ export const navSectionFunction = (() => {
             
         }
 
-
         addProjectButton.addEventListener('click', function(){
             let newProjectNumber = userStorage.getdataJSONStorage(username.innerHTML).projectTitles.length
 
@@ -199,8 +185,6 @@ export const navSectionFunction = (() => {
             addProjectBindings(newProjectNumber)
             addProjectButtonHide_show()
         })
-
-
     };
 
     return { navFunction };
