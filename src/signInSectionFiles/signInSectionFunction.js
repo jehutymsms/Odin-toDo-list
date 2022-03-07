@@ -21,7 +21,7 @@ export const signInSectionFunction = (() => {
             userInfo = userStorage.getdataJSONStorage('users');
 
             
-        //Function List
+        //Function List 
         const userValidation = (userToValidate) => {
             if (userInfo.userList.includes(userToValidate)) {
                 return true
@@ -83,7 +83,7 @@ export const signInSectionFunction = (() => {
         })
         
         demoButton.addEventListener('click', function () {
-            let userData = userStorage.getdataJSONStorage('Andrew')
+            let userData = userStorage.getdataJSONStorage('Demo')
 
             globaljs.render.removeElement(signInContainer)
             navSectionCreation.createSection(userData);
