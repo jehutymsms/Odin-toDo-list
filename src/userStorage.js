@@ -3,11 +3,11 @@ export const userStorage = (() => {
     const currentMDY = new Date().toLocaleDateString(undefined, {day: 'numeric', month: 'numeric', year: '2-digit'})
 
     const users = {
-        userList: ['Andrew', 'example'],
+        userList: ['Demo', 'example'],
 
-        Andrew: {
-            userID: 'Andrew',
-            password: 'Andrew',
+        Demo: {
+            userID: 'Demo',
+            password: 'Demo',
             userStorageInfo: 'demo'
         },
 
@@ -20,7 +20,7 @@ export const userStorage = (() => {
     };
 
     const demo = {
-        user: 'Andrew',
+        user: 'Demo',
         projectTitles: ['Home Chores', 'Work', 'Food Prep'],
 
         item0: {
