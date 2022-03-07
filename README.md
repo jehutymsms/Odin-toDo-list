@@ -1,6 +1,6 @@
-# Odin Project - Library App Solution
+# Odin Project - To Do List
 
-This is a solution to the [Library App](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library). The Odin Project Provides projects to test your knowledge and push your limits.
+This Odin Projects purpose was for practice on using Modular JS and to test my knowledge and push your limits when it comes to local storage.
 
 ## Table of contents
 
@@ -25,14 +25,14 @@ Create a To do List Application
 Users should be able to:
 
 - View/Add Projects
-- Add to do to projects
+- Add tasks to projects
 - Set properties of to do's and projects
-- Properties should be title, description, due date, priority, notes, checklist
+- Properties should be title, due date, checklist
 
 
 ### Links
 
-- Solution URL: NA
+- Solution URL: [Andrew Humphries](https://jehutymsms.github.io/Odin-toDo-list/)
 
 ## My process
 
